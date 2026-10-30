@@ -1,2 +1,8 @@
 # Preserve the exact bytes identified by the verified source and evidence hashes.
 * -text
+
+# Archived run outputs and source snapshots are evidence, not maintained source.
+evidence/** linguist-generated=true
+
+# Upstream DUT sources retain their original attribution and are third-party code.
+vendor/** linguist-vendored=true
