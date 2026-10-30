@@ -1,0 +1,570 @@
+{
+  "status": "pass",
+  "requested_cases": 10,
+  "positive_uvm_profiles": 16,
+  "uvm_corruption_controls": 8,
+  "spike_executions": 8,
+  "spike_profile_comparisons": 16,
+  "spike_comparison_controls": 8,
+  "cross_processor_comparisons": 8,
+  "component_tests": 4,
+  "pytest_tests": 97,
+  "source_hashes_verified": 249,
+  "native_positive_corner_coverage_exports": 8,
+  "unchanged_original_smoke_images": [
+    "ibex_smoke_uvm_full_seed20261029:no_added_delay",
+    "ibex_smoke_uvm_full_seed20261029:stalled",
+    "ibex_smoke_uvm_full_seed20261030:no_added_delay",
+    "ibex_smoke_uvm_full_seed20261030:stalled",
+    "picorv32_rv32i_uvm_full_seed20261029:no_added_delay",
+    "picorv32_rv32i_uvm_full_seed20261029:stalled",
+    "picorv32_rv32i_uvm_full_seed20261030:no_added_delay",
+    "picorv32_rv32i_uvm_full_seed20261030:stalled"
+  ],
+  "profile_observations": [
+    {
+      "case_id": "ibex_smoke_uvm_full_seed20261029",
+      "program": "smoke",
+      "profile": "no_added_delay",
+      "seed": 20261029,
+      "branch_hits": {
+        "beq_taken": 1,
+        "beq_not_taken": 0,
+        "bne_taken": 0,
+        "bne_not_taken": 1
+      },
+      "features": {
+        "randomize_calls": 20,
+        "smoke_covergroup_percent": 87.5,
+        "corner_covergroup_percent": 10.0
+      },
+      "scenarios": {
+        "retired": 14,
+        "loads": 1,
+        "stores": 2,
+        "branches_taken": 1,
+        "branches_not_taken": 1,
+        "jumps": 1,
+        "signature": 1,
+        "instr_stalls": 33,
+        "data_stalls": 0,
+        "instr_waits": 0,
+        "data_waits": 0,
+        "seed": 20261029,
+        "max_delay": 0,
+        "cpu_id": 0,
+        "program_id": 0
+      }
+    },
+    {
+      "case_id": "ibex_smoke_uvm_full_seed20261029",
+      "program": "smoke",
+      "profile": "stalled",
+      "seed": 20261029,
+      "branch_hits": {
+        "beq_taken": 1,
+        "beq_not_taken": 0,
+        "bne_taken": 0,
+        "bne_not_taken": 1
+      },
+      "features": {
+        "randomize_calls": 21,
+        "smoke_covergroup_percent": 87.5,
+        "corner_covergroup_percent": 10.0
+      },
+      "scenarios": {
+        "retired": 14,
+        "loads": 1,
+        "stores": 2,
+        "branches_taken": 1,
+        "branches_not_taken": 1,
+        "jumps": 1,
+        "signature": 1,
+        "instr_stalls": 81,
+        "data_stalls": 6,
+        "instr_waits": 23,
+        "data_waits": 4,
+        "seed": 20261029,
+        "max_delay": 3,
+        "cpu_id": 0,
+        "program_id": 0
+      }
+    },
+    {
+      "case_id": "ibex_smoke_uvm_full_seed20261029_corners",
+      "program": "corners",
+      "profile": "no_added_delay",
+      "seed": 20261029,
+      "branch_hits": {
+        "beq_taken": 1,
+        "beq_not_taken": 1,
+        "bne_taken": 2,
+        "bne_not_taken": 2
+      },
+      "features": {
+        "randomize_calls": 59,
+        "smoke_covergroup_percent": 100.0,
+        "corner_covergroup_percent": 100.0
+      },
+      "scenarios": {
+        "retired": 47,
+        "loads": 3,
+        "stores": 4,
+        "branches_taken": 3,
+        "branches_not_taken": 3,
+        "jumps": 1,
+        "signature": 1,
+        "instr_stalls": 103,
+        "data_stalls": 0,
+        "instr_waits": 0,
+        "data_waits": 0,
+        "seed": 20261029,
+        "max_delay": 0,
+        "cpu_id": 0,
+        "program_id": 1
+      }
+    },
+    {
+      "case_id": "ibex_smoke_uvm_full_seed20261029_corners",
+      "program": "corners",
+      "profile": "stalled",
+      "seed": 20261029,
+      "branch_hits": {
+        "beq_taken": 1,
+        "beq_not_taken": 1,
+        "bne_taken": 2,
+        "bne_not_taken": 2
+      },
+      "features": {
+        "randomize_calls": 59,
+        "smoke_covergroup_percent": 100.0,
+        "corner_covergroup_percent": 100.0
+      },
+      "scenarios": {
+        "retired": 47,
+        "loads": 3,
+        "stores": 4,
+        "branches_taken": 3,
+        "branches_not_taken": 3,
+        "jumps": 1,
+        "signature": 1,
+        "instr_stalls": 246,
+        "data_stalls": 12,
+        "instr_waits": 80,
+        "data_waits": 8,
+        "seed": 20261029,
+        "max_delay": 3,
+        "cpu_id": 0,
+        "program_id": 1
+      }
+    },
+    {
+      "case_id": "ibex_smoke_uvm_full_seed20261030",
+      "program": "smoke",
+      "profile": "no_added_delay",
+      "seed": 20261030,
+      "branch_hits": {
+        "beq_taken": 1,
+        "beq_not_taken": 0,
+        "bne_taken": 0,
+        "bne_not_taken": 1
+      },
+      "features": {
+        "randomize_calls": 20,
+        "smoke_covergroup_percent": 87.5,
+        "corner_covergroup_percent": 10.0
+      },
+      "scenarios": {
+        "retired": 14,
+        "loads": 1,
+        "stores": 2,
+        "branches_taken": 1,
+        "branches_not_taken": 1,
+        "jumps": 1,
+        "signature": 1,
+        "instr_stalls": 33,
+        "data_stalls": 0,
+        "instr_waits": 0,
+        "data_waits": 0,
+        "seed": 20261030,
+        "max_delay": 0,
+        "cpu_id": 0,
+        "program_id": 0
+      }
+    },
+    {
+      "case_id": "ibex_smoke_uvm_full_seed20261030",
+      "program": "smoke",
+      "profile": "stalled",
+      "seed": 20261030,
+      "branch_hits": {
+        "beq_taken": 1,
+        "beq_not_taken": 0,
+        "bne_taken": 0,
+        "bne_not_taken": 1
+      },
+      "features": {
+        "randomize_calls": 21,
+        "smoke_covergroup_percent": 87.5,
+        "corner_covergroup_percent": 10.0
+      },
+      "scenarios": {
+        "retired": 14,
+        "loads": 1,
+        "stores": 2,
+        "branches_taken": 1,
+        "branches_not_taken": 1,
+        "jumps": 1,
+        "signature": 1,
+        "instr_stalls": 80,
+        "data_stalls": 5,
+        "instr_waits": 22,
+        "data_waits": 2,
+        "seed": 20261030,
+        "max_delay": 3,
+        "cpu_id": 0,
+        "program_id": 0
+      }
+    },
+    {
+      "case_id": "ibex_smoke_uvm_full_seed20261030_corners",
+      "program": "corners",
+      "profile": "no_added_delay",
+      "seed": 20261030,
+      "branch_hits": {
+        "beq_taken": 1,
+        "beq_not_taken": 1,
+        "bne_taken": 2,
+        "bne_not_taken": 2
+      },
+      "features": {
+        "randomize_calls": 59,
+        "smoke_covergroup_percent": 100.0,
+        "corner_covergroup_percent": 100.0
+      },
+      "scenarios": {
+        "retired": 47,
+        "loads": 3,
+        "stores": 4,
+        "branches_taken": 3,
+        "branches_not_taken": 3,
+        "jumps": 1,
+        "signature": 1,
+        "instr_stalls": 103,
+        "data_stalls": 0,
+        "instr_waits": 0,
+        "data_waits": 0,
+        "seed": 20261030,
+        "max_delay": 0,
+        "cpu_id": 0,
+        "program_id": 1
+      }
+    },
+    {
+      "case_id": "ibex_smoke_uvm_full_seed20261030_corners",
+      "program": "corners",
+      "profile": "stalled",
+      "seed": 20261030,
+      "branch_hits": {
+        "beq_taken": 1,
+        "beq_not_taken": 1,
+        "bne_taken": 2,
+        "bne_not_taken": 2
+      },
+      "features": {
+        "randomize_calls": 59,
+        "smoke_covergroup_percent": 100.0,
+        "corner_covergroup_percent": 100.0
+      },
+      "scenarios": {
+        "retired": 47,
+        "loads": 3,
+        "stores": 4,
+        "branches_taken": 3,
+        "branches_not_taken": 3,
+        "jumps": 1,
+        "signature": 1,
+        "instr_stalls": 269,
+        "data_stalls": 7,
+        "instr_waits": 84,
+        "data_waits": 8,
+        "seed": 20261030,
+        "max_delay": 3,
+        "cpu_id": 0,
+        "program_id": 1
+      }
+    },
+    {
+      "case_id": "picorv32_rv32i_uvm_full_seed20261029",
+      "program": "smoke",
+      "profile": "no_added_delay",
+      "seed": 20261029,
+      "branch_hits": {
+        "beq_taken": 1,
+        "beq_not_taken": 0,
+        "bne_taken": 0,
+        "bne_not_taken": 1
+      },
+      "features": {
+        "randomize_calls": 19,
+        "smoke_covergroup_percent": 87.5,
+        "corner_covergroup_percent": 10.0
+      },
+      "scenarios": {
+        "retired": 14,
+        "loads": 1,
+        "stores": 2,
+        "branches_taken": 1,
+        "branches_not_taken": 1,
+        "jumps": 1,
+        "signature": 1,
+        "instr_stalls": 0,
+        "data_stalls": 0,
+        "instr_waits": 0,
+        "data_waits": 0,
+        "seed": 20261029,
+        "max_delay": 0,
+        "cpu_id": 1,
+        "program_id": 0
+      }
+    },
+    {
+      "case_id": "picorv32_rv32i_uvm_full_seed20261029",
+      "program": "smoke",
+      "profile": "stalled",
+      "seed": 20261029,
+      "branch_hits": {
+        "beq_taken": 1,
+        "beq_not_taken": 0,
+        "bne_taken": 0,
+        "bne_not_taken": 1
+      },
+      "features": {
+        "randomize_calls": 19,
+        "smoke_covergroup_percent": 87.5,
+        "corner_covergroup_percent": 10.0
+      },
+      "scenarios": {
+        "retired": 14,
+        "loads": 1,
+        "stores": 2,
+        "branches_taken": 1,
+        "branches_not_taken": 1,
+        "jumps": 1,
+        "signature": 1,
+        "instr_stalls": 39,
+        "data_stalls": 13,
+        "instr_waits": 0,
+        "data_waits": 0,
+        "seed": 20261029,
+        "max_delay": 3,
+        "cpu_id": 1,
+        "program_id": 0
+      }
+    },
+    {
+      "case_id": "picorv32_rv32i_uvm_full_seed20261029_corners",
+      "program": "corners",
+      "profile": "no_added_delay",
+      "seed": 20261029,
+      "branch_hits": {
+        "beq_taken": 1,
+        "beq_not_taken": 1,
+        "bne_taken": 2,
+        "bne_not_taken": 2
+      },
+      "features": {
+        "randomize_calls": 58,
+        "smoke_covergroup_percent": 100.0,
+        "corner_covergroup_percent": 100.0
+      },
+      "scenarios": {
+        "retired": 47,
+        "loads": 3,
+        "stores": 4,
+        "branches_taken": 3,
+        "branches_not_taken": 3,
+        "jumps": 1,
+        "signature": 1,
+        "instr_stalls": 0,
+        "data_stalls": 0,
+        "instr_waits": 0,
+        "data_waits": 0,
+        "seed": 20261029,
+        "max_delay": 0,
+        "cpu_id": 1,
+        "program_id": 1
+      }
+    },
+    {
+      "case_id": "picorv32_rv32i_uvm_full_seed20261029_corners",
+      "program": "corners",
+      "profile": "stalled",
+      "seed": 20261029,
+      "branch_hits": {
+        "beq_taken": 1,
+        "beq_not_taken": 1,
+        "bne_taken": 2,
+        "bne_not_taken": 2
+      },
+      "features": {
+        "randomize_calls": 58,
+        "smoke_covergroup_percent": 100.0,
+        "corner_covergroup_percent": 100.0
+      },
+      "scenarios": {
+        "retired": 47,
+        "loads": 3,
+        "stores": 4,
+        "branches_taken": 3,
+        "branches_not_taken": 3,
+        "jumps": 1,
+        "signature": 1,
+        "instr_stalls": 158,
+        "data_stalls": 22,
+        "instr_waits": 0,
+        "data_waits": 0,
+        "seed": 20261029,
+        "max_delay": 3,
+        "cpu_id": 1,
+        "program_id": 1
+      }
+    },
+    {
+      "case_id": "picorv32_rv32i_uvm_full_seed20261030",
+      "program": "smoke",
+      "profile": "no_added_delay",
+      "seed": 20261030,
+      "branch_hits": {
+        "beq_taken": 1,
+        "beq_not_taken": 0,
+        "bne_taken": 0,
+        "bne_not_taken": 1
+      },
+      "features": {
+        "randomize_calls": 19,
+        "smoke_covergroup_percent": 87.5,
+        "corner_covergroup_percent": 10.0
+      },
+      "scenarios": {
+        "retired": 14,
+        "loads": 1,
+        "stores": 2,
+        "branches_taken": 1,
+        "branches_not_taken": 1,
+        "jumps": 1,
+        "signature": 1,
+        "instr_stalls": 0,
+        "data_stalls": 0,
+        "instr_waits": 0,
+        "data_waits": 0,
+        "seed": 20261030,
+        "max_delay": 0,
+        "cpu_id": 1,
+        "program_id": 0
+      }
+    },
+    {
+      "case_id": "picorv32_rv32i_uvm_full_seed20261030",
+      "program": "smoke",
+      "profile": "stalled",
+      "seed": 20261030,
+      "branch_hits": {
+        "beq_taken": 1,
+        "beq_not_taken": 0,
+        "bne_taken": 0,
+        "bne_not_taken": 1
+      },
+      "features": {
+        "randomize_calls": 19,
+        "smoke_covergroup_percent": 87.5,
+        "corner_covergroup_percent": 10.0
+      },
+      "scenarios": {
+        "retired": 14,
+        "loads": 1,
+        "stores": 2,
+        "branches_taken": 1,
+        "branches_not_taken": 1,
+        "jumps": 1,
+        "signature": 1,
+        "instr_stalls": 47,
+        "data_stalls": 9,
+        "instr_waits": 0,
+        "data_waits": 0,
+        "seed": 20261030,
+        "max_delay": 3,
+        "cpu_id": 1,
+        "program_id": 0
+      }
+    },
+    {
+      "case_id": "picorv32_rv32i_uvm_full_seed20261030_corners",
+      "program": "corners",
+      "profile": "no_added_delay",
+      "seed": 20261030,
+      "branch_hits": {
+        "beq_taken": 1,
+        "beq_not_taken": 1,
+        "bne_taken": 2,
+        "bne_not_taken": 2
+      },
+      "features": {
+        "randomize_calls": 58,
+        "smoke_covergroup_percent": 100.0,
+        "corner_covergroup_percent": 100.0
+      },
+      "scenarios": {
+        "retired": 47,
+        "loads": 3,
+        "stores": 4,
+        "branches_taken": 3,
+        "branches_not_taken": 3,
+        "jumps": 1,
+        "signature": 1,
+        "instr_stalls": 0,
+        "data_stalls": 0,
+        "instr_waits": 0,
+        "data_waits": 0,
+        "seed": 20261030,
+        "max_delay": 0,
+        "cpu_id": 1,
+        "program_id": 1
+      }
+    },
+    {
+      "case_id": "picorv32_rv32i_uvm_full_seed20261030_corners",
+      "program": "corners",
+      "profile": "stalled",
+      "seed": 20261030,
+      "branch_hits": {
+        "beq_taken": 1,
+        "beq_not_taken": 1,
+        "bne_taken": 2,
+        "bne_not_taken": 2
+      },
+      "features": {
+        "randomize_calls": 58,
+        "smoke_covergroup_percent": 100.0,
+        "corner_covergroup_percent": 100.0
+      },
+      "scenarios": {
+        "retired": 47,
+        "loads": 3,
+        "stores": 4,
+        "branches_taken": 3,
+        "branches_not_taken": 3,
+        "jumps": 1,
+        "signature": 1,
+        "instr_stalls": 161,
+        "data_stalls": 17,
+        "instr_waits": 0,
+        "data_waits": 0,
+        "seed": 20261030,
+        "max_delay": 3,
+        "cpu_id": 1,
+        "program_id": 1
+      }
+    }
+  ]
+}

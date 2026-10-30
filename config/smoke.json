@@ -1,0 +1,25 @@
+{
+  "dut": "lowRISC Ibex ibex_core + ibex_register_file_ff",
+  "upstream_url": "https://github.com/lowRISC/ibex",
+  "upstream_tag": "v2.1.0",
+  "upstream_commit": "38c070939183cc10940b66c8e9e04eeca6b65470",
+  "core_parameters": {
+    "RV32E": 0,
+    "RV32M": "RV32MNone",
+    "RV32B": "RV32BNone",
+    "ICache": 0,
+    "SecureIbex": 0,
+    "WritebackStage": 0,
+    "BranchPredictor": 0,
+    "ResetAll": 1
+  },
+  "program_isa_scope": "RV32I subset; compressed instructions, M/B extensions and exceptions are outside this smoke",
+  "uvm_version": "1.2",
+  "profiles": {
+    "no_added_delay": {"max_delay": 0},
+    "stalled": {"max_delay": 3}
+  },
+  "spike_comparison": "planned; not executed by the initial UVM smoke",
+  "full_mode": "IBEX_UVM_FULL enables constrained-random memory timing and smoke covergroups; supported by the tested XSim; Questa Starter denies these features",
+  "upstream_functional_coverage": "DV_FCOV_DISABLE; upstream RTL SVA remains enabled"
+}

@@ -1,0 +1,5 @@
+ADVANCED_CASE ibex_smoke factory pass
+ADVANCED_CASE ibex_smoke reset pass
+ADVANCED_CASE picorv32_rv32i factory pass
+ADVANCED_CASE picorv32_rv32i reset pass
+ADVANCED_CASE ibex_smoke irq pass

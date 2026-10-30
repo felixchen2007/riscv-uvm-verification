@@ -1,0 +1,21 @@
+{
+  "status": "pass",
+  "executed": true,
+  "reference_manifest": "C:\\Users\\LENOVO\\Documents\\ChatGPT\\Tensor Memory Accelerator\\ibex-uvm\\build\\releases\\v1-verified\\random\\cases\\picorv32_rv32i_uvm_full_seed20261032_random\\spike\\reference-result.json",
+  "profiles": {
+    "no_added_delay": {
+      "status": "match",
+      "retirements_compared": 111
+    },
+    "stalled": {
+      "status": "match",
+      "retirements_compared": 111
+    }
+  },
+  "corruption_control": {
+    "status": "detected",
+    "record": 0,
+    "field": "rd_data",
+    "diagnostic": "Architectural mismatch at record 0: rd_data: 4294967294 != 4294967295"
+  }
+}

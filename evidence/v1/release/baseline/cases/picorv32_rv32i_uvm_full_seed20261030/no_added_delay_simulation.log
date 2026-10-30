@@ -1,0 +1,82 @@
+#-----------------------------------------------------------
+# xsim v2025.2 (64-bit)
+# SW Build 6299465 on Fri Nov 14 19:35:11 GMT 2025
+# IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+# SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+# Start of session at: Thu Oct 29 22:55:09 2026
+# Process ID         : 11276
+# Current directory  : C:/Users/LENOVO/Documents/ChatGPT/Tensor Memory Accelerator/ibex-uvm/build/releases/v1-verified/baseline/cases/picorv32_rv32i_uvm_full_seed20261030
+# Command line       : xsim.exe -log no_added_delay_simulation.log -mode tcl -source {xsim.dir/picorv32_uvm_full/xsim_script.tcl}
+# Log file           : C:/Users/LENOVO/Documents/ChatGPT/Tensor Memory Accelerator/ibex-uvm/build/releases/v1-verified/baseline/cases/picorv32_rv32i_uvm_full_seed20261030/no_added_delay_simulation.log
+# Journal file       : C:/Users/LENOVO/Documents/ChatGPT/Tensor Memory Accelerator/ibex-uvm/build/releases/v1-verified/baseline/cases/picorv32_rv32i_uvm_full_seed20261030\xsim.jou
+# Running On         : Felix-R9000P
+# Platform           : Windows Server 2016 or Windows 10
+# Operating System   : 26200
+# Processor Detail   : AMD Ryzen 9 8945HX with Radeon Graphics        
+# CPU Frequency      : 2495 MHz
+# CPU Physical cores : 16
+# CPU Logical cores  : 32
+# Host memory        : 33605 MB
+# Swap memory        : 24987 MB
+# Total Virtual      : 58592 MB
+# Available Virtual  : 24873 MB
+#-----------------------------------------------------------
+source xsim.dir/picorv32_uvm_full/xsim_script.tcl
+# xsim {picorv32_uvm_full} -testplusarg UVM_TESTNAME=picorv32_smoke_test -testplusarg UVM_VERBOSITY=UVM_LOW -testplusarg UVM_MAX_QUIT_COUNT=1,YES -testplusarg IBEX_SEED=20261030 -testplusarg IBEX_MAX_DELAY=0 -testplusarg IBEX_PROGRAM=0 -testplusarg RV_SCENARIO=0 -cov_db_dir coverage -cov_db_name no_added_delay -autoloadwcfg -tclbatch {run.tcl} -onerror quit -sv_seed 20261030
+Time resolution is 1 ps
+source run.tcl
+## run all
+UVM_INFO D:AMDDesignToÿÿÿ‚5.2Vivadodata/system_verilog/uvm_1.2/xlnx_uvm_package.sv(18601) @ 0: reporter [UVM/RELNOTES] 
+----------------------------------------------------------------
+UVM-1.2
+(C) 2007-2014 Mentor Graphics Corporation
+(C) 2007-2014 Cadence Design Systems, Inc.
+(C) 2006-2014 Synopsys, Inc.
+(C) 2011-2013 Cypress Semiconductor Corp.
+(C) 2013-2014 NVIDIA Corporation
+----------------------------------------------------------------
+
+  ***********       IMPORTANT RELEASE NOTES         ************
+
+  You are using a version of the UVM library that has been compiled
+  with `UVM_NO_DEPRECATED undefined.
+
+  You are using a version of the UVM library that has been compiled
+  with `UVM_OBJECT_DO_NOT_NEED_CONSTRUCTOR undefined.
+
+      (Specify +UVM_NO_RELNOTES to turn off this notice)
+
+UVM_INFO D:AMDDesignToÿÿÿ‚5.2Vivadodata/system_verilog/uvm_1.2/xlnx_uvm_package.sv(18648) @ 0: reporter [NO_DPI_TSTNAME] UVM_NO_DPI defined--getting UVM_TESTNAME directly, without DPI
+UVM_INFO @ 0: reporter [RNTST] Running test picorv32_smoke_test...
+UVM_INFO D:AMDDesignToÿÿÿ‚5.2Vivadodata/system_verilog/uvm_1.2/xlnx_uvm_package.sv(20867) @ 0: reporter [UVM/COMP/NAMECHECK] This implementation of the component name checks requires DPI to be enabled
+UVM_INFO D:AMDDesignToÿÿÿ‚5.2Vivadodata/system_verilog/uvm_1.2/xlnx_uvm_package.sv(19968) @ 625000: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
+UVM_INFO C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/riscv_test.svh(116) @ 625000: uvm_test_top [IBEX_FULL_FEATURES] randomize_calls=19 coverage_percent=87.50
+UVM_INFO C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/riscv_test.svh(117) @ 625000: uvm_test_top [RV_CORNER_COVERAGE] coverage_percent=10.00
+UVM_INFO C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/riscv_test.svh(120) @ 625000: uvm_test_top [RV_RANDOM_COVERAGE] kind_percent=0.00 alu_percent=0.00 memory_percent=0.00
+UVM_INFO C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/riscv_test.svh(123) @ 625000: uvm_test_top [RV_PROGRAM_RANDOM] instruction_calls=0 schedule_calls=0 seed=20261030
+UVM_INFO C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/riscv_test.svh(125) @ 625000: uvm_test_top [RV_BRANCH_HITS] beq_taken=1 beq_not_taken=0 bne_taken=0 bne_not_taken=1
+UVM_INFO C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/riscv_test.svh(130) @ 625000: uvm_test_top [RV_UVM_PASS] retired=14 loads=1 stores=2 branches_taken=1 branches_not_taken=1 jumps=1 signature=1 instr_stalls=0 data_stalls=0 instr_waits=0 data_waits=0 seed=20261030 max_delay=0 cpu_id=1 program_id=0
+UVM_INFO D:AMDDesignToÿÿÿ‚5.2Vivadodata/system_verilog/uvm_1.2/xlnx_uvm_package.sv(13673) @ 625000: reporter [UVM/REPORT/SERVER] 
+--- UVM Report Summary ---
+
+** Report counts by severity
+UVM_INFO :   11
+UVM_WARNING :    0
+UVM_ERROR :    0
+UVM_FATAL :    0
+** Report counts by id
+[IBEX_FULL_FEATURES]     1
+[NO_DPI_TSTNAME]     1
+[RNTST]     1
+[RV_BRANCH_HITS]     1
+[RV_CORNER_COVERAGE]     1
+[RV_PROGRAM_RANDOM]     1
+[RV_RANDOM_COVERAGE]     1
+[RV_UVM_PASS]     1
+[TEST_DONE]     1
+[UVM/COMP/NAMECHECK]     1
+[UVM/RELNOTES]     1
+
+$finish called at time : 625 ns : File "D:\AMDDesignTools\2025.2\Vivado\data/system_verilog/uvm_1.2/xlnx_uvm_package.sv" Line 18699
+## quit
+INFO: [Common 17-206] Exiting xsim at Thu Oct 29 22:55:13 2026...

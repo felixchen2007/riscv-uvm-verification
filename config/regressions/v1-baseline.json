@@ -1,0 +1,3 @@
+{"schema_version":1,"name":"v1_baselines","processors":["ibex_smoke","picorv32_rv32i"],
+ "programs":["smoke","corners"],"seeds":[20261029,20261030],"uvm_mode":"full",
+ "include_cocotb":true,"include_spike":true,"jobs":2}

@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "id": "picorv32_rv32i",
+  "implementation": "picorv32",
+  "status": "implemented",
+  "hart_count": 1,
+  "xlen": 32,
+  "dut_isa": "rv32i",
+  "program_isa": "rv32i",
+  "spike_isa": "rv32i",
+  "entry_pc": 128,
+  "signature_address": 4100,
+  "signature_value": 1,
+  "expected_retirements": 14,
+  "parameter_config": "config/picorv32.json",
+  "retirement_adapter": "picorv32_rvfi_csv",
+  "native_order_base": 0,
+  "uvm_test": "picorv32_smoke_test",
+  "notes": "Unmodified pinned RTL, native memory agent and shared checker; execution evidence is separate from implementation status."
+}

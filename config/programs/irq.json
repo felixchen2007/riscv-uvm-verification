@@ -1,0 +1,10 @@
+{
+ "schema_version":1,"id":"irq","uvm_program_id":3,"entry_pc":128,"terminal_pc":164,
+ "expected_retirements":15,"variable_retirements":true,"program_isa":"rv32i_zicsr_machine",
+ "signature_address":4100,"signature_value":1,
+ "expected_counts":{"loads":0,"stores":1,"branches_taken":1,"branches_not_taken":1,"jumps":0},
+ "branch_hits":{"beq_taken":1,"beq_not_taken":1,"bne_taken":0,"bne_not_taken":0},
+ "require_smoke_coverage":null,"require_corner_coverage":null,"requires_full":true,
+ "supported_processors":["ibex_smoke"],"requires_scenario":"irq",
+ "description":"Native UVM machine-external IRQ contract: vectored handler, independent mcause/mepc checks and MRET; variable parking-loop count; no Spike IRQ comparison"
+}

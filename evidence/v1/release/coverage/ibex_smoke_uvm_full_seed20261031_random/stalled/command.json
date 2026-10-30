@@ -1,0 +1,13 @@
+[
+  "D:\\AMDDesignTools\\2025.2\\Vivado\\bin\\xcrg.bat",
+  "-cov_db_dir",
+  "C:\\Users\\LENOVO\\Documents\\ChatGPT\\Tensor Memory Accelerator\\ibex-uvm\\build\\releases\\v1-verified\\random\\cases\\ibex_smoke_uvm_full_seed20261031_random\\coverage",
+  "-cov_db_name",
+  "stalled",
+  "-report_dir",
+  "report",
+  "-report_format",
+  "all",
+  "-log",
+  "xcrg.log"
+]

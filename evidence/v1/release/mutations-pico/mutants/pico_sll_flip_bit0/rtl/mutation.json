@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "id": "pico_sll_flip_bit0",
+  "definition": {
+    "implementation": "picorv32",
+    "file": "picorv32.v",
+    "old": "reg_out <= reg_op1;",
+    "new": "reg_out <= (instr_slli || instr_sll) ? (reg_op1 ^ 32'h00000001) : reg_op1;",
+    "error_id": "RVFI_RD"
+  },
+  "original_sha256": "fd142889e8178ef67f1cff17cb2d18b3adae56fcae2badf7cbcc4c4f5ac7960e",
+  "mutated_sha256": "6a8d1c576ab96eb1d825c84582884ae2bca3159fbd780b786b1300c402019332",
+  "implementation": "picorv32",
+  "relative_source": "vendor/picorv32/picorv32.v",
+  "isolated_source": "C:\\Users\\LENOVO\\Documents\\ChatGPT\\Tensor Memory Accelerator\\ibex-uvm\\build\\releases\\v1-verified\\mutations-pico\\mutants\\pico_sll_flip_bit0\\rtl\\mutated.sv"
+}

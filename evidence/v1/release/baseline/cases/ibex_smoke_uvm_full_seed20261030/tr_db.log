@@ -1,0 +1,6 @@
+  CREATE_STREAM @0 {NAME:memory_delay_sequence T:Transactions SCOPE:uvm_test_top.env.instr_agent.sequencer STREAM:1282}
+  CREATE_STREAM @0 {NAME:memory_delay_sequence T:Transactions SCOPE:uvm_test_top.env.data_agent.sequencer STREAM:1292}
+  CREATE_STREAM @0 {NAME:memory_delay_sequence T:Transactions SCOPE:uvm_test_top.env.instr_agent.sequencer STREAM:1282}
+  CREATE_STREAM @0 {NAME:memory_delay_sequence T:Transactions SCOPE:uvm_test_top.env.data_agent.sequencer STREAM:1292}
+  CREATE_STREAM @0 {NAME:memory_delay_sequence T:Transactions SCOPE:uvm_test_top.env.instr_agent.sequencer STREAM:1282}
+  CREATE_STREAM @0 {NAME:memory_delay_sequence T:Transactions SCOPE:uvm_test_top.env.data_agent.sequencer STREAM:1292}

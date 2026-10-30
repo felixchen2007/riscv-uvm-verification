@@ -1,0 +1,63 @@
+{
+  "status": "pass",
+  "actual_rtl_mutants": 4,
+  "qualified_kills": 4,
+  "clean_uvm_profiles": 2,
+  "baseline_retirements_per_profile": 47,
+  "actual_spike_executions": 1,
+  "full_baseline_spike_matches": 2,
+  "mutant_prefix_comparisons": 4,
+  "pytest_tests": 148,
+  "source_hashes_verified": 258,
+  "vendor_sources_preserved": true,
+  "observations": [
+    {
+      "id": "add_flip_bit0",
+      "first_error_id": "RVFI_RD",
+      "uvm_errors": 115,
+      "uvm_fatals": 0,
+      "observed_retirements": 47,
+      "spike": {
+        "status": "architectural_mismatch",
+        "diagnostic": "Architectural mismatch at record 0: rd_data: 4294967294 != 4294967295",
+        "observed_retirements": 47
+      }
+    },
+    {
+      "id": "beq_inverted",
+      "first_error_id": "RVFI_PC",
+      "uvm_errors": 42,
+      "uvm_fatals": 0,
+      "observed_retirements": 47,
+      "spike": {
+        "status": "architectural_mismatch",
+        "diagnostic": "Architectural mismatch at record 36: pc: 272 != 276",
+        "observed_retirements": 47
+      }
+    },
+    {
+      "id": "sll_flip_bit0",
+      "first_error_id": "RVFI_RD",
+      "uvm_errors": 2,
+      "uvm_fatals": 0,
+      "observed_retirements": 47,
+      "spike": {
+        "status": "architectural_mismatch",
+        "diagnostic": "Architectural mismatch at record 19: rd_data: 2147483649 != 2147483648",
+        "observed_retirements": 47
+      }
+    },
+    {
+      "id": "store_flip_bit0",
+      "first_error_id": "MEM_STORE_DATA",
+      "uvm_errors": 29,
+      "uvm_fatals": 0,
+      "observed_retirements": 47,
+      "spike": {
+        "status": "architectural_mismatch",
+        "diagnostic": "Architectural mismatch at record 28: rd_data: 21 != 20",
+        "observed_retirements": 47
+      }
+    }
+  ]
+}

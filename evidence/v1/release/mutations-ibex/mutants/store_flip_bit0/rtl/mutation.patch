@@ -1,0 +1,11 @@
+--- vendor/ibex/rtl/ibex_load_store_unit.sv
++++ isolated/rtl/ibex_load_store_unit.sv
+@@ -532,7 +532,7 @@
+       .data_o (data_wdata_o)
+     );
+   end else begin : g_no_mem_wdata_ecc
+-    assign data_wdata_o = data_wdata;
++    assign data_wdata_o = data_wdata ^ 32'h00000001;
+   end
+ 
+   // output to ID stage: mtval + AGU for misaligned transactions

@@ -1,0 +1,11 @@
+--- vendor/picorv32/picorv32.v
++++ isolated/picorv32.v
+@@ -1268,7 +1268,7 @@
+ 		(* parallel_case, full_case *)
+ 		case (1'b1)
+ 			is_lui_auipc_jal_jalr_addi_add_sub:
+-				alu_out = alu_add_sub;
++				alu_out = instr_add ? (alu_add_sub ^ 32'h00000001) : alu_add_sub;
+ 			is_compare:
+ 				alu_out = alu_out_0;
+ 			instr_xori || instr_xor:

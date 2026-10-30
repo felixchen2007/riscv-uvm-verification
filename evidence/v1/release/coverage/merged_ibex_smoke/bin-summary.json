@@ -1,0 +1,168 @@
+{
+  "input_databases": 4,
+  "input_sha256": {
+    "C:\\Users\\LENOVO\\Documents\\ChatGPT\\Tensor Memory Accelerator\\ibex-uvm\\build\\releases\\v1-verified\\random\\cases\\ibex_smoke_uvm_full_seed20261029_random\\coverage\\xsim.covdb\\stalled\\xsim.covinfo": "c49270a3fdf7249d82e2263a48d3545a0c160f04aad68a98b02caa8e08364100",
+    "C:\\Users\\LENOVO\\Documents\\ChatGPT\\Tensor Memory Accelerator\\ibex-uvm\\build\\releases\\v1-verified\\random\\cases\\ibex_smoke_uvm_full_seed20261030_random\\coverage\\xsim.covdb\\stalled\\xsim.covinfo": "91e0039b857e3c29d5f8166c848e14df2692333bdaec7e2915257b0a639c2e03",
+    "C:\\Users\\LENOVO\\Documents\\ChatGPT\\Tensor Memory Accelerator\\ibex-uvm\\build\\releases\\v1-verified\\random\\cases\\ibex_smoke_uvm_full_seed20261031_random\\coverage\\xsim.covdb\\stalled\\xsim.covinfo": "f58900eaec887556ee34822efd3f93fe075400fef2887192d28893a69cf80549",
+    "C:\\Users\\LENOVO\\Documents\\ChatGPT\\Tensor Memory Accelerator\\ibex-uvm\\build\\releases\\v1-verified\\random\\cases\\ibex_smoke_uvm_full_seed20261032_random\\coverage\\xsim.covdb\\stalled\\xsim.covinfo": "d2de0270a16b372d393b14943d15c8615ca9d4a9ac4808dba75a9915a5f83c73"
+  },
+  "groups": {
+    "retire_cg": {
+      "points": {
+        "op": {
+          "expected": 7,
+          "covered": 7,
+          "uncovered": 0,
+          "percent": 100.0
+        },
+        "branch_direction": {
+          "expected": 2,
+          "covered": 2,
+          "uncovered": 0,
+          "percent": 100.0
+        },
+        "branch_kind": {
+          "expected": 2,
+          "covered": 2,
+          "uncovered": 0,
+          "percent": 100.0
+        },
+        "branch_cross": {
+          "expected": 4,
+          "covered": 4,
+          "uncovered": 0,
+          "percent": 100.0
+        }
+      },
+      "expected": 15,
+      "covered": 15,
+      "closed": true
+    },
+    "corner_cg": {
+      "points": {
+        "add_wrap": {
+          "expected": 1,
+          "covered": 1,
+          "uncovered": 0,
+          "percent": 100.0
+        },
+        "sign_boundary": {
+          "expected": 1,
+          "covered": 1,
+          "uncovered": 0,
+          "percent": 100.0
+        },
+        "sub_underflow": {
+          "expected": 1,
+          "covered": 1,
+          "uncovered": 0,
+          "percent": 100.0
+        },
+        "immediate_min": {
+          "expected": 1,
+          "covered": 1,
+          "uncovered": 0,
+          "percent": 100.0
+        },
+        "immediate_max": {
+          "expected": 1,
+          "covered": 1,
+          "uncovered": 0,
+          "percent": 100.0
+        },
+        "x0_discard": {
+          "expected": 1,
+          "covered": 1,
+          "uncovered": 0,
+          "percent": 100.0
+        },
+        "rd_rs1_alias": {
+          "expected": 1,
+          "covered": 1,
+          "uncovered": 0,
+          "percent": 100.0
+        },
+        "rd_rs2_alias": {
+          "expected": 1,
+          "covered": 1,
+          "uncovered": 0,
+          "percent": 100.0
+        },
+        "load_use": {
+          "expected": 1,
+          "covered": 1,
+          "uncovered": 0,
+          "percent": 100.0
+        },
+        "negative_memory_offset": {
+          "expected": 1,
+          "covered": 1,
+          "uncovered": 0,
+          "percent": 100.0
+        },
+        "high_register": {
+          "expected": 1,
+          "covered": 1,
+          "uncovered": 0,
+          "percent": 100.0
+        },
+        "masked_shift_count": {
+          "expected": 1,
+          "covered": 1,
+          "uncovered": 0,
+          "percent": 100.0
+        },
+        "alu_kind": {
+          "expected": 10,
+          "covered": 10,
+          "uncovered": 0,
+          "percent": 100.0
+        }
+      },
+      "expected": 22,
+      "covered": 22,
+      "closed": true
+    },
+    "random_kind_cg": {
+      "points": {
+        "kind": {
+          "expected": 5,
+          "covered": 5,
+          "uncovered": 0,
+          "percent": 100.0
+        }
+      },
+      "expected": 5,
+      "covered": 5,
+      "closed": true
+    },
+    "random_alu_cg": {
+      "points": {
+        "operation": {
+          "expected": 10,
+          "covered": 10,
+          "uncovered": 0,
+          "percent": 100.0
+        }
+      },
+      "expected": 10,
+      "covered": 10,
+      "closed": true
+    },
+    "random_memory_cg": {
+      "points": {
+        "words": {
+          "expected": 8,
+          "covered": 8,
+          "uncovered": 0,
+          "percent": 100.0
+        }
+      },
+      "expected": 8,
+      "covered": 8,
+      "closed": true
+    }
+  },
+  "report": "C:\\Users\\LENOVO\\Documents\\ChatGPT\\Tensor Memory Accelerator\\ibex-uvm\\build\\releases\\v1-verified\\coverage\\merged_ibex_smoke\\report\\functionalCoverageReport\\xcrg_func_cov_report.txt",
+  "native_merge": true
+}

@@ -1,0 +1,12 @@
+--- vendor/ibex/rtl/ibex_alu.sv
++++ isolated/rtl/ibex_alu.sv
+@@ -1332,7 +1332,8 @@
+       ALU_SH3ADD: result_o = adder_result;
+ 
+       // Shift Operations
+-      ALU_SLL,  ALU_SRL,
++      ALU_SLL: result_o = shift_result ^ 32'h00000001;
++      ALU_SRL,
+       ALU_SRA,
+       // RV32B
+       ALU_SLO,  ALU_SRO: result_o = shift_result;

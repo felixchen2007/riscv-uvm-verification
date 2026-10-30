@@ -1,0 +1,70 @@
+
+****** xsim v2025.2 (64-bit)
+  **** SW Build 6299465 on Fri Nov 14 19:35:11 GMT 2025
+  **** IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+  **** SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+  **** Start of session at: Thu Oct 29 23:01:45 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/picorv32_uvm_full/xsim_script.tcl
+# xsim {picorv32_uvm_full} -testplusarg UVM_TESTNAME=picorv32_smoke_test -testplusarg UVM_VERBOSITY=UVM_LOW -testplusarg UVM_MAX_QUIT_COUNT=1,YES -testplusarg IBEX_SEED=20261029 -testplusarg IBEX_MAX_DELAY=3 -testplusarg IBEX_PROGRAM=2 -testplusarg RV_SCENARIO=0 -testplusarg IBEX_CORRUPT_RVFI -cov_db_dir coverage -cov_db_name rvfi_corruption_control -autoloadwcfg -tclbatch {run.tcl} -onerror quit -sv_seed 20261029
+Time resolution is 1 ps
+source run.tcl
+## run all
+UVM_INFO D:AMDDesignToÿÿÿ‚5.2Vivadodata/system_verilog/uvm_1.2/xlnx_uvm_package.sv(18601) @ 0: reporter [UVM/RELNOTES] 
+----------------------------------------------------------------
+UVM-1.2
+(C) 2007-2014 Mentor Graphics Corporation
+(C) 2007-2014 Cadence Design Systems, Inc.
+(C) 2006-2014 Synopsys, Inc.
+(C) 2011-2013 Cypress Semiconductor Corp.
+(C) 2013-2014 NVIDIA Corporation
+----------------------------------------------------------------
+
+  ***********       IMPORTANT RELEASE NOTES         ************
+
+  You are using a version of the UVM library that has been compiled
+  with `UVM_NO_DEPRECATED undefined.
+
+  You are using a version of the UVM library that has been compiled
+  with `UVM_OBJECT_DO_NOT_NEED_CONSTRUCTOR undefined.
+
+      (Specify +UVM_NO_RELNOTES to turn off this notice)
+
+UVM_INFO D:AMDDesignToÿÿÿ‚5.2Vivadodata/system_verilog/uvm_1.2/xlnx_uvm_package.sv(18648) @ 0: reporter [NO_DPI_TSTNAME] UVM_NO_DPI defined--getting UVM_TESTNAME directly, without DPI
+UVM_INFO @ 0: reporter [RNTST] Running test picorv32_smoke_test...
+UVM_INFO D:AMDDesignToÿÿÿ‚5.2Vivadodata/system_verilog/uvm_1.2/xlnx_uvm_package.sv(20867) @ 0: reporter [UVM/COMP/NAMECHECK] This implementation of the component name checks requires DPI to be enabled
+UVM_INFO C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(58) @ 205000: uvm_test_top.env.rvfi_monitor [CORRUPTION_INJECTED] Flipped bit 0 in one sampled RVFI writeback
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(340) @ 205000: uvm_test_top.env.scoreboard [RVFI_RD] PC=00000080 expected rd=1 data=ffffffff got rd=1 data=fffffffe
+UVM_INFO D:AMDDesignToÿÿÿ‚5.2Vivadodata/system_verilog/uvm_1.2/xlnx_uvm_package.sv(19968) @ 8795000: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
+UVM_INFO C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/riscv_test.svh(116) @ 8795000: uvm_test_top [IBEX_FULL_FEATURES] randomize_calls=138 coverage_percent=100.00
+UVM_INFO C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/riscv_test.svh(117) @ 8795000: uvm_test_top [RV_CORNER_COVERAGE] coverage_percent=100.00
+UVM_INFO C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/riscv_test.svh(120) @ 8795000: uvm_test_top [RV_RANDOM_COVERAGE] kind_percent=100.00 alu_percent=100.00 memory_percent=75.00
+UVM_INFO C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/riscv_test.svh(123) @ 8795000: uvm_test_top [RV_PROGRAM_RANDOM] instruction_calls=64 schedule_calls=8 seed=20261029
+UVM_INFO C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/riscv_test.svh(125) @ 8795000: uvm_test_top [RV_BRANCH_HITS] beq_taken=1 beq_not_taken=1 bne_taken=2 bne_not_taken=2
+UVM_INFO D:AMDDesignToÿÿÿ‚5.2Vivadodata/system_verilog/uvm_1.2/xlnx_uvm_package.sv(13673) @ 8795000: reporter [UVM/REPORT/SERVER] 
+--- UVM Report Summary ---
+
+** Report counts by severity
+UVM_INFO :   11
+UVM_WARNING :    0
+UVM_ERROR :    1
+UVM_FATAL :    0
+** Report counts by id
+[CORRUPTION_INJECTED]     1
+[IBEX_FULL_FEATURES]     1
+[NO_DPI_TSTNAME]     1
+[RNTST]     1
+[RVFI_RD]     1
+[RV_BRANCH_HITS]     1
+[RV_CORNER_COVERAGE]     1
+[RV_PROGRAM_RANDOM]     1
+[RV_RANDOM_COVERAGE]     1
+[TEST_DONE]     1
+[UVM/COMP/NAMECHECK]     1
+[UVM/RELNOTES]     1
+
+$finish called at time : 8795 ns : File "D:\AMDDesignTools\2025.2\Vivado\data/system_verilog/uvm_1.2/xlnx_uvm_package.sv" Line 18699
+## quit
+INFO: [Common 17-206] Exiting xsim at Thu Oct 29 23:01:49 2026...

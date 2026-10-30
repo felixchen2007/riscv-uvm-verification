@@ -1,0 +1,11 @@
+--- vendor/picorv32/picorv32.v
++++ isolated/picorv32.v
+@@ -1829,7 +1829,7 @@
+ 			cpu_state_shift: begin
+ 				latched_store <= 1;
+ 				if (reg_sh == 0) begin
+-					reg_out <= reg_op1;
++					reg_out <= (instr_slli || instr_sll) ? (reg_op1 ^ 32'h00000001) : reg_op1;
+ 					mem_do_rinst <= mem_do_prefetch;
+ 					cpu_state <= cpu_state_fetch;
+ 				end else if (TWO_STAGE_SHIFT && reg_sh >= 4) begin

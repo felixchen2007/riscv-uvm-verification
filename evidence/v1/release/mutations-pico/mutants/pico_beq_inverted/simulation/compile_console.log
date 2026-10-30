@@ -1,0 +1,16 @@
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/LENOVO/Documents/ChatGPT/Tensor Memory Accelerator/ibex-uvm/build/releases/v1-verified/mutations-pico/mutants/pico_beq_inverted/rtl/mutated.sv" into library work
+INFO: [VRFC 10-311] analyzing module picorv32
+INFO: [VRFC 10-311] analyzing module picorv32_regs
+INFO: [VRFC 10-311] analyzing module picorv32_pcpi_mul
+INFO: [VRFC 10-311] analyzing module picorv32_pcpi_fast_mul
+INFO: [VRFC 10-311] analyzing module picorv32_pcpi_div
+INFO: [VRFC 10-311] analyzing module picorv32_axi
+INFO: [VRFC 10-311] analyzing module picorv32_axi_adapter
+INFO: [VRFC 10-311] analyzing module picorv32_wb
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/LENOVO/Documents/ChatGPT/Tensor Memory Accelerator/ibex-uvm/tb/uvm/riscv_control_if.sv" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/LENOVO/Documents/ChatGPT/Tensor Memory Accelerator/ibex-uvm/tb/uvm/ibex_mem_if.sv" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/LENOVO/Documents/ChatGPT/Tensor Memory Accelerator/ibex-uvm/tb/uvm/ibex_rvfi_if.sv" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/LENOVO/Documents/ChatGPT/Tensor Memory Accelerator/ibex-uvm/tb/uvm/picorv32_mem_if.sv" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/LENOVO/Documents/ChatGPT/Tensor Memory Accelerator/ibex-uvm/tb/uvm/ibex_uvm_pkg.sv" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/LENOVO/Documents/ChatGPT/Tensor Memory Accelerator/ibex-uvm/tb/uvm/tb_picorv32_uvm.sv" into library work
+INFO: [VRFC 10-311] analyzing module tb_picorv32_uvm

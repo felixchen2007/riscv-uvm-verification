@@ -1,0 +1,21 @@
+{
+  "status": "pass",
+  "executed": true,
+  "reference_manifest": "C:\\Users\\LENOVO\\Documents\\ChatGPT\\Tensor Memory Accelerator\\ibex-uvm\\build\\releases\\v1-verified\\baseline\\cases\\ibex_smoke_uvm_full_seed20261029_corners\\spike\\reference-result.json",
+  "profiles": {
+    "no_added_delay": {
+      "status": "match",
+      "retirements_compared": 47
+    },
+    "stalled": {
+      "status": "match",
+      "retirements_compared": 47
+    }
+  },
+  "corruption_control": {
+    "status": "detected",
+    "record": 0,
+    "field": "rd_data",
+    "diagnostic": "Architectural mismatch at record 0: rd_data: 4294967294 != 4294967295"
+  }
+}

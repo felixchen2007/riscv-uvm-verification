@@ -1,0 +1,11 @@
+--- vendor/picorv32/picorv32.v
++++ isolated/picorv32.v
+@@ -1251,7 +1251,7 @@
+ 		(* parallel_case, full_case *)
+ 		case (1'b1)
+ 			instr_beq:
+-				alu_out_0 = alu_eq;
++				alu_out_0 = !alu_eq;
+ 			instr_bne:
+ 				alu_out_0 = !alu_eq;
+ 			instr_bge:

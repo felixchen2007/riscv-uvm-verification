@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "repository": "https://github.com/riscv-software-src/riscv-isa-sim",
+  "tag": "v1.1.0",
+  "commit": "530af85d83781a3dae31a4ace84a573ec255fefa",
+  "backend": "wsl",
+  "distribution": "Ubuntu",
+  "build_directory": "build/spike",
+  "bridge_api": 1,
+  "memory_bytes": 65536,
+  "privilege": "M",
+  "cxxflags": "-O1 -g0 -std=c++17 -include cstdint",
+  "configure_options": ["--enable-commitlog", "--with-isa=RV32I", "--with-priv=M", "--without-boost", "--without-boost-asio", "--without-boost-regex"]
+}

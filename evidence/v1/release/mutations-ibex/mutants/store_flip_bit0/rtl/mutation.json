@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "id": "store_flip_bit0",
+  "definition": {
+    "file": "rtl/ibex_load_store_unit.sv",
+    "old": "assign data_wdata_o = data_wdata;",
+    "new": "assign data_wdata_o = data_wdata ^ 32'h00000001;",
+    "error_id": "MEM_STORE_DATA",
+    "bus_mutation": true
+  },
+  "original_sha256": "01d2cf4394a3f897607c2538bfd3844766100e9b6dad5d6226a36996eb42fac1",
+  "mutated_sha256": "65d6bd7cfd807544a1be03258a066f34162f07d116e7a5d00167dbb3eea015fd",
+  "implementation": "ibex",
+  "relative_source": "vendor/ibex/rtl/ibex_load_store_unit.sv",
+  "isolated_source": "C:\\Users\\LENOVO\\Documents\\ChatGPT\\Tensor Memory Accelerator\\ibex-uvm\\build\\releases\\v1-verified\\mutations-ibex\\mutants\\store_flip_bit0\\rtl\\mutated.sv"
+}

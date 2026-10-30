@@ -1,0 +1,1138 @@
+[
+  {
+    "case_id": "ibex_smoke_uvm_full_seed20261029_corners",
+    "profile": "no_added_delay",
+    "command": [
+      "D:\\AMDDesignTools\\2025.2\\Vivado\\bin\\xcrg.bat",
+      "-cov_db_dir",
+      "coverage",
+      "-cov_db_name",
+      "no_added_delay",
+      "-report_dir",
+      "coverage-reports/no_added_delay",
+      "-report_format",
+      "all",
+      "-log",
+      "coverage-reports/no_added_delay.log"
+    ],
+    "working_directory": "C:\\Users\\LENOVO\\Documents\\ChatGPT\\Tensor Memory Accelerator\\ibex-uvm\\build\\regressions\\directed-corners-milestone\\cases\\ibex_smoke_uvm_full_seed20261029_corners",
+    "report": "C:\\Users\\LENOVO\\Documents\\ChatGPT\\Tensor Memory Accelerator\\ibex-uvm\\build\\regressions\\directed-corners-milestone\\cases\\ibex_smoke_uvm_full_seed20261029_corners\\coverage-reports\\no_added_delay\\functionalCoverageReport\\xcrg_func_cov_report.txt",
+    "database_sha256": "8ae9029e537fd7424e49acf1b92df51bdebdda4392661e523e8dfc04c5d823f4",
+    "report_sha256": "5fb96fa2f0549d4fafc46f28d41a790cfc7dd298b33a88402ae4618ef5af172b",
+    "points": {
+      "retire_cg_\this .retire_cg_op": {
+        "name": "op",
+        "expected": 7,
+        "uncovered": 0,
+        "covered": 7,
+        "percent": 100.0
+      },
+      "retire_cg_\this .retire_cg_branch_direction": {
+        "name": "branch_direction",
+        "expected": 2,
+        "uncovered": 0,
+        "covered": 2,
+        "percent": 100.0
+      },
+      "retire_cg_\this .retire_cg_branch_kind": {
+        "name": "branch_kind",
+        "expected": 2,
+        "uncovered": 0,
+        "covered": 2,
+        "percent": 100.0
+      },
+      "retire_cg_\this .retire_cg_branch_cross": {
+        "name": "branch_cross",
+        "expected": 4,
+        "uncovered": 0,
+        "covered": 4,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_add_wrap": {
+        "name": "add_wrap",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_sign_boundary": {
+        "name": "sign_boundary",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_sub_underflow": {
+        "name": "sub_underflow",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_immediate_min": {
+        "name": "immediate_min",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_immediate_max": {
+        "name": "immediate_max",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_x0_discard": {
+        "name": "x0_discard",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_rd_rs1_alias": {
+        "name": "rd_rs1_alias",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_rd_rs2_alias": {
+        "name": "rd_rs2_alias",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_load_use": {
+        "name": "load_use",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_negative_memory_offset": {
+        "name": "negative_memory_offset",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_high_register": {
+        "name": "high_register",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_masked_shift_count": {
+        "name": "masked_shift_count",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_alu_kind": {
+        "name": "alu_kind",
+        "expected": 10,
+        "uncovered": 0,
+        "covered": 10,
+        "percent": 100.0
+      }
+    }
+  },
+  {
+    "case_id": "ibex_smoke_uvm_full_seed20261029_corners",
+    "profile": "stalled",
+    "command": [
+      "D:\\AMDDesignTools\\2025.2\\Vivado\\bin\\xcrg.bat",
+      "-cov_db_dir",
+      "coverage",
+      "-cov_db_name",
+      "stalled",
+      "-report_dir",
+      "coverage-reports/stalled",
+      "-report_format",
+      "all",
+      "-log",
+      "coverage-reports/stalled.log"
+    ],
+    "working_directory": "C:\\Users\\LENOVO\\Documents\\ChatGPT\\Tensor Memory Accelerator\\ibex-uvm\\build\\regressions\\directed-corners-milestone\\cases\\ibex_smoke_uvm_full_seed20261029_corners",
+    "report": "C:\\Users\\LENOVO\\Documents\\ChatGPT\\Tensor Memory Accelerator\\ibex-uvm\\build\\regressions\\directed-corners-milestone\\cases\\ibex_smoke_uvm_full_seed20261029_corners\\coverage-reports\\stalled\\functionalCoverageReport\\xcrg_func_cov_report.txt",
+    "database_sha256": "8ae9029e537fd7424e49acf1b92df51bdebdda4392661e523e8dfc04c5d823f4",
+    "report_sha256": "cd4d365846a565e4fef1830990e3817403b684a530edef25cd8082a72a778f5d",
+    "points": {
+      "retire_cg_\this .retire_cg_op": {
+        "name": "op",
+        "expected": 7,
+        "uncovered": 0,
+        "covered": 7,
+        "percent": 100.0
+      },
+      "retire_cg_\this .retire_cg_branch_direction": {
+        "name": "branch_direction",
+        "expected": 2,
+        "uncovered": 0,
+        "covered": 2,
+        "percent": 100.0
+      },
+      "retire_cg_\this .retire_cg_branch_kind": {
+        "name": "branch_kind",
+        "expected": 2,
+        "uncovered": 0,
+        "covered": 2,
+        "percent": 100.0
+      },
+      "retire_cg_\this .retire_cg_branch_cross": {
+        "name": "branch_cross",
+        "expected": 4,
+        "uncovered": 0,
+        "covered": 4,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_add_wrap": {
+        "name": "add_wrap",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_sign_boundary": {
+        "name": "sign_boundary",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_sub_underflow": {
+        "name": "sub_underflow",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_immediate_min": {
+        "name": "immediate_min",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_immediate_max": {
+        "name": "immediate_max",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_x0_discard": {
+        "name": "x0_discard",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_rd_rs1_alias": {
+        "name": "rd_rs1_alias",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_rd_rs2_alias": {
+        "name": "rd_rs2_alias",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_load_use": {
+        "name": "load_use",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_negative_memory_offset": {
+        "name": "negative_memory_offset",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_high_register": {
+        "name": "high_register",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_masked_shift_count": {
+        "name": "masked_shift_count",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_alu_kind": {
+        "name": "alu_kind",
+        "expected": 10,
+        "uncovered": 0,
+        "covered": 10,
+        "percent": 100.0
+      }
+    }
+  },
+  {
+    "case_id": "ibex_smoke_uvm_full_seed20261030_corners",
+    "profile": "no_added_delay",
+    "command": [
+      "D:\\AMDDesignTools\\2025.2\\Vivado\\bin\\xcrg.bat",
+      "-cov_db_dir",
+      "coverage",
+      "-cov_db_name",
+      "no_added_delay",
+      "-report_dir",
+      "coverage-reports/no_added_delay",
+      "-report_format",
+      "all",
+      "-log",
+      "coverage-reports/no_added_delay.log"
+    ],
+    "working_directory": "C:\\Users\\LENOVO\\Documents\\ChatGPT\\Tensor Memory Accelerator\\ibex-uvm\\build\\regressions\\directed-corners-milestone\\cases\\ibex_smoke_uvm_full_seed20261030_corners",
+    "report": "C:\\Users\\LENOVO\\Documents\\ChatGPT\\Tensor Memory Accelerator\\ibex-uvm\\build\\regressions\\directed-corners-milestone\\cases\\ibex_smoke_uvm_full_seed20261030_corners\\coverage-reports\\no_added_delay\\functionalCoverageReport\\xcrg_func_cov_report.txt",
+    "database_sha256": "8ae9029e537fd7424e49acf1b92df51bdebdda4392661e523e8dfc04c5d823f4",
+    "report_sha256": "fe5ed41127294cbe5bd266146b86e177eb60ab025171cd79b946d8da02ab9a7c",
+    "points": {
+      "retire_cg_\this .retire_cg_op": {
+        "name": "op",
+        "expected": 7,
+        "uncovered": 0,
+        "covered": 7,
+        "percent": 100.0
+      },
+      "retire_cg_\this .retire_cg_branch_direction": {
+        "name": "branch_direction",
+        "expected": 2,
+        "uncovered": 0,
+        "covered": 2,
+        "percent": 100.0
+      },
+      "retire_cg_\this .retire_cg_branch_kind": {
+        "name": "branch_kind",
+        "expected": 2,
+        "uncovered": 0,
+        "covered": 2,
+        "percent": 100.0
+      },
+      "retire_cg_\this .retire_cg_branch_cross": {
+        "name": "branch_cross",
+        "expected": 4,
+        "uncovered": 0,
+        "covered": 4,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_add_wrap": {
+        "name": "add_wrap",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_sign_boundary": {
+        "name": "sign_boundary",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_sub_underflow": {
+        "name": "sub_underflow",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_immediate_min": {
+        "name": "immediate_min",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_immediate_max": {
+        "name": "immediate_max",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_x0_discard": {
+        "name": "x0_discard",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_rd_rs1_alias": {
+        "name": "rd_rs1_alias",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_rd_rs2_alias": {
+        "name": "rd_rs2_alias",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_load_use": {
+        "name": "load_use",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_negative_memory_offset": {
+        "name": "negative_memory_offset",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_high_register": {
+        "name": "high_register",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_masked_shift_count": {
+        "name": "masked_shift_count",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_alu_kind": {
+        "name": "alu_kind",
+        "expected": 10,
+        "uncovered": 0,
+        "covered": 10,
+        "percent": 100.0
+      }
+    }
+  },
+  {
+    "case_id": "ibex_smoke_uvm_full_seed20261030_corners",
+    "profile": "stalled",
+    "command": [
+      "D:\\AMDDesignTools\\2025.2\\Vivado\\bin\\xcrg.bat",
+      "-cov_db_dir",
+      "coverage",
+      "-cov_db_name",
+      "stalled",
+      "-report_dir",
+      "coverage-reports/stalled",
+      "-report_format",
+      "all",
+      "-log",
+      "coverage-reports/stalled.log"
+    ],
+    "working_directory": "C:\\Users\\LENOVO\\Documents\\ChatGPT\\Tensor Memory Accelerator\\ibex-uvm\\build\\regressions\\directed-corners-milestone\\cases\\ibex_smoke_uvm_full_seed20261030_corners",
+    "report": "C:\\Users\\LENOVO\\Documents\\ChatGPT\\Tensor Memory Accelerator\\ibex-uvm\\build\\regressions\\directed-corners-milestone\\cases\\ibex_smoke_uvm_full_seed20261030_corners\\coverage-reports\\stalled\\functionalCoverageReport\\xcrg_func_cov_report.txt",
+    "database_sha256": "8ae9029e537fd7424e49acf1b92df51bdebdda4392661e523e8dfc04c5d823f4",
+    "report_sha256": "70314b4d5b0a3f86d3e13c58c61483747dc1a6da4bf8a2ba821873addd9fd445",
+    "points": {
+      "retire_cg_\this .retire_cg_op": {
+        "name": "op",
+        "expected": 7,
+        "uncovered": 0,
+        "covered": 7,
+        "percent": 100.0
+      },
+      "retire_cg_\this .retire_cg_branch_direction": {
+        "name": "branch_direction",
+        "expected": 2,
+        "uncovered": 0,
+        "covered": 2,
+        "percent": 100.0
+      },
+      "retire_cg_\this .retire_cg_branch_kind": {
+        "name": "branch_kind",
+        "expected": 2,
+        "uncovered": 0,
+        "covered": 2,
+        "percent": 100.0
+      },
+      "retire_cg_\this .retire_cg_branch_cross": {
+        "name": "branch_cross",
+        "expected": 4,
+        "uncovered": 0,
+        "covered": 4,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_add_wrap": {
+        "name": "add_wrap",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_sign_boundary": {
+        "name": "sign_boundary",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_sub_underflow": {
+        "name": "sub_underflow",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_immediate_min": {
+        "name": "immediate_min",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_immediate_max": {
+        "name": "immediate_max",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_x0_discard": {
+        "name": "x0_discard",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_rd_rs1_alias": {
+        "name": "rd_rs1_alias",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_rd_rs2_alias": {
+        "name": "rd_rs2_alias",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_load_use": {
+        "name": "load_use",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_negative_memory_offset": {
+        "name": "negative_memory_offset",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_high_register": {
+        "name": "high_register",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_masked_shift_count": {
+        "name": "masked_shift_count",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_alu_kind": {
+        "name": "alu_kind",
+        "expected": 10,
+        "uncovered": 0,
+        "covered": 10,
+        "percent": 100.0
+      }
+    }
+  },
+  {
+    "case_id": "picorv32_rv32i_uvm_full_seed20261029_corners",
+    "profile": "no_added_delay",
+    "command": [
+      "D:\\AMDDesignTools\\2025.2\\Vivado\\bin\\xcrg.bat",
+      "-cov_db_dir",
+      "coverage",
+      "-cov_db_name",
+      "no_added_delay",
+      "-report_dir",
+      "coverage-reports/no_added_delay",
+      "-report_format",
+      "all",
+      "-log",
+      "coverage-reports/no_added_delay.log"
+    ],
+    "working_directory": "C:\\Users\\LENOVO\\Documents\\ChatGPT\\Tensor Memory Accelerator\\ibex-uvm\\build\\regressions\\directed-corners-milestone\\cases\\picorv32_rv32i_uvm_full_seed20261029_corners",
+    "report": "C:\\Users\\LENOVO\\Documents\\ChatGPT\\Tensor Memory Accelerator\\ibex-uvm\\build\\regressions\\directed-corners-milestone\\cases\\picorv32_rv32i_uvm_full_seed20261029_corners\\coverage-reports\\no_added_delay\\functionalCoverageReport\\xcrg_func_cov_report.txt",
+    "database_sha256": "8ae9029e537fd7424e49acf1b92df51bdebdda4392661e523e8dfc04c5d823f4",
+    "report_sha256": "435e2d1b9cb690adb7cdc3f903ddfd02ee0ef0025125cd0119da6af90a58ff08",
+    "points": {
+      "retire_cg_\this .retire_cg_op": {
+        "name": "op",
+        "expected": 7,
+        "uncovered": 0,
+        "covered": 7,
+        "percent": 100.0
+      },
+      "retire_cg_\this .retire_cg_branch_direction": {
+        "name": "branch_direction",
+        "expected": 2,
+        "uncovered": 0,
+        "covered": 2,
+        "percent": 100.0
+      },
+      "retire_cg_\this .retire_cg_branch_kind": {
+        "name": "branch_kind",
+        "expected": 2,
+        "uncovered": 0,
+        "covered": 2,
+        "percent": 100.0
+      },
+      "retire_cg_\this .retire_cg_branch_cross": {
+        "name": "branch_cross",
+        "expected": 4,
+        "uncovered": 0,
+        "covered": 4,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_add_wrap": {
+        "name": "add_wrap",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_sign_boundary": {
+        "name": "sign_boundary",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_sub_underflow": {
+        "name": "sub_underflow",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_immediate_min": {
+        "name": "immediate_min",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_immediate_max": {
+        "name": "immediate_max",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_x0_discard": {
+        "name": "x0_discard",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_rd_rs1_alias": {
+        "name": "rd_rs1_alias",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_rd_rs2_alias": {
+        "name": "rd_rs2_alias",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_load_use": {
+        "name": "load_use",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_negative_memory_offset": {
+        "name": "negative_memory_offset",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_high_register": {
+        "name": "high_register",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_masked_shift_count": {
+        "name": "masked_shift_count",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_alu_kind": {
+        "name": "alu_kind",
+        "expected": 10,
+        "uncovered": 0,
+        "covered": 10,
+        "percent": 100.0
+      }
+    }
+  },
+  {
+    "case_id": "picorv32_rv32i_uvm_full_seed20261029_corners",
+    "profile": "stalled",
+    "command": [
+      "D:\\AMDDesignTools\\2025.2\\Vivado\\bin\\xcrg.bat",
+      "-cov_db_dir",
+      "coverage",
+      "-cov_db_name",
+      "stalled",
+      "-report_dir",
+      "coverage-reports/stalled",
+      "-report_format",
+      "all",
+      "-log",
+      "coverage-reports/stalled.log"
+    ],
+    "working_directory": "C:\\Users\\LENOVO\\Documents\\ChatGPT\\Tensor Memory Accelerator\\ibex-uvm\\build\\regressions\\directed-corners-milestone\\cases\\picorv32_rv32i_uvm_full_seed20261029_corners",
+    "report": "C:\\Users\\LENOVO\\Documents\\ChatGPT\\Tensor Memory Accelerator\\ibex-uvm\\build\\regressions\\directed-corners-milestone\\cases\\picorv32_rv32i_uvm_full_seed20261029_corners\\coverage-reports\\stalled\\functionalCoverageReport\\xcrg_func_cov_report.txt",
+    "database_sha256": "8ae9029e537fd7424e49acf1b92df51bdebdda4392661e523e8dfc04c5d823f4",
+    "report_sha256": "aa71e4542566bff805422f0b5b99fb5c1cccfb62cfad02ac1d0994e3b9051f60",
+    "points": {
+      "retire_cg_\this .retire_cg_op": {
+        "name": "op",
+        "expected": 7,
+        "uncovered": 0,
+        "covered": 7,
+        "percent": 100.0
+      },
+      "retire_cg_\this .retire_cg_branch_direction": {
+        "name": "branch_direction",
+        "expected": 2,
+        "uncovered": 0,
+        "covered": 2,
+        "percent": 100.0
+      },
+      "retire_cg_\this .retire_cg_branch_kind": {
+        "name": "branch_kind",
+        "expected": 2,
+        "uncovered": 0,
+        "covered": 2,
+        "percent": 100.0
+      },
+      "retire_cg_\this .retire_cg_branch_cross": {
+        "name": "branch_cross",
+        "expected": 4,
+        "uncovered": 0,
+        "covered": 4,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_add_wrap": {
+        "name": "add_wrap",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_sign_boundary": {
+        "name": "sign_boundary",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_sub_underflow": {
+        "name": "sub_underflow",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_immediate_min": {
+        "name": "immediate_min",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_immediate_max": {
+        "name": "immediate_max",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_x0_discard": {
+        "name": "x0_discard",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_rd_rs1_alias": {
+        "name": "rd_rs1_alias",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_rd_rs2_alias": {
+        "name": "rd_rs2_alias",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_load_use": {
+        "name": "load_use",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_negative_memory_offset": {
+        "name": "negative_memory_offset",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_high_register": {
+        "name": "high_register",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_masked_shift_count": {
+        "name": "masked_shift_count",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_alu_kind": {
+        "name": "alu_kind",
+        "expected": 10,
+        "uncovered": 0,
+        "covered": 10,
+        "percent": 100.0
+      }
+    }
+  },
+  {
+    "case_id": "picorv32_rv32i_uvm_full_seed20261030_corners",
+    "profile": "no_added_delay",
+    "command": [
+      "D:\\AMDDesignTools\\2025.2\\Vivado\\bin\\xcrg.bat",
+      "-cov_db_dir",
+      "coverage",
+      "-cov_db_name",
+      "no_added_delay",
+      "-report_dir",
+      "coverage-reports/no_added_delay",
+      "-report_format",
+      "all",
+      "-log",
+      "coverage-reports/no_added_delay.log"
+    ],
+    "working_directory": "C:\\Users\\LENOVO\\Documents\\ChatGPT\\Tensor Memory Accelerator\\ibex-uvm\\build\\regressions\\directed-corners-milestone\\cases\\picorv32_rv32i_uvm_full_seed20261030_corners",
+    "report": "C:\\Users\\LENOVO\\Documents\\ChatGPT\\Tensor Memory Accelerator\\ibex-uvm\\build\\regressions\\directed-corners-milestone\\cases\\picorv32_rv32i_uvm_full_seed20261030_corners\\coverage-reports\\no_added_delay\\functionalCoverageReport\\xcrg_func_cov_report.txt",
+    "database_sha256": "8ae9029e537fd7424e49acf1b92df51bdebdda4392661e523e8dfc04c5d823f4",
+    "report_sha256": "c1235d423c9299a7264a1634201230fa2bcd01f16a94edb62f7af52e23229de9",
+    "points": {
+      "retire_cg_\this .retire_cg_op": {
+        "name": "op",
+        "expected": 7,
+        "uncovered": 0,
+        "covered": 7,
+        "percent": 100.0
+      },
+      "retire_cg_\this .retire_cg_branch_direction": {
+        "name": "branch_direction",
+        "expected": 2,
+        "uncovered": 0,
+        "covered": 2,
+        "percent": 100.0
+      },
+      "retire_cg_\this .retire_cg_branch_kind": {
+        "name": "branch_kind",
+        "expected": 2,
+        "uncovered": 0,
+        "covered": 2,
+        "percent": 100.0
+      },
+      "retire_cg_\this .retire_cg_branch_cross": {
+        "name": "branch_cross",
+        "expected": 4,
+        "uncovered": 0,
+        "covered": 4,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_add_wrap": {
+        "name": "add_wrap",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_sign_boundary": {
+        "name": "sign_boundary",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_sub_underflow": {
+        "name": "sub_underflow",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_immediate_min": {
+        "name": "immediate_min",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_immediate_max": {
+        "name": "immediate_max",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_x0_discard": {
+        "name": "x0_discard",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_rd_rs1_alias": {
+        "name": "rd_rs1_alias",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_rd_rs2_alias": {
+        "name": "rd_rs2_alias",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_load_use": {
+        "name": "load_use",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_negative_memory_offset": {
+        "name": "negative_memory_offset",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_high_register": {
+        "name": "high_register",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_masked_shift_count": {
+        "name": "masked_shift_count",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_alu_kind": {
+        "name": "alu_kind",
+        "expected": 10,
+        "uncovered": 0,
+        "covered": 10,
+        "percent": 100.0
+      }
+    }
+  },
+  {
+    "case_id": "picorv32_rv32i_uvm_full_seed20261030_corners",
+    "profile": "stalled",
+    "command": [
+      "D:\\AMDDesignTools\\2025.2\\Vivado\\bin\\xcrg.bat",
+      "-cov_db_dir",
+      "coverage",
+      "-cov_db_name",
+      "stalled",
+      "-report_dir",
+      "coverage-reports/stalled",
+      "-report_format",
+      "all",
+      "-log",
+      "coverage-reports/stalled.log"
+    ],
+    "working_directory": "C:\\Users\\LENOVO\\Documents\\ChatGPT\\Tensor Memory Accelerator\\ibex-uvm\\build\\regressions\\directed-corners-milestone\\cases\\picorv32_rv32i_uvm_full_seed20261030_corners",
+    "report": "C:\\Users\\LENOVO\\Documents\\ChatGPT\\Tensor Memory Accelerator\\ibex-uvm\\build\\regressions\\directed-corners-milestone\\cases\\picorv32_rv32i_uvm_full_seed20261030_corners\\coverage-reports\\stalled\\functionalCoverageReport\\xcrg_func_cov_report.txt",
+    "database_sha256": "8ae9029e537fd7424e49acf1b92df51bdebdda4392661e523e8dfc04c5d823f4",
+    "report_sha256": "d4eb57e0625b03f05f9a58c39ff9aee6790e6160dd4924702167fd476a819ed4",
+    "points": {
+      "retire_cg_\this .retire_cg_op": {
+        "name": "op",
+        "expected": 7,
+        "uncovered": 0,
+        "covered": 7,
+        "percent": 100.0
+      },
+      "retire_cg_\this .retire_cg_branch_direction": {
+        "name": "branch_direction",
+        "expected": 2,
+        "uncovered": 0,
+        "covered": 2,
+        "percent": 100.0
+      },
+      "retire_cg_\this .retire_cg_branch_kind": {
+        "name": "branch_kind",
+        "expected": 2,
+        "uncovered": 0,
+        "covered": 2,
+        "percent": 100.0
+      },
+      "retire_cg_\this .retire_cg_branch_cross": {
+        "name": "branch_cross",
+        "expected": 4,
+        "uncovered": 0,
+        "covered": 4,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_add_wrap": {
+        "name": "add_wrap",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_sign_boundary": {
+        "name": "sign_boundary",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_sub_underflow": {
+        "name": "sub_underflow",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_immediate_min": {
+        "name": "immediate_min",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_immediate_max": {
+        "name": "immediate_max",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_x0_discard": {
+        "name": "x0_discard",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_rd_rs1_alias": {
+        "name": "rd_rs1_alias",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_rd_rs2_alias": {
+        "name": "rd_rs2_alias",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_load_use": {
+        "name": "load_use",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_negative_memory_offset": {
+        "name": "negative_memory_offset",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_high_register": {
+        "name": "high_register",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_masked_shift_count": {
+        "name": "masked_shift_count",
+        "expected": 1,
+        "uncovered": 0,
+        "covered": 1,
+        "percent": 100.0
+      },
+      "corner_cg_\this .corner_cg_alu_kind": {
+        "name": "alu_kind",
+        "expected": 10,
+        "uncovered": 0,
+        "covered": 10,
+        "percent": 100.0
+      }
+    }
+  }
+]

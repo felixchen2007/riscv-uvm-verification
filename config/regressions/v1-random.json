@@ -1,0 +1,3 @@
+{"schema_version":1,"name":"v1_random_seed_campaign","processors":["ibex_smoke","picorv32_rv32i"],
+ "programs":["random"],"seeds":[20261029,20261030,20261031,20261032],"uvm_mode":"full",
+ "include_cocotb":false,"include_spike":true,"jobs":2}

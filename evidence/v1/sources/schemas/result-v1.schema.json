@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Common verification case envelope v1",
+  "type": "object",
+  "required": ["schema_version", "case_id", "layer", "scope", "processor_config", "seed", "status", "executed", "artifacts"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "case_id": {"type": "string"},
+    "layer": {"enum": ["uvm", "python"]},
+    "scope": {"enum": ["cpu", "component", "utility"]},
+    "processor_config": {"type": "string"},
+    "seed": {"type": "integer", "minimum": 1, "maximum": 4294967295},
+    "status": {"enum": ["pass", "failed", "unavailable"]},
+    "executed": {"type": "boolean"},
+    "artifacts": {"type": "object"},
+    "failure_category": {"type": ["string", "null"]},
+    "coverage_observations": {"type": "array"}
+  },
+  "allOf": [{"if": {"properties": {"status": {"const": "pass"}}}, "then": {"properties": {"executed": {"const": true}}}}]
+}

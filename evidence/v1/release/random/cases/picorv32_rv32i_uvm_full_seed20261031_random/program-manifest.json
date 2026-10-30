@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "format": "verilog-readmemh-word-addresses",
+  "isa": "rv32i",
+  "entry_pc": 128,
+  "seed": 20261031,
+  "sha256": "deaebc932d03cec586061ec9df9843a34c44097c2a9ac2dacc9a5212be87cc5b",
+  "program_profile": "random",
+  "contract": {
+    "schema_version": 1,
+    "id": "random",
+    "uvm_program_id": 2,
+    "entry_pc": 128,
+    "terminal_pc": 572,
+    "expected_retirements": 111,
+    "signature_address": 4100,
+    "signature_value": 1,
+    "expected_counts": {
+      "loads": 11,
+      "stores": 12,
+      "branches_taken": 3,
+      "branches_not_taken": 3,
+      "jumps": 1
+    },
+    "branch_hits": {
+      "beq_taken": 1,
+      "beq_not_taken": 1,
+      "bne_taken": 2,
+      "bne_not_taken": 2
+    },
+    "require_smoke_coverage": 100.0,
+    "require_corner_coverage": 100.0,
+    "requires_full": true,
+    "random_body_start": 316,
+    "random_body_end": 572,
+    "random_instruction_count": 64,
+    "schedule_randomize_calls": 8,
+    "description": "Directed corner prologue plus 64 actual SV-constrained-random instructions; eight shuffled blocks of four register ALUs, ADDI, LUI, LW and SW; no random control flow"
+  },
+  "sv_instruction_randomization_executed": true,
+  "generator": "SystemVerilog constrained-random body with directed prologue"
+}

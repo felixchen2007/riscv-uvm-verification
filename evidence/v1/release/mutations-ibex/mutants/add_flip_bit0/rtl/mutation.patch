@@ -1,0 +1,12 @@
+--- vendor/ibex/rtl/ibex_alu.sv
++++ isolated/rtl/ibex_alu.sv
+@@ -1326,7 +1326,8 @@
+       ALU_AND,  ALU_ANDN: result_o = bwlogic_result;
+ 
+       // Adder Operations
+-      ALU_ADD,  ALU_SUB,
++      ALU_ADD: result_o = adder_result ^ 32'h00000001;
++      ALU_SUB,
+       // RV32B
+       ALU_SH1ADD, ALU_SH2ADD,
+       ALU_SH3ADD: result_o = adder_result;

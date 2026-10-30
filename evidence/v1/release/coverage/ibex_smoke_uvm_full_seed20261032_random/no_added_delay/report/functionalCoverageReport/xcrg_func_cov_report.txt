@@ -1,0 +1,596 @@
+
+ Xcrg Functional Coverage Report 
+
+ // To generate a more detailed report in html format, please run xcrg -dir <database> -report_format html -report_dir <dir>
+ // This is a text report also in CSV format. By exporting to Excel and using , as the delimiter, the data can be split into individual rows and columns
+ // This report contains 3 sections, Total Summary, CoverGroups Summary and CoverPoint Tables sections 
+ // In order to navigate to a CoverPoint's Table, the TableTag printed for the respective covergroup/instance can be grepped in this report
+ // For example, if covergroup name is g1 and coverpoint is cp1, the TableTag to go to the Group's CoverPoint Table summary is g1_cp1 
+ // For example, if covergroup name is g1, instance name is i1, coverpoint is cp1, the TableTag to go to the Instance's CoverPoint Table summary is g1_i1_cp1 
+
+
+
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: Total Summary ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+   Date             :, 10/29/26 23:12:37 British Columbia Daylight Time
+   User             :, Felix
+   Version          :, Vivado Simulator Coverage Report 2025.2
+   Command Line     :, D:/AMDDesignTools/2025.2/Vivado/bin/unwrapped/win64.o/xcrg.exe -cov_db_dir C:\Users\LENOVO\Documents\ChatGPT\Tensor Memory Accelerator\ibex-uvm\build\releases\v1-verified\random\cases\ibex_smoke_uvm_full_seed20261032_random\coverage -cov_db_name no_added_delay -report_dir report -report_format all -log xcrg.log 
+   Number of Tests  :, 1
+
+   Coverage Score            :, 100
+   Total Insts Score         :, 100
+   Total no of Cover Groups  :, 5
+   Total no of Instances     :, 5
+
+
+     CgName,                                           Score,      NumInsts,   AvgInstScore,   Weight,     Goal,       Merge Insts,    Get Inst Cov,   Per Inst,   AutoBinMax,     Comment,    
+
+       uvm_pkg.ibex_uvm_pkg::riscv_scoreboard::retire_cg ,100         ,1           ,100             ,1           ,100         ,0               ,0               ,1           ,64              ,            ,
+       uvm_pkg.ibex_uvm_pkg::riscv_scoreboard::random_memory_cg,100         ,1           ,100             ,1           ,100         ,0               ,0               ,1           ,64              ,            ,
+       uvm_pkg.ibex_uvm_pkg::riscv_scoreboard::random_kind_cg,100         ,1           ,100             ,1           ,100         ,0               ,0               ,1           ,64              ,            ,
+       uvm_pkg.ibex_uvm_pkg::riscv_scoreboard::random_alu_cg,100         ,1           ,100             ,1           ,100         ,0               ,0               ,1           ,64              ,            ,
+       uvm_pkg.ibex_uvm_pkg::riscv_scoreboard::corner_cg ,100         ,1           ,100             ,1           ,100         ,0               ,0               ,1           ,64              ,            ,
+
+
+
+
+
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: CoverGroups Summary ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+Cover Group Details : uvm_pkg.ibex_uvm_pkg::riscv_scoreboard::retire_cg
+
+CgName,                                           Score,      NumInsts,   AvgInstScore,   Weight,     Goal,       Merge Insts,    Get Inst Cov,   Per Inst,   AutoBinMax,     Comment,    
+
+uvm_pkg.ibex_uvm_pkg::riscv_scoreboard::retire_cg ,100         ,1           ,100             ,1           ,100         ,0               ,0               ,1           ,64              ,            ,
+
+      Instances of CoverGroup - uvm_pkg.ibex_uvm_pkg::riscv_scoreboard::retire_cg
+
+             InstName,                                         Score,      Weight,     Goal,       AtLeast,    AutoBinMax, PrintMissing,   IsInst,     Comment,    
+             	his .retire_cg                                   ,100         ,1           ,100         ,1           ,64          ,0               ,1           ,            ,
+
+
+      Instance 	his .retire_cg Cover Point Details 
+
+             Name,                                             TableTag,     Expected,   Uncovered,  Covered,    Percent,    Goal,       Weight,     AtLeast,    AutoBinMax, Comment,    
+             op                                                ,retire_cg_	his .retire_cg_op,7           ,0           ,7           ,100         ,100         ,1           ,1           ,64          ,            ,
+             branch_direction                                  ,retire_cg_	his .retire_cg_branch_direction,2           ,0           ,2           ,100         ,100         ,1           ,1           ,64          ,            ,
+             branch_kind                                       ,retire_cg_	his .retire_cg_branch_kind,2           ,0           ,2           ,100         ,100         ,1           ,1           ,64          ,            ,
+
+
+      Instance 	his .retire_cg Cross Cover Point Details 
+
+             Name,                                             TableTag,     Expected,   Uncovered,  Covered,    Percent,    Goal,       Weight,     AtLeast,    Comment,    
+             branch_cross                                      ,retire_cg_	his .retire_cg_branch_cross,4           ,0           ,4           ,100         ,100         ,1           ,1           ,            ,
+
+
+
+
+
+
+
+
+Cover Group Details : uvm_pkg.ibex_uvm_pkg::riscv_scoreboard::random_memory_cg
+
+CgName,                                           Score,      NumInsts,   AvgInstScore,   Weight,     Goal,       Merge Insts,    Get Inst Cov,   Per Inst,   AutoBinMax,     Comment,    
+
+uvm_pkg.ibex_uvm_pkg::riscv_scoreboard::random_memory_cg,100         ,1           ,100             ,1           ,100         ,0               ,0               ,1           ,64              ,            ,
+
+      Instances of CoverGroup - uvm_pkg.ibex_uvm_pkg::riscv_scoreboard::random_memory_cg
+
+             InstName,                                         Score,      Weight,     Goal,       AtLeast,    AutoBinMax, PrintMissing,   IsInst,     Comment,    
+             	his .random_memory_cg                            ,100         ,1           ,100         ,1           ,64          ,0               ,1           ,            ,
+
+
+      Instance 	his .random_memory_cg Cover Point Details 
+
+             Name,                                             TableTag,     Expected,   Uncovered,  Covered,    Percent,    Goal,       Weight,     AtLeast,    AutoBinMax, Comment,    
+             words                                             ,random_memory_cg_	his .random_memory_cg_words,8           ,0           ,8           ,100         ,100         ,1           ,1           ,64          ,            ,
+
+
+
+
+
+
+
+
+Cover Group Details : uvm_pkg.ibex_uvm_pkg::riscv_scoreboard::random_kind_cg
+
+CgName,                                           Score,      NumInsts,   AvgInstScore,   Weight,     Goal,       Merge Insts,    Get Inst Cov,   Per Inst,   AutoBinMax,     Comment,    
+
+uvm_pkg.ibex_uvm_pkg::riscv_scoreboard::random_kind_cg,100         ,1           ,100             ,1           ,100         ,0               ,0               ,1           ,64              ,            ,
+
+      Instances of CoverGroup - uvm_pkg.ibex_uvm_pkg::riscv_scoreboard::random_kind_cg
+
+             InstName,                                         Score,      Weight,     Goal,       AtLeast,    AutoBinMax, PrintMissing,   IsInst,     Comment,    
+             	his .random_kind_cg                              ,100         ,1           ,100         ,1           ,64          ,0               ,1           ,            ,
+
+
+      Instance 	his .random_kind_cg Cover Point Details 
+
+             Name,                                             TableTag,     Expected,   Uncovered,  Covered,    Percent,    Goal,       Weight,     AtLeast,    AutoBinMax, Comment,    
+             kind                                              ,random_kind_cg_	his .random_kind_cg_kind,5           ,0           ,5           ,100         ,100         ,1           ,1           ,64          ,            ,
+
+
+
+
+
+
+
+
+Cover Group Details : uvm_pkg.ibex_uvm_pkg::riscv_scoreboard::random_alu_cg
+
+CgName,                                           Score,      NumInsts,   AvgInstScore,   Weight,     Goal,       Merge Insts,    Get Inst Cov,   Per Inst,   AutoBinMax,     Comment,    
+
+uvm_pkg.ibex_uvm_pkg::riscv_scoreboard::random_alu_cg,100         ,1           ,100             ,1           ,100         ,0               ,0               ,1           ,64              ,            ,
+
+      Instances of CoverGroup - uvm_pkg.ibex_uvm_pkg::riscv_scoreboard::random_alu_cg
+
+             InstName,                                         Score,      Weight,     Goal,       AtLeast,    AutoBinMax, PrintMissing,   IsInst,     Comment,    
+             	his .random_alu_cg                               ,100         ,1           ,100         ,1           ,64          ,0               ,1           ,            ,
+
+
+      Instance 	his .random_alu_cg Cover Point Details 
+
+             Name,                                             TableTag,     Expected,   Uncovered,  Covered,    Percent,    Goal,       Weight,     AtLeast,    AutoBinMax, Comment,    
+             operation                                         ,random_alu_cg_	his .random_alu_cg_operation,10          ,0           ,10          ,100         ,100         ,1           ,1           ,64          ,            ,
+
+
+
+
+
+
+
+
+Cover Group Details : uvm_pkg.ibex_uvm_pkg::riscv_scoreboard::corner_cg
+
+CgName,                                           Score,      NumInsts,   AvgInstScore,   Weight,     Goal,       Merge Insts,    Get Inst Cov,   Per Inst,   AutoBinMax,     Comment,    
+
+uvm_pkg.ibex_uvm_pkg::riscv_scoreboard::corner_cg ,100         ,1           ,100             ,1           ,100         ,0               ,0               ,1           ,64              ,            ,
+
+      Instances of CoverGroup - uvm_pkg.ibex_uvm_pkg::riscv_scoreboard::corner_cg
+
+             InstName,                                         Score,      Weight,     Goal,       AtLeast,    AutoBinMax, PrintMissing,   IsInst,     Comment,    
+             	his .corner_cg                                   ,100         ,1           ,100         ,1           ,64          ,0               ,1           ,            ,
+
+
+      Instance 	his .corner_cg Cover Point Details 
+
+             Name,                                             TableTag,     Expected,   Uncovered,  Covered,    Percent,    Goal,       Weight,     AtLeast,    AutoBinMax, Comment,    
+             add_wrap                                          ,corner_cg_	his .corner_cg_add_wrap,1           ,0           ,1           ,100         ,100         ,1           ,1           ,64          ,            ,
+             sign_boundary                                     ,corner_cg_	his .corner_cg_sign_boundary,1           ,0           ,1           ,100         ,100         ,1           ,1           ,64          ,            ,
+             sub_underflow                                     ,corner_cg_	his .corner_cg_sub_underflow,1           ,0           ,1           ,100         ,100         ,1           ,1           ,64          ,            ,
+             immediate_min                                     ,corner_cg_	his .corner_cg_immediate_min,1           ,0           ,1           ,100         ,100         ,1           ,1           ,64          ,            ,
+             immediate_max                                     ,corner_cg_	his .corner_cg_immediate_max,1           ,0           ,1           ,100         ,100         ,1           ,1           ,64          ,            ,
+             x0_discard                                        ,corner_cg_	his .corner_cg_x0_discard,1           ,0           ,1           ,100         ,100         ,1           ,1           ,64          ,            ,
+             rd_rs1_alias                                      ,corner_cg_	his .corner_cg_rd_rs1_alias,1           ,0           ,1           ,100         ,100         ,1           ,1           ,64          ,            ,
+             rd_rs2_alias                                      ,corner_cg_	his .corner_cg_rd_rs2_alias,1           ,0           ,1           ,100         ,100         ,1           ,1           ,64          ,            ,
+             load_use                                          ,corner_cg_	his .corner_cg_load_use,1           ,0           ,1           ,100         ,100         ,1           ,1           ,64          ,            ,
+             negative_memory_offset                            ,corner_cg_	his .corner_cg_negative_memory_offset,1           ,0           ,1           ,100         ,100         ,1           ,1           ,64          ,            ,
+             high_register                                     ,corner_cg_	his .corner_cg_high_register,1           ,0           ,1           ,100         ,100         ,1           ,1           ,64          ,            ,
+             masked_shift_count                                ,corner_cg_	his .corner_cg_masked_shift_count,1           ,0           ,1           ,100         ,100         ,1           ,1           ,64          ,            ,
+             alu_kind                                          ,corner_cg_	his .corner_cg_alu_kind,10          ,0           ,10          ,100         ,100         ,1           ,1           ,64          ,            ,
+
+
+
+
+
+
+
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: CoverPoint Tables::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+ Cover Point Table for Inst : 	his .retire_cg, Variable :, op
+ Table tag :, retire_cg_	his .retire_cg_op
+
+                      Summary 
+
+ Category,       Expected,   Uncovered,  Covered,    Percent,    
+ UserDefined,   7           ,0           ,7           ,100         ,
+
+                     Covered bins 
+
+      Name,       Hit Count,  AtLeast,    
+      alu_imm     ,23          ,1           ,
+      alu_reg     ,48          ,1           ,
+      lui         ,10          ,1           ,
+      load        ,11          ,1           ,
+      store       ,12          ,1           ,
+      branch      ,6           ,1           ,
+      jump        ,1           ,1           ,
+
+
+
+
+
+
+ Cover Point Table for Inst : 	his .retire_cg, Variable :, branch_direction
+ Table tag :, retire_cg_	his .retire_cg_branch_direction
+
+                      Summary 
+
+ Category,       Expected,   Uncovered,  Covered,    Percent,    
+ Automatic,     2           ,0           ,2           ,100         ,
+
+                     Covered bins 
+
+      Name,       Hit Count,  AtLeast,    
+      auto[0]     ,3           ,1           ,
+      auto[1]     ,3           ,1           ,
+
+
+
+
+
+
+ Cover Point Table for Inst : 	his .retire_cg, Variable :, branch_kind
+ Table tag :, retire_cg_	his .retire_cg_branch_kind
+
+                      Summary 
+
+ Category,       Expected,   Uncovered,  Covered,    Percent,    
+ UserDefined,   2           ,0           ,2           ,100         ,
+
+                     Covered bins 
+
+      Name,       Hit Count,  AtLeast,    
+      beq         ,2           ,1           ,
+      bne         ,4           ,1           ,
+
+
+
+
+
+
+ Cross Cover Point Table for Inst : 	his .retire_cg, Variable :, branch_cross
+ Table tag :, retire_cg_	his .retire_cg_branch_cross
+
+                      Summary 
+
+ Category,       Expected,   Uncovered,  Covered,    Percent,    
+ Total,          4           ,0           ,4           ,100         ,
+ Automatic,      4           ,0           ,4           ,1           ,
+
+                 Auto Covered bins 
+
+      branch_kind     ,branch_direction,Hit Count,  AtLeast,    
+      beq             ,auto[0]         ,1           ,1           ,
+      beq             ,auto[1]         ,1           ,1           ,
+      bne             ,auto[0]         ,69          ,1           ,
+      bne             ,auto[1]         ,5           ,1           ,
+
+
+
+
+
+
+ Cover Point Table for Inst : 	his .random_memory_cg, Variable :, words
+ Table tag :, random_memory_cg_	his .random_memory_cg_words
+
+                      Summary 
+
+ Category,       Expected,   Uncovered,  Covered,    Percent,    
+ UserDefined,   8           ,0           ,8           ,100         ,
+
+                     Covered bins 
+
+      Name,       Hit Count,  AtLeast,    
+      scratch[0]  ,3           ,1           ,
+      scratch[1]  ,2           ,1           ,
+      scratch[2]  ,1           ,1           ,
+      scratch[3]  ,4           ,1           ,
+      scratch[4]  ,2           ,1           ,
+      scratch[5]  ,1           ,1           ,
+      scratch[6]  ,1           ,1           ,
+      scratch[7]  ,2           ,1           ,
+      scratch[0]  ,3           ,1           ,
+      scratch[1]  ,2           ,1           ,
+      scratch[2]  ,1           ,1           ,
+      scratch[3]  ,4           ,1           ,
+      scratch[4]  ,2           ,1           ,
+      scratch[5]  ,1           ,1           ,
+      scratch[6]  ,1           ,1           ,
+      scratch[7]  ,2           ,1           ,
+
+
+
+
+
+
+ Cover Point Table for Inst : 	his .random_kind_cg, Variable :, kind
+ Table tag :, random_kind_cg_	his .random_kind_cg_kind
+
+                      Summary 
+
+ Category,       Expected,   Uncovered,  Covered,    Percent,    
+ UserDefined,   5           ,0           ,5           ,100         ,
+
+                     Covered bins 
+
+      Name,       Hit Count,  AtLeast,    
+      alu         ,32          ,1           ,
+      addi        ,8           ,1           ,
+      lui         ,8           ,1           ,
+      lw          ,8           ,1           ,
+      sw          ,8           ,1           ,
+
+
+
+
+
+
+ Cover Point Table for Inst : 	his .random_alu_cg, Variable :, operation
+ Table tag :, random_alu_cg_	his .random_alu_cg_operation
+
+                      Summary 
+
+ Category,       Expected,   Uncovered,  Covered,    Percent,    
+ UserDefined,   10          ,0           ,10          ,100         ,
+
+                     Covered bins 
+
+      Name,       Hit Count,  AtLeast,    
+      add         ,2           ,1           ,
+      sub         ,3           ,1           ,
+      sll         ,5           ,1           ,
+      slt         ,4           ,1           ,
+      sltu        ,4           ,1           ,
+      xor_op      ,7           ,1           ,
+      srl         ,1           ,1           ,
+      sra         ,3           ,1           ,
+      or_op       ,2           ,1           ,
+      and_op      ,1           ,1           ,
+
+
+
+
+
+
+ Cover Point Table for Inst : 	his .corner_cg, Variable :, add_wrap
+ Table tag :, corner_cg_	his .corner_cg_add_wrap
+
+                      Summary 
+
+ Category,       Expected,   Uncovered,  Covered,    Percent,    
+ UserDefined,   1           ,0           ,1           ,100         ,
+
+                     Covered bins 
+
+      Name,       Hit Count,  AtLeast,    
+      hit         ,1           ,1           ,
+
+
+
+
+
+
+ Cover Point Table for Inst : 	his .corner_cg, Variable :, sign_boundary
+ Table tag :, corner_cg_	his .corner_cg_sign_boundary
+
+                      Summary 
+
+ Category,       Expected,   Uncovered,  Covered,    Percent,    
+ UserDefined,   1           ,0           ,1           ,100         ,
+
+                     Covered bins 
+
+      Name,       Hit Count,  AtLeast,    
+      hit         ,1           ,1           ,
+
+
+
+
+
+
+ Cover Point Table for Inst : 	his .corner_cg, Variable :, sub_underflow
+ Table tag :, corner_cg_	his .corner_cg_sub_underflow
+
+                      Summary 
+
+ Category,       Expected,   Uncovered,  Covered,    Percent,    
+ UserDefined,   1           ,0           ,1           ,100         ,
+
+                     Covered bins 
+
+      Name,       Hit Count,  AtLeast,    
+      hit         ,1           ,1           ,
+
+
+
+
+
+
+ Cover Point Table for Inst : 	his .corner_cg, Variable :, immediate_min
+ Table tag :, corner_cg_	his .corner_cg_immediate_min
+
+                      Summary 
+
+ Category,       Expected,   Uncovered,  Covered,    Percent,    
+ UserDefined,   1           ,0           ,1           ,100         ,
+
+                     Covered bins 
+
+      Name,       Hit Count,  AtLeast,    
+      hit         ,1           ,1           ,
+
+
+
+
+
+
+ Cover Point Table for Inst : 	his .corner_cg, Variable :, immediate_max
+ Table tag :, corner_cg_	his .corner_cg_immediate_max
+
+                      Summary 
+
+ Category,       Expected,   Uncovered,  Covered,    Percent,    
+ UserDefined,   1           ,0           ,1           ,100         ,
+
+                     Covered bins 
+
+      Name,       Hit Count,  AtLeast,    
+      hit         ,1           ,1           ,
+
+
+
+
+
+
+ Cover Point Table for Inst : 	his .corner_cg, Variable :, x0_discard
+ Table tag :, corner_cg_	his .corner_cg_x0_discard
+
+                      Summary 
+
+ Category,       Expected,   Uncovered,  Covered,    Percent,    
+ UserDefined,   1           ,0           ,1           ,100         ,
+
+                     Covered bins 
+
+      Name,       Hit Count,  AtLeast,    
+      hit         ,2           ,1           ,
+
+
+
+
+
+
+ Cover Point Table for Inst : 	his .corner_cg, Variable :, rd_rs1_alias
+ Table tag :, corner_cg_	his .corner_cg_rd_rs1_alias
+
+                      Summary 
+
+ Category,       Expected,   Uncovered,  Covered,    Percent,    
+ UserDefined,   1           ,0           ,1           ,100         ,
+
+                     Covered bins 
+
+      Name,       Hit Count,  AtLeast,    
+      hit         ,5           ,1           ,
+
+
+
+
+
+
+ Cover Point Table for Inst : 	his .corner_cg, Variable :, rd_rs2_alias
+ Table tag :, corner_cg_	his .corner_cg_rd_rs2_alias
+
+                      Summary 
+
+ Category,       Expected,   Uncovered,  Covered,    Percent,    
+ UserDefined,   1           ,0           ,1           ,100         ,
+
+                     Covered bins 
+
+      Name,       Hit Count,  AtLeast,    
+      hit         ,3           ,1           ,
+
+
+
+
+
+
+ Cover Point Table for Inst : 	his .corner_cg, Variable :, load_use
+ Table tag :, corner_cg_	his .corner_cg_load_use
+
+                      Summary 
+
+ Category,       Expected,   Uncovered,  Covered,    Percent,    
+ UserDefined,   1           ,0           ,1           ,100         ,
+
+                     Covered bins 
+
+      Name,       Hit Count,  AtLeast,    
+      hit         ,6           ,1           ,
+
+
+
+
+
+
+ Cover Point Table for Inst : 	his .corner_cg, Variable :, negative_memory_offset
+ Table tag :, corner_cg_	his .corner_cg_negative_memory_offset
+
+                      Summary 
+
+ Category,       Expected,   Uncovered,  Covered,    Percent,    
+ UserDefined,   1           ,0           ,1           ,100         ,
+
+                     Covered bins 
+
+      Name,       Hit Count,  AtLeast,    
+      hit         ,2           ,1           ,
+
+
+
+
+
+
+ Cover Point Table for Inst : 	his .corner_cg, Variable :, high_register
+ Table tag :, corner_cg_	his .corner_cg_high_register
+
+                      Summary 
+
+ Category,       Expected,   Uncovered,  Covered,    Percent,    
+ UserDefined,   1           ,0           ,1           ,100         ,
+
+                     Covered bins 
+
+      Name,       Hit Count,  AtLeast,    
+      hit         ,7           ,1           ,
+
+
+
+
+
+
+ Cover Point Table for Inst : 	his .corner_cg, Variable :, masked_shift_count
+ Table tag :, corner_cg_	his .corner_cg_masked_shift_count
+
+                      Summary 
+
+ Category,       Expected,   Uncovered,  Covered,    Percent,    
+ UserDefined,   1           ,0           ,1           ,100         ,
+
+                     Covered bins 
+
+      Name,       Hit Count,  AtLeast,    
+      hit         ,1           ,1           ,
+
+
+
+
+
+
+ Cover Point Table for Inst : 	his .corner_cg, Variable :, alu_kind
+ Table tag :, corner_cg_	his .corner_cg_alu_kind
+
+                      Summary 
+
+ Category,       Expected,   Uncovered,  Covered,    Percent,    
+ UserDefined,   10          ,0           ,10          ,100         ,
+
+                     Covered bins 
+
+      Name,       Hit Count,  AtLeast,    
+      add         ,8           ,1           ,
+      sub         ,4           ,1           ,
+      sll         ,7           ,1           ,
+      slt         ,5           ,1           ,
+      sltu        ,5           ,1           ,
+      xor_op      ,8           ,1           ,
+      srl         ,2           ,1           ,
+      sra         ,4           ,1           ,
+      or_op       ,3           ,1           ,
+      and_op      ,2           ,1           ,
+
+
+
+
+
+

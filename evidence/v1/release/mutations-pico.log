@@ -1,0 +1,5 @@
+RTL_MUTATION pico_add_flip_bit0 killed
+RTL_MUTATION pico_beq_inverted killed
+RTL_MUTATION pico_sll_flip_bit0 killed
+RTL_MUTATION pico_store_flip_bit0 killed
+RTL_MUTATION_REPORT C:\Users\LENOVO\Documents\ChatGPT\Tensor Memory Accelerator\ibex-uvm\build\releases\v1-verified\mutations-pico\report.md

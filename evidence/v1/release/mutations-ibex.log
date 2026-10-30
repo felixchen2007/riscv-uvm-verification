@@ -1,0 +1,5 @@
+RTL_MUTATION add_flip_bit0 killed
+RTL_MUTATION beq_inverted killed
+RTL_MUTATION sll_flip_bit0 killed
+RTL_MUTATION store_flip_bit0 killed
+RTL_MUTATION_REPORT C:\Users\LENOVO\Documents\ChatGPT\Tensor Memory Accelerator\ibex-uvm\build\releases\v1-verified\mutations-ibex\report.md

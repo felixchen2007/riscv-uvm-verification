@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "id": "pico_store_flip_bit0",
+  "definition": {
+    "implementation": "picorv32",
+    "file": "picorv32.v",
+    "old": "mem_la_wdata = reg_op2;",
+    "new": "mem_la_wdata = reg_op2 ^ 32'h00000001;",
+    "error_id": "MEM_STORE_DATA",
+    "bus_mutation": true
+  },
+  "original_sha256": "fd142889e8178ef67f1cff17cb2d18b3adae56fcae2badf7cbcc4c4f5ac7960e",
+  "mutated_sha256": "1089aa003718dd8c88c55144599ceb56b57b460a699f46d44b0ee5339896ec5d",
+  "implementation": "picorv32",
+  "relative_source": "vendor/picorv32/picorv32.v",
+  "isolated_source": "C:\\Users\\LENOVO\\Documents\\ChatGPT\\Tensor Memory Accelerator\\ibex-uvm\\build\\releases\\v1-verified\\mutations-pico\\mutants\\pico_store_flip_bit0\\rtl\\mutated.sv"
+}

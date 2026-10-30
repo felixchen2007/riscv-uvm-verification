@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "id": "ibex_smoke",
+  "implementation": "ibex",
+  "status": "implemented",
+  "hart_count": 1,
+  "xlen": 32,
+  "dut_isa": "rv32ic",
+  "program_isa": "rv32i",
+  "spike_isa": "rv32ic",
+  "entry_pc": 128,
+  "signature_address": 4100,
+  "signature_value": 1,
+  "expected_retirements": 14,
+  "parameter_config": "config/smoke.json",
+  "retirement_adapter": "ibex_rvfi_csv",
+  "native_order_base": 1,
+  "uvm_test": "ibex_smoke_test"
+}

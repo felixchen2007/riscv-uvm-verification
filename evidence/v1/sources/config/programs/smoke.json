@@ -1,0 +1,9 @@
+{
+  "schema_version": 1, "id": "smoke", "uvm_program_id": 0,
+  "entry_pc": 128, "terminal_pc": 188, "expected_retirements": 14,
+  "signature_address": 4100, "signature_value": 1,
+  "expected_counts": {"loads": 1, "stores": 2, "branches_taken": 1, "branches_not_taken": 1, "jumps": 1},
+  "branch_hits": {"beq_taken": 1, "beq_not_taken": 0, "bne_taken": 0, "bne_not_taken": 1},
+  "require_smoke_coverage": 87.5, "require_corner_coverage": null,
+  "description": "Original 14-retirement fixed smoke, preserved without instruction changes"
+}

@@ -1,0 +1,38 @@
+
+ Options Set are : 
+
+   Command Line               : xcrg -cov_db_dir C:\Users\LENOVO\Documents\ChatGPT\Tensor Memory Accelerator\ibex-uvm\build\releases\v1-verified\random\cases\ibex_smoke_uvm_full_seed20261031_random\coverage -cov_db_name stalled -report_dir report -report_format all -log xcrg.log
+   Report Format              : all
+   Log File                   : xcrg.log
+   Functional Coverage Dir[s] : C:\Users\LENOVO\Documents\ChatGPT\Tensor Memory Accelerator\ibex-uvm\build\releases\v1-verified\random\cases\ibex_smoke_uvm_full_seed20261031_random\coverage
+   Functional Coverage DB[s]  : stalled
+
+
+
+********************************************************
+                  Functional Coverage Report 
+********************************************************
+
+ Restoring Functional Coverage DB[s] from : 
+  1	C:\Users\LENOVO\Documents\ChatGPT\Tensor Memory Accelerator\ibex-uvm\build\releases\v1-verified\random\cases\ibex_smoke_uvm_full_seed20261031_random\coverage/xsim.covdb/stalled/xsim.covinfo
+
+ Created Coverage Report Directory    : report/functionalCoverageReport
+
+ Creating CSV+Text Report at          : report/functionalCoverageReport/xcrg_func_cov_report.txt
+
+ Functional Coverage HTML Report directory        : report/functionalCoverageReport
+
+ Creating dashboard.html 
+
+ Creating groups.html 
+
+ Creating grp0.html 
+
+ Creating grp1.html 
+
+ Creating grp2.html 
+
+ Creating grp3.html 
+
+ Creating grp4.html 
+

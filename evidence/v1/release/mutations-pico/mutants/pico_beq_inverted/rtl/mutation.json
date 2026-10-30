@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "id": "pico_beq_inverted",
+  "definition": {
+    "implementation": "picorv32",
+    "file": "picorv32.v",
+    "old": "alu_out_0 = alu_eq;",
+    "new": "alu_out_0 = !alu_eq;",
+    "error_id": "RVFI_PC"
+  },
+  "original_sha256": "fd142889e8178ef67f1cff17cb2d18b3adae56fcae2badf7cbcc4c4f5ac7960e",
+  "mutated_sha256": "18ecbadc32247b4ad179d98085e213975fe356070ee7c3d7a9997f1033e9f4a8",
+  "implementation": "picorv32",
+  "relative_source": "vendor/picorv32/picorv32.v",
+  "isolated_source": "C:\\Users\\LENOVO\\Documents\\ChatGPT\\Tensor Memory Accelerator\\ibex-uvm\\build\\releases\\v1-verified\\mutations-pico\\mutants\\pico_beq_inverted\\rtl\\mutated.sv"
+}

@@ -1,0 +1,4 @@
+  CREATE_STREAM @0 {NAME:scenario T:Transactions SCOPE:uvm_test_top.env.virtual_sequencer STREAM:1069}
+  CREATE_STREAM @0 {NAME:virtual_native_policy T:Transactions SCOPE:uvm_test_top.env.memory_agent.sequencer STREAM:1091}
+  CREATE_STREAM @0 {NAME:scenario T:Transactions SCOPE:uvm_test_top.env.virtual_sequencer STREAM:1069}
+  CREATE_STREAM @0 {NAME:virtual_native_policy T:Transactions SCOPE:uvm_test_top.env.memory_agent.sequencer STREAM:1091}

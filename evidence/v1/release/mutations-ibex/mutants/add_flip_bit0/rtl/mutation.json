@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "id": "add_flip_bit0",
+  "definition": {
+    "file": "rtl/ibex_alu.sv",
+    "old": "      ALU_ADD,  ALU_SUB,",
+    "new": "      ALU_ADD: result_o = adder_result ^ 32'h00000001;\n      ALU_SUB,",
+    "error_id": "RVFI_RD"
+  },
+  "original_sha256": "8ca28b94eb5a2da296a43b5cf1f395af67dcd5970032280f3c4d839566bf351b",
+  "mutated_sha256": "355b8f5b273b0b4ef01829a84801276fa9eeacda5fff9cfe37c17ef0903fe6fc",
+  "implementation": "ibex",
+  "relative_source": "vendor/ibex/rtl/ibex_alu.sv",
+  "isolated_source": "C:\\Users\\LENOVO\\Documents\\ChatGPT\\Tensor Memory Accelerator\\ibex-uvm\\build\\releases\\v1-verified\\mutations-ibex\\mutants\\add_flip_bit0\\rtl\\mutated.sv"
+}

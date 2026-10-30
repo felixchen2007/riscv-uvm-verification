@@ -1,0 +1,6 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="20261030" />
+    <testcase name="register_file_contract" classname="test_register_file" file="C:\Users\LENOVO\Documents\ChatGPT\Tensor Memory Accelerator\ibex-uvm\tb\cocotb\test_register_file.py" lineno="10" time="0.3107590675354004" sim_time_ns="1780.0" ratio_time="5727.910094842944" />
+  </testsuite>
+</testsuites>

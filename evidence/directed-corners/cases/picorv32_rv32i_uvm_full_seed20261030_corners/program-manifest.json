@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "format": "verilog-readmemh-word-addresses",
+  "isa": "rv32i",
+  "entry_pc": 128,
+  "seed": 20261030,
+  "sha256": "8a5b2322edadfeb62d8a984213451f6cc12a4256c56b34f39638a498c774a252",
+  "program_profile": "corners",
+  "contract": {
+    "schema_version": 1,
+    "id": "corners",
+    "uvm_program_id": 1,
+    "entry_pc": 128,
+    "terminal_pc": 316,
+    "expected_retirements": 47,
+    "signature_address": 4100,
+    "signature_value": 1,
+    "expected_counts": {
+      "loads": 3,
+      "stores": 4,
+      "branches_taken": 3,
+      "branches_not_taken": 3,
+      "jumps": 1
+    },
+    "branch_hits": {
+      "beq_taken": 1,
+      "beq_not_taken": 1,
+      "bne_taken": 2,
+      "bne_not_taken": 2
+    },
+    "require_smoke_coverage": 100.0,
+    "require_corner_coverage": 100.0,
+    "description": "Directed ALU boundaries/dependencies, word memory, all BEQ/BNE outcomes and bounded backward loop; fixed skeleton with seed-derived operand"
+  },
+  "generator": "SystemVerilog ibex_program directed skeleton with seed-derived operand"
+}

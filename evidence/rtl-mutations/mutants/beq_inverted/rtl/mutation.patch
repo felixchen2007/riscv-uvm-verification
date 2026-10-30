@@ -1,0 +1,11 @@
+--- vendor/ibex/rtl/ibex_alu.sv
++++ isolated/rtl/ibex_alu.sv
+@@ -158,7 +158,7 @@
+ 
+   always_comb begin
+     unique case (operator_i)
+-      ALU_EQ:             cmp_result =  is_equal;
++      ALU_EQ:             cmp_result = ~is_equal;
+       ALU_NE:             cmp_result = ~is_equal;
+       ALU_GE,   ALU_GEU,
+       ALU_MAX,  ALU_MAXU: cmp_result = is_greater_equal; // RV32B only

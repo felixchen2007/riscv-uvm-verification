@@ -1,0 +1,18 @@
+[
+  {
+    "processor": "ibex_smoke",
+    "status": "pass",
+    "register_reads": 70,
+    "trace": "C:\\Users\\LENOVO\\Documents\\ChatGPT\\Tensor Memory Accelerator\\ibex-uvm\\build\\releases\\v1-verified\\advanced\\ibex_smoke_reset\\simulation\\stalled_rvfi_trace.csv",
+    "trace_sha256": "7aa6bf94f8df9a4e18960efa45ef4c517241ed01052113d2cff81d6b8aad04ba",
+    "scope": "selected restarted corners path reads only x0 or registers written since restart; not RF reset/retention proof"
+  },
+  {
+    "processor": "picorv32_rv32i",
+    "status": "pass",
+    "register_reads": 70,
+    "trace": "C:\\Users\\LENOVO\\Documents\\ChatGPT\\Tensor Memory Accelerator\\ibex-uvm\\build\\releases\\v1-verified\\advanced\\picorv32_rv32i_reset\\simulation\\stalled_rvfi_trace.csv",
+    "trace_sha256": "f345dd36b92f333794192186810ea63cc6aab6b17b60f09823186a77493a0140",
+    "scope": "selected restarted corners path reads only x0 or registers written since restart; not RF reset/retention proof"
+  }
+]

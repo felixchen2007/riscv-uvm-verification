@@ -1,0 +1,21 @@
+Vivado Simulator v2025.2
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: D:/AMDDesignTools/2025.2/Vivado/bin/unwrapped/win64.o/xelab.exe -L uvm work.tb_picorv32_uvm -s picorv32_uvm_full --timescale 1ns/1ps 
+Multi-threading is on. Using 30 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package uvm.uvm_pkg
+Compiling package std.std
+Compiling package work.ibex_uvm_pkg
+Compiling module work.riscv_control_if_default
+Compiling module work.mon
+Compiling module work.picorv32_mem_if_default
+Compiling module work.ibex_rvfi_if_default
+Compiling module work.picorv32(ENABLE_COUNTERS=1'b0,EN...
+Compiling module work.tb_picorv32_uvm
+Built simulation snapshot picorv32_uvm_full

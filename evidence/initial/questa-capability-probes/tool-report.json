@@ -1,0 +1,89 @@
+{
+  "timestamp_utc": "2026-10-29T14:12:03.589822+00:00",
+  "python": {
+    "path": "C:\\Users\\LENOVO\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+    "version": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]"
+  },
+  "simulator_under_capability_probe": "Questa Intel Starter",
+  "questa_bin": "C:\\altera_lite\\24.1std\\questa_fse\\win64",
+  "uvm_version": "1.2",
+  "uvm_package_sha256": "53db9b260a652c160e5733c2e9d53f9e5ef5fe60080d8d7115efc929775a1aa2",
+  "probes": {
+    "uvm_base": {
+      "compiled": true,
+      "executed": true,
+      "source_sha256": "ccc0920b06509d1edce063aed82ab96bce3178be10444f0112a562c94013933b",
+      "compile_exit_code": 0,
+      "simulation_exit_code": 0,
+      "uvm_counts": {
+        "UVM_INFO": 4,
+        "UVM_WARNING": 0,
+        "UVM_ERROR": 0,
+        "UVM_FATAL": 0
+      },
+      "verification_license_denied": false,
+      "status": "executed-pass"
+    },
+    "randomize": {
+      "compiled": true,
+      "executed": false,
+      "source_sha256": "cf356932c0e958af0956a096682d4c9395a6f68c449b198b4439c2aa0f6cf96b",
+      "compile_exit_code": 0,
+      "simulation_exit_code": 1,
+      "verification_license_denied": true,
+      "status": "license-denied"
+    },
+    "covergroups": {
+      "compiled": true,
+      "executed": false,
+      "source_sha256": "76071ddbaf9d627729be12e2c2a3719fd92bd97b2c1b5fc38326447a6cdddb9c",
+      "compile_exit_code": 0,
+      "simulation_exit_code": 12,
+      "verification_license_denied": true,
+      "status": "license-denied"
+    }
+  },
+  "tools": {
+    "vsim": {
+      "exit_code": 0,
+      "version": "Questa Intel Starter FPGA Edition-64 vsim 2024.3 Simulator 2024.09 Sep 10 2024"
+    },
+    "vlog": {
+      "exit_code": 0,
+      "version": "Questa Intel Starter FPGA Edition-64 vlog 2024.3 Compiler 2024.09 Sep 10 2024"
+    },
+    "quartus": {
+      "available": true,
+      "path": "C:\\altera_lite\\24.1std\\quartus\\bin64\\quartus_sh.exe",
+      "exit_code": 0,
+      "output": "TBBmalloc: skip allocation functions replacement in ucrtbase.dll: unknown prologue for function _msize\nQuartus Prime Shell\nVersion 24.1std.0 Build 1077 03/04/2025 SC Lite Edition\nCopyright (C) 2025  Altera Corporation. All rights reserved."
+    },
+    "git": {
+      "available": true,
+      "path": "C:\\Program Files\\Git\\cmd\\git.EXE",
+      "exit_code": 0,
+      "output": "git version 2.55.0.windows.5"
+    },
+    "xsim": {
+      "available": true,
+      "path": "D:\\AMDDesignTools\\2025.2\\Vivado\\bin\\xvlog.bat",
+      "exit_code": 0,
+      "output": "Vivado Simulator v2025.2",
+      "feature_execution_evidence": "Separate build/xsim/*/results.json; Questa license denials do not apply to XSim"
+    },
+    "spike": {
+      "available": false,
+      "status": "not-found-on-path"
+    },
+    "riscv64-unknown-elf-gcc": {
+      "available": false,
+      "status": "not-found-on-path"
+    },
+    "riscv32-unknown-elf-gcc": {
+      "available": false,
+      "status": "not-found-on-path"
+    }
+  },
+  "status": "uvm-base-available",
+  "full_sv_verification_available": false
+}

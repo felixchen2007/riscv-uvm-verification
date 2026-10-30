@@ -1,0 +1,2 @@
+{"schema_version":1,"processor":"picorv32_rv32i","program":"corners","seed":20261029,"jobs":2,
+ "mutations":["pico_add_flip_bit0","pico_beq_inverted","pico_sll_flip_bit0","pico_store_flip_bit0"]}

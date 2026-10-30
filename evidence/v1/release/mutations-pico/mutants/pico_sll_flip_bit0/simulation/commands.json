@@ -1,0 +1,37 @@
+{
+  "xvlog": [
+    "-sv",
+    "-L",
+    "uvm",
+    "-i",
+    "D:\\AMDDesignTools\\2025.2\\Vivado\\data\\system_verilog\\uvm_1.2",
+    "-i",
+    "C:\\Users\\LENOVO\\Documents\\ChatGPT\\Tensor Memory Accelerator\\ibex-uvm\\tb\\uvm",
+    "-i",
+    "C:\\Users\\LENOVO\\Documents\\ChatGPT\\Tensor Memory Accelerator\\ibex-uvm\\vendor\\ibex\\rtl",
+    "-i",
+    "C:\\Users\\LENOVO\\Documents\\ChatGPT\\Tensor Memory Accelerator\\ibex-uvm\\vendor\\ibex\\vendor\\lowrisc_ip\\ip\\prim\\rtl",
+    "-i",
+    "C:\\Users\\LENOVO\\Documents\\ChatGPT\\Tensor Memory Accelerator\\ibex-uvm\\vendor\\ibex\\vendor\\lowrisc_ip\\dv\\sv\\dv_utils",
+    "-d",
+    "RISCV_FORMAL",
+    "-d",
+    "IBEX_UVM_FULL",
+    "C:\\Users\\LENOVO\\Documents\\ChatGPT\\Tensor Memory Accelerator\\ibex-uvm\\build\\releases\\v1-verified\\mutations-pico\\mutants\\pico_sll_flip_bit0\\rtl\\mutated.sv",
+    "C:\\Users\\LENOVO\\Documents\\ChatGPT\\Tensor Memory Accelerator\\ibex-uvm\\tb\\uvm\\riscv_control_if.sv",
+    "C:\\Users\\LENOVO\\Documents\\ChatGPT\\Tensor Memory Accelerator\\ibex-uvm\\tb\\uvm\\ibex_mem_if.sv",
+    "C:\\Users\\LENOVO\\Documents\\ChatGPT\\Tensor Memory Accelerator\\ibex-uvm\\tb\\uvm\\ibex_rvfi_if.sv",
+    "C:\\Users\\LENOVO\\Documents\\ChatGPT\\Tensor Memory Accelerator\\ibex-uvm\\tb\\uvm\\picorv32_mem_if.sv",
+    "C:\\Users\\LENOVO\\Documents\\ChatGPT\\Tensor Memory Accelerator\\ibex-uvm\\tb\\uvm\\ibex_uvm_pkg.sv",
+    "C:\\Users\\LENOVO\\Documents\\ChatGPT\\Tensor Memory Accelerator\\ibex-uvm\\tb\\uvm\\tb_picorv32_uvm.sv"
+  ],
+  "xelab": [
+    "-L",
+    "uvm",
+    "work.tb_picorv32_uvm",
+    "-s",
+    "picorv32_uvm_full",
+    "--timescale",
+    "1ns/1ps"
+  ]
+}

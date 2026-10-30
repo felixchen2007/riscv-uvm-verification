@@ -1,0 +1,7 @@
+{
+  "schema_version": 1, "name": "directed_program_corners",
+  "processors": ["ibex_smoke", "picorv32_rv32i"],
+  "programs": ["smoke", "corners"],
+  "seeds": [20261029, 20261030], "uvm_mode": "full",
+  "include_cocotb": true, "include_spike": true, "jobs": 2
+}

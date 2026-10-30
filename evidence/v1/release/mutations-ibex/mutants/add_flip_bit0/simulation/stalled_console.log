@@ -1,0 +1,193 @@
+
+****** xsim v2025.2 (64-bit)
+  **** SW Build 6299465 on Fri Nov 14 19:35:11 GMT 2025
+  **** IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+  **** SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+  **** Start of session at: Thu Oct 29 23:08:22 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/ibex_uvm_full/xsim_script.tcl
+# xsim {ibex_uvm_full} -testplusarg UVM_TESTNAME=ibex_smoke_test -testplusarg UVM_VERBOSITY=UVM_LOW -testplusarg UVM_MAX_QUIT_COUNT=1,YES -testplusarg IBEX_SEED=20261029 -testplusarg IBEX_MAX_DELAY=3 -testplusarg IBEX_PROGRAM=1 -testplusarg RV_SCENARIO=0 -cov_db_dir coverage -cov_db_name stalled -autoloadwcfg -tclbatch {run.tcl} -onerror quit -sv_seed 20261029
+Time resolution is 1 ps
+source run.tcl
+## run all
+UVM_INFO D:AMDDesignToÿÿÿ‚5.2Vivadodata/system_verilog/uvm_1.2/xlnx_uvm_package.sv(18601) @ 0: reporter [UVM/RELNOTES] 
+----------------------------------------------------------------
+UVM-1.2
+(C) 2007-2014 Mentor Graphics Corporation
+(C) 2007-2014 Cadence Design Systems, Inc.
+(C) 2006-2014 Synopsys, Inc.
+(C) 2011-2013 Cypress Semiconductor Corp.
+(C) 2013-2014 NVIDIA Corporation
+----------------------------------------------------------------
+
+  ***********       IMPORTANT RELEASE NOTES         ************
+
+  You are using a version of the UVM library that has been compiled
+  with `UVM_NO_DEPRECATED undefined.
+
+  You are using a version of the UVM library that has been compiled
+  with `UVM_OBJECT_DO_NOT_NEED_CONSTRUCTOR undefined.
+
+      (Specify +UVM_NO_RELNOTES to turn off this notice)
+
+UVM_INFO D:AMDDesignToÿÿÿ‚5.2Vivadodata/system_verilog/uvm_1.2/xlnx_uvm_package.sv(18648) @ 0: reporter [NO_DPI_TSTNAME] UVM_NO_DPI defined--getting UVM_TESTNAME directly, without DPI
+UVM_INFO @ 0: reporter [RNTST] Running test ibex_smoke_test...
+UVM_INFO D:AMDDesignToÿÿÿ‚5.2Vivadodata/system_verilog/uvm_1.2/xlnx_uvm_package.sv(20867) @ 0: reporter [UVM/COMP/NAMECHECK] This implementation of the component name checks requires DPI to be enabled
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(340) @ 155000: uvm_test_top.env.scoreboard [RVFI_RD] PC=00000080 expected rd=1 data=ffffffff got rd=1 data=fffffffe
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(340) @ 195000: uvm_test_top.env.scoreboard [RVFI_RD] PC=00000084 expected rd=2 data=00000001 got rd=2 data=00000000
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(335) @ 255000: uvm_test_top.env.scoreboard [RVFI_RS1] Source register 1 differs from independent model
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(337) @ 255000: uvm_test_top.env.scoreboard [RVFI_RS2] Source register 2 differs from independent model
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(340) @ 255000: uvm_test_top.env.scoreboard [RVFI_RD] PC=00000088 expected rd=3 data=00000000 got rd=3 data=ffffffff
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(340) @ 325000: uvm_test_top.env.scoreboard [RVFI_RD] PC=0000008c expected rd=4 data=80000000 got rd=4 data=80000001
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(335) @ 415000: uvm_test_top.env.scoreboard [RVFI_RS1] Source register 1 differs from independent model
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(340) @ 415000: uvm_test_top.env.scoreboard [RVFI_RD] PC=00000090 expected rd=4 data=7fffffff got rd=4 data=80000001
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(335) @ 485000: uvm_test_top.env.scoreboard [RVFI_RS1] Source register 1 differs from independent model
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(337) @ 485000: uvm_test_top.env.scoreboard [RVFI_RS2] Source register 2 differs from independent model
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(337) @ 545000: uvm_test_top.env.scoreboard [RVFI_RS2] Source register 2 differs from independent model
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(340) @ 545000: uvm_test_top.env.scoreboard [RVFI_RD] PC=00000098 expected rd=7 data=ffffffff got rd=7 data=00000000
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(340) @ 575000: uvm_test_top.env.scoreboard [RVFI_RD] PC=0000009c expected rd=8 data=fffff800 got rd=8 data=fffff801
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(340) @ 645000: uvm_test_top.env.scoreboard [RVFI_RD] PC=000000a0 expected rd=9 data=000007ff got rd=9 data=000007fe
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(340) @ 745000: uvm_test_top.env.scoreboard [RVFI_RD] PC=000000a8 expected rd=10 data=00000007 got rd=10 data=00000006
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(335) @ 795000: uvm_test_top.env.scoreboard [RVFI_RS1] Source register 1 differs from independent model
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(337) @ 795000: uvm_test_top.env.scoreboard [RVFI_RS2] Source register 2 differs from independent model
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(340) @ 795000: uvm_test_top.env.scoreboard [RVFI_RD] PC=000000ac expected rd=10 data=00000008 got rd=10 data=00000007
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(335) @ 825000: uvm_test_top.env.scoreboard [RVFI_RS1] Source register 1 differs from independent model
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(337) @ 825000: uvm_test_top.env.scoreboard [RVFI_RS2] Source register 2 differs from independent model
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(340) @ 825000: uvm_test_top.env.scoreboard [RVFI_RD] PC=000000b0 expected rd=10 data=00000009 got rd=10 data=00000006
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(335) @ 895000: uvm_test_top.env.scoreboard [RVFI_RS1] Source register 1 differs from independent model
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(340) @ 895000: uvm_test_top.env.scoreboard [RVFI_RD] PC=000000b4 expected rd=11 data=7fffffff got rd=11 data=7ffffffe
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(335) @ 955000: uvm_test_top.env.scoreboard [RVFI_RS1] Source register 1 differs from independent model
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(337) @ 1015000: uvm_test_top.env.scoreboard [RVFI_RS2] Source register 2 differs from independent model
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(340) @ 1015000: uvm_test_top.env.scoreboard [RVFI_RD] PC=000000bc expected rd=13 data=800007ff got rd=13 data=800007fe
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(337) @ 1045000: uvm_test_top.env.scoreboard [RVFI_RS2] Source register 2 differs from independent model
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(337) @ 1095000: uvm_test_top.env.scoreboard [RVFI_RS2] Source register 2 differs from independent model
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(340) @ 1145000: uvm_test_top.env.scoreboard [RVFI_RD] PC=000000c8 expected rd=16 data=0000001f got rd=16 data=0000001e
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(335) @ 1175000: uvm_test_top.env.scoreboard [RVFI_RS1] Source register 1 differs from independent model
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(337) @ 1175000: uvm_test_top.env.scoreboard [RVFI_RS2] Source register 2 differs from independent model
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(340) @ 1175000: uvm_test_top.env.scoreboard [RVFI_RD] PC=000000cc expected rd=17 data=80000000 got rd=17 data=00000000
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(337) @ 1235000: uvm_test_top.env.scoreboard [RVFI_RS2] Source register 2 differs from independent model
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(340) @ 1235000: uvm_test_top.env.scoreboard [RVFI_RD] PC=000000d0 expected rd=18 data=00000001 got rd=18 data=00000002
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(337) @ 1285000: uvm_test_top.env.scoreboard [RVFI_RS2] Source register 2 differs from independent model
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(340) @ 1285000: uvm_test_top.env.scoreboard [RVFI_RD] PC=000000d4 expected rd=19 data=ffffffff got rd=19 data=fffffffe
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(340) @ 1345000: uvm_test_top.env.scoreboard [RVFI_RD] PC=000000d8 expected rd=16 data=00000020 got rd=16 data=00000021
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(335) @ 1425000: uvm_test_top.env.scoreboard [RVFI_RS1] Source register 1 differs from independent model
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(337) @ 1425000: uvm_test_top.env.scoreboard [RVFI_RS2] Source register 2 differs from independent model
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(340) @ 1425000: uvm_test_top.env.scoreboard [RVFI_RD] PC=000000dc expected rd=20 data=00000001 got rd=20 data=00000000
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(340) @ 1505000: uvm_test_top.env.scoreboard [RVFI_RD] PC=000000e0 expected rd=31 data=00000013 got rd=31 data=00000012
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(335) @ 1565000: uvm_test_top.env.scoreboard [RVFI_RS1] Source register 1 differs from independent model
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(337) @ 1565000: uvm_test_top.env.scoreboard [RVFI_RS2] Source register 2 differs from independent model
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(340) @ 1565000: uvm_test_top.env.scoreboard [RVFI_RD] PC=000000e4 expected rd=31 data=00000014 got rd=31 data=00000013
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(340) @ 1645000: uvm_test_top.env.scoreboard [RVFI_RD] PC=000000e8 expected rd=6 data=00001000 got rd=6 data=00001001
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(200) @ 1835000: uvm_test_top.env.scoreboard [MEM_REQUEST] Expected store address=00001000 mask=f, got address=00001000 write=1 mask=e
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(202) @ 1835000: uvm_test_top.env.scoreboard [MEM_STORE_DATA] Expected store data 00000014 got 00001300
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(282) @ 1835000: uvm_test_top.env.scoreboard [RVFI_STORE] Store address/mask/data differs from expected architectural effect
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(335) @ 1835000: uvm_test_top.env.scoreboard [RVFI_RS1] Source register 1 differs from independent model
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(337) @ 1835000: uvm_test_top.env.scoreboard [RVFI_RS2] Source register 2 differs from independent model
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(200) @ 1975000: uvm_test_top.env.scoreboard [MEM_REQUEST] Expected  load address=00001000 mask=f, got address=00001004 write=1 mask=1
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(204) @ 1975000: uvm_test_top.env.scoreboard [MEM_RESPONSE] Incorrect memory response identity or error
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(206) @ 1975000: uvm_test_top.env.scoreboard [MEM_LOAD_DATA] Expected load data 00000014 got 00000000
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(273) @ 1975000: uvm_test_top.env.scoreboard [RVFI_LOAD] Load address/mask/value differs from private reference memory
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(335) @ 1975000: uvm_test_top.env.scoreboard [RVFI_RS1] Source register 1 differs from independent model
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(340) @ 1975000: uvm_test_top.env.scoreboard [RVFI_RD] PC=000000f0 expected rd=21 data=00000014 got rd=21 data=00000013
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(335) @ 1985000: uvm_test_top.env.scoreboard [RVFI_RS1] Source register 1 differs from independent model
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(337) @ 1985000: uvm_test_top.env.scoreboard [RVFI_RS2] Source register 2 differs from independent model
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(340) @ 1985000: uvm_test_top.env.scoreboard [RVFI_RD] PC=000000f4 expected rd=22 data=00000015 got rd=22 data=00000012
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(200) @ 2035000: uvm_test_top.env.scoreboard [MEM_REQUEST] Expected store address=00001008 mask=f, got address=00001000 write=0 mask=e
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(202) @ 2035000: uvm_test_top.env.scoreboard [MEM_STORE_DATA] Expected store data 00000015 got 00000000
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(204) @ 2035000: uvm_test_top.env.scoreboard [MEM_RESPONSE] Incorrect memory response identity or error
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(282) @ 2035000: uvm_test_top.env.scoreboard [RVFI_STORE] Store address/mask/data differs from expected architectural effect
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(335) @ 2035000: uvm_test_top.env.scoreboard [RVFI_RS1] Source register 1 differs from independent model
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(337) @ 2035000: uvm_test_top.env.scoreboard [RVFI_RS2] Source register 2 differs from independent model
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(335) @ 2045000: uvm_test_top.env.scoreboard [RVFI_RS1] Source register 1 differs from independent model
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(200) @ 2095000: uvm_test_top.env.scoreboard [MEM_REQUEST] Expected  load address=00001008 mask=f, got address=00001004 write=0 mask=1
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(204) @ 2095000: uvm_test_top.env.scoreboard [MEM_RESPONSE] Incorrect memory response identity or error
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(206) @ 2095000: uvm_test_top.env.scoreboard [MEM_LOAD_DATA] Expected load data 00000015 got 00000000
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(273) @ 2095000: uvm_test_top.env.scoreboard [RVFI_LOAD] Load address/mask/value differs from private reference memory
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(340) @ 2095000: uvm_test_top.env.scoreboard [RVFI_RD] PC=00000100 expected rd=24 data=00000015 got rd=24 data=00001200
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(200) @ 2165000: uvm_test_top.env.scoreboard [MEM_REQUEST] Expected store address=00001000 mask=f, got address=00001008 write=1 mask=e
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(202) @ 2165000: uvm_test_top.env.scoreboard [MEM_STORE_DATA] Expected store data 00000015 got 00001200
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(204) @ 2165000: uvm_test_top.env.scoreboard [MEM_RESPONSE] Incorrect memory response identity or error
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(282) @ 2165000: uvm_test_top.env.scoreboard [RVFI_STORE] Store address/mask/data differs from expected architectural effect
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(337) @ 2165000: uvm_test_top.env.scoreboard [RVFI_RS2] Source register 2 differs from independent model
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(200) @ 2305000: uvm_test_top.env.scoreboard [MEM_REQUEST] Expected  load address=00001000 mask=f, got address=0000100c write=1 mask=1
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(204) @ 2305000: uvm_test_top.env.scoreboard [MEM_RESPONSE] Incorrect memory response identity or error
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(206) @ 2305000: uvm_test_top.env.scoreboard [MEM_LOAD_DATA] Expected load data 00000015 got 00000000
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(273) @ 2305000: uvm_test_top.env.scoreboard [RVFI_LOAD] Load address/mask/value differs from private reference memory
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(335) @ 2305000: uvm_test_top.env.scoreboard [RVFI_RS1] Source register 1 differs from independent model
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(340) @ 2305000: uvm_test_top.env.scoreboard [RVFI_RD] PC=00000108 expected rd=24 data=00000015 got rd=24 data=00000012
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(335) @ 2325000: uvm_test_top.env.scoreboard [RVFI_RS1] Source register 1 differs from independent model
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(337) @ 2325000: uvm_test_top.env.scoreboard [RVFI_RS2] Source register 2 differs from independent model
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(335) @ 2425000: uvm_test_top.env.scoreboard [RVFI_RS1] Source register 1 differs from independent model
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(337) @ 2425000: uvm_test_top.env.scoreboard [RVFI_RS2] Source register 2 differs from independent model
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(335) @ 2485000: uvm_test_top.env.scoreboard [RVFI_RS1] Source register 1 differs from independent model
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(231) @ 2595000: uvm_test_top.env.scoreboard [RVFI_PC] Expected PC 0000011c got 00000120
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(236) @ 2595000: uvm_test_top.env.scoreboard [RVFI_INSN] Retired instruction differs from loaded image
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(335) @ 2595000: uvm_test_top.env.scoreboard [RVFI_RS1] Source register 1 differs from independent model
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(340) @ 2595000: uvm_test_top.env.scoreboard [RVFI_RD] PC=0000011c expected rd=0 data=00000000 got rd=28 data=00000063
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(340) @ 2645000: uvm_test_top.env.scoreboard [RVFI_RD] PC=00000124 expected rd=25 data=00000002 got rd=25 data=00000003
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(335) @ 2725000: uvm_test_top.env.scoreboard [RVFI_RS1] Source register 1 differs from independent model
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(340) @ 2725000: uvm_test_top.env.scoreboard [RVFI_RD] PC=00000128 expected rd=25 data=00000001 got rd=25 data=00000003
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(335) @ 2775000: uvm_test_top.env.scoreboard [RVFI_RS1] Source register 1 differs from independent model
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(335) @ 2865000: uvm_test_top.env.scoreboard [RVFI_RS1] Source register 1 differs from independent model
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(340) @ 2865000: uvm_test_top.env.scoreboard [RVFI_RD] PC=00000128 expected rd=25 data=00000000 got rd=25 data=00000003
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(335) @ 2935000: uvm_test_top.env.scoreboard [RVFI_RS1] Source register 1 differs from independent model
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(231) @ 3055000: uvm_test_top.env.scoreboard [RVFI_PC] Expected PC 00000130 got 00000128
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(236) @ 3055000: uvm_test_top.env.scoreboard [RVFI_INSN] Retired instruction differs from loaded image
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(340) @ 3055000: uvm_test_top.env.scoreboard [RVFI_RD] PC=00000130 expected rd=26 data=00000134 got rd=25 data=00000003
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(231) @ 3125000: uvm_test_top.env.scoreboard [RVFI_PC] Expected PC 00000138 got 0000012c
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(236) @ 3125000: uvm_test_top.env.scoreboard [RVFI_INSN] Retired instruction differs from loaded image
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(335) @ 3125000: uvm_test_top.env.scoreboard [RVFI_RS1] Source register 1 differs from independent model
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(340) @ 3125000: uvm_test_top.env.scoreboard [RVFI_RD] PC=00000138 expected rd=27 data=00000001 got rd=0 data=00000000
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(231) @ 3225000: uvm_test_top.env.scoreboard [RVFI_PC] Expected PC 0000013c got 00000128
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(236) @ 3225000: uvm_test_top.env.scoreboard [RVFI_INSN] Retired instruction differs from loaded image
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(200) @ 3225000: uvm_test_top.env.scoreboard [MEM_REQUEST] Expected store address=00001004 mask=f, got address=00001008 write=0 mask=f
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(202) @ 3225000: uvm_test_top.env.scoreboard [MEM_STORE_DATA] Expected store data 00000001 got 00000000
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(204) @ 3225000: uvm_test_top.env.scoreboard [MEM_RESPONSE] Incorrect memory response identity or error
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(282) @ 3225000: uvm_test_top.env.scoreboard [RVFI_STORE] Store address/mask/data differs from expected architectural effect
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(335) @ 3225000: uvm_test_top.env.scoreboard [RVFI_RS1] Source register 1 differs from independent model
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(337) @ 3225000: uvm_test_top.env.scoreboard [RVFI_RS2] Source register 2 differs from independent model
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(340) @ 3225000: uvm_test_top.env.scoreboard [RVFI_RD] PC=0000013c expected rd=0 data=00000000 got rd=25 data=00000003
+UVM_INFO D:AMDDesignToÿÿÿ‚5.2Vivadodata/system_verilog/uvm_1.2/xlnx_uvm_package.sv(19968) @ 3225000: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
+UVM_ERROR C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/ibex_scoreboard.svh(385) @ 3225000: uvm_test_top.env.scoreboard [MEM_EXTRA] Unmatched observed data transactions at completion
+UVM_INFO C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/riscv_test.svh(116) @ 3225000: uvm_test_top [IBEX_FULL_FEATURES] randomize_calls=65 coverage_percent=100.00
+UVM_INFO C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/riscv_test.svh(117) @ 3225000: uvm_test_top [RV_CORNER_COVERAGE] coverage_percent=100.00
+UVM_INFO C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/riscv_test.svh(120) @ 3225000: uvm_test_top [RV_RANDOM_COVERAGE] kind_percent=0.00 alu_percent=0.00 memory_percent=0.00
+UVM_INFO C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/riscv_test.svh(123) @ 3225000: uvm_test_top [RV_PROGRAM_RANDOM] instruction_calls=0 schedule_calls=0 seed=20261029
+UVM_INFO C:UsersLENOVODocumentsChatGPTTensor Memory Acceleratoribex-uvm	buvm/riscv_test.svh(125) @ 3225000: uvm_test_top [RV_BRANCH_HITS] beq_taken=1 beq_not_taken=1 bne_taken=2 bne_not_taken=2
+UVM_INFO D:AMDDesignToÿÿÿ‚5.2Vivadodata/system_verilog/uvm_1.2/xlnx_uvm_package.sv(13673) @ 3225000: reporter [UVM/REPORT/SERVER] 
+--- UVM Report Summary ---
+
+** Report counts by severity
+UVM_INFO :   10
+UVM_WARNING :    0
+UVM_ERROR :  115
+UVM_FATAL :    0
+** Report counts by id
+[IBEX_FULL_FEATURES]     1
+[MEM_EXTRA]     1
+[MEM_LOAD_DATA]     3
+[MEM_REQUEST]     7
+[MEM_RESPONSE]     6
+[MEM_STORE_DATA]     4
+[NO_DPI_TSTNAME]     1
+[RNTST]     1
+[RVFI_INSN]     4
+[RVFI_LOAD]     3
+[RVFI_PC]     4
+[RVFI_RD]    33
+[RVFI_RS1]    26
+[RVFI_RS2]    20
+[RVFI_STORE]     4
+[RV_BRANCH_HITS]     1
+[RV_CORNER_COVERAGE]     1
+[RV_PROGRAM_RANDOM]     1
+[RV_RANDOM_COVERAGE]     1
+[TEST_DONE]     1
+[UVM/COMP/NAMECHECK]     1
+[UVM/RELNOTES]     1
+
+$finish called at time : 3225 ns : File "D:\AMDDesignTools\2025.2\Vivado\data/system_verilog/uvm_1.2/xlnx_uvm_package.sv" Line 18699
+## quit
+INFO: [Common 17-206] Exiting xsim at Thu Oct 29 23:08:25 2026...

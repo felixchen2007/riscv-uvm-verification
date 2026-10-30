@@ -1,0 +1,5 @@
+{
+  "schema_version": 1, "processor": "ibex_smoke", "program": "corners",
+  "seed": 20261029, "jobs": 2,
+  "mutations": ["add_flip_bit0", "beq_inverted", "sll_flip_bit0", "store_flip_bit0"]
+}

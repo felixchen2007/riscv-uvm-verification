@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "format": "verilog-readmemh-word-addresses",
+  "isa": "rv32i",
+  "entry_pc": 128,
+  "seed": 20261029,
+  "sha256": "91e830ffd08bb432d17515c87e2c1d8617c900eb53f2df1b32b2859afc7fef27",
+  "generator": "SystemVerilog ibex_program fixed skeleton with seed-derived operand"
+}

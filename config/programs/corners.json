@@ -1,0 +1,9 @@
+{
+  "schema_version": 1, "id": "corners", "uvm_program_id": 1,
+  "entry_pc": 128, "terminal_pc": 316, "expected_retirements": 47,
+  "signature_address": 4100, "signature_value": 1,
+  "expected_counts": {"loads": 3, "stores": 4, "branches_taken": 3, "branches_not_taken": 3, "jumps": 1},
+  "branch_hits": {"beq_taken": 1, "beq_not_taken": 1, "bne_taken": 2, "bne_not_taken": 2},
+  "require_smoke_coverage": 100.0, "require_corner_coverage": 100.0,
+  "description": "Directed ALU boundaries/dependencies, word memory, all BEQ/BNE outcomes and bounded backward loop; fixed skeleton with seed-derived operand"
+}

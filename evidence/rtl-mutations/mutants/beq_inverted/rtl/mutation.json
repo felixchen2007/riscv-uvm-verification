@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "id": "beq_inverted",
+  "definition": {
+    "file": "rtl/ibex_alu.sv",
+    "old": "ALU_EQ:             cmp_result =  is_equal;",
+    "new": "ALU_EQ:             cmp_result = ~is_equal;",
+    "error_id": "RVFI_PC"
+  },
+  "original_sha256": "8ca28b94eb5a2da296a43b5cf1f395af67dcd5970032280f3c4d839566bf351b",
+  "mutated_sha256": "99a60cb473caacf2fe1c29a39e3af70c0b2f644f03beed49538c83a3fab23b17",
+  "relative_source": "vendor/ibex/rtl/ibex_alu.sv",
+  "isolated_source": "C:\\Users\\LENOVO\\Documents\\ChatGPT\\Tensor Memory Accelerator\\ibex-uvm\\build\\mutations\\ibex-verified\\mutants\\beq_inverted\\rtl\\mutated.sv"
+}

@@ -1,0 +1,32 @@
+
+ Options Set are : 
+
+   Command Line               : xcrg -cov_db_dir coverage -cov_db_name stalled -report_dir coverage-reports/stalled -report_format all -log coverage-reports/stalled.log
+   Report Format              : all
+   Log File                   : coverage-reports/stalled.log
+   Functional Coverage Dir[s] : coverage
+   Functional Coverage DB[s]  : stalled
+
+
+
+********************************************************
+                  Functional Coverage Report 
+********************************************************
+
+ Restoring Functional Coverage DB[s] from : 
+  1	coverage/xsim.covdb/stalled/xsim.covinfo
+
+ Created Coverage Report Directory    : coverage-reports/stalled/functionalCoverageReport
+
+ Creating CSV+Text Report at          : coverage-reports/stalled/functionalCoverageReport/xcrg_func_cov_report.txt
+
+ Functional Coverage HTML Report directory        : coverage-reports/stalled/functionalCoverageReport
+
+ Creating dashboard.html 
+
+ Creating groups.html 
+
+ Creating grp0.html 
+
+ Creating grp1.html 
+

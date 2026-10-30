@@ -1,0 +1,22 @@
+{
+  "dut": "YosysHQ PicoRV32 picorv32",
+  "upstream_url": "https://github.com/YosysHQ/picorv32",
+  "upstream_commit": "ef203c2b0a3fb793280f5114941416c425c5b461",
+  "core_parameters": {
+    "ENABLE_COUNTERS": 0, "ENABLE_COUNTERS64": 0,
+    "ENABLE_REGS_16_31": 1, "ENABLE_REGS_DUALPORT": 1,
+    "LATCHED_MEM_RDATA": 0, "TWO_STAGE_SHIFT": 1, "BARREL_SHIFTER": 0,
+    "TWO_CYCLE_COMPARE": 0, "TWO_CYCLE_ALU": 0,
+    "COMPRESSED_ISA": 0, "CATCH_MISALIGN": 1, "CATCH_ILLINSN": 1,
+    "ENABLE_PCPI": 0, "ENABLE_MUL": 0, "ENABLE_FAST_MUL": 0, "ENABLE_DIV": 0,
+    "ENABLE_IRQ": 0, "ENABLE_IRQ_QREGS": 0, "ENABLE_IRQ_TIMER": 0,
+    "ENABLE_TRACE": 0, "REGS_INIT_ZERO": 1,
+    "PROGADDR_RESET": 128, "STACKADDR": 4294967295
+  },
+  "program_isa_scope": "Bounded RV32I smoke; no compressed, M, IRQ, CSR or trap scenarios",
+  "uvm_version": "1.2",
+  "rvfi_define": "RISCV_FORMAL enables RVFI; FORMAL is not defined",
+  "native_order_base": 0,
+  "timing_adapter": "Shared grant and response delays sum before one native valid/ready completion",
+  "full_mode": "Constrained-random bus timing and shared smoke covergroup only"
+}

@@ -1,0 +1,10 @@
+Questa Intel Starter FPGA Edition-64 vlog 2024.3 Compiler 2024.09 Sep 10 2024
+Start time: 09:13:27 on Oct 29,2026
+vlog -sv C:\Users\LENOVO\Documents\ChatGPT\Tensor Memory Accelerator\ibex-uvm\vendor\ibex\rtl\ibex_register_file_ff.sv C:\Users\LENOVO\Documents\ChatGPT\Tensor Memory Accelerator\ibex-uvm\tb\cocotb\ibex_regfile_wrapper.sv 
+-- Compiling module ibex_register_file_ff
+-- Compiling module ibex_regfile_wrapper
+
+Top level modules:
+	ibex_regfile_wrapper
+End time: 09:13:27 on Oct 29,2026, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0

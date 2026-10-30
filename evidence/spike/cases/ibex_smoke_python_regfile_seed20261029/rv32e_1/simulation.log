@@ -1,0 +1,63 @@
+Reading pref.tcl
+
+# 2024.3
+
+# vsim -c -onfinish exit -voptargs="+acc" -pli "{C:/Users/LENOVO/Documents/ChatGPT/Tensor Memory Accelerator/ibex-uvm/build/python-env/Lib/site-packages/cocotb/libs/cocotbvpi_modelsim.dll}" work.ibex_regfile_wrapper -do "do run.do" -gRV32E=1 
+# Start time: 17:10:01 on Oct 29,2026
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Warning: (vsim-3865) Due to PLI being present, global +acc is being enabled automatically. This will cause your simulation to run very slowly. Please use vsim -no_autoacc to disable this feature. This feature is now deprecated and will be removed from future releases.
+# ** Warning: (vopt-10908) Some optimizations are turned off because the +acc switch is in effect.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=2.
+# //  Questa Intel Starter FPGA Edition-64
+# //  Version 2024.3 win64 Sep 10 2024
+# //
+# // Unpublished work. Copyright 2024 Siemens
+# //
+# // This material contains trade secrets or otherwise confidential information
+# // owned by Siemens Industry Software Inc. or its affiliates (collectively,
+# // "SISW"), or its licensors. Access to and use of this information is strictly
+# // limited as set forth in the Customer's applicable agreements with SISW.
+# //
+# // This material may not be copied, distributed, or otherwise disclosed outside
+# // of the Customer's facilities without the express written permission of SISW,
+# // and may not be used in any way not expressly authorized by SISW.
+# //
+# Loading sv_std.std
+# Loading work.ibex_regfile_wrapper(fast)
+# Loading work.ibex_register_file_ff(fast)
+# Loading C:/Users/LENOVO/Documents/ChatGPT/Tensor Memory Accelerator/ibex-uvm/build/python-env/Lib/site-packages/cocotb/libs/cocotbvpi_modelsim.dll
+#      -.--ns INFO     gpi                                ..mbed\gpi_embed.cpp:94   in _embed_init_python              Using Python 3.12.4 interpreter at C:\Users\LENOVO\Documents\ChatGPT\Tensor Memory Accelerator\ibex-uvm\build\python-env\Scripts\python.exe
+#      -.--ns INFO     gpi                                ..\gpi\GpiCommon.cpp:79   in gpi_print_registered_impl       VPI registered
+# do run.do
+#      0.00ns INFO     cocotb                             Running on ModelSim for Questa Intel Starter FPGA Edition-64 version 2024.1 2024.09
+# 
+#      0.00ns INFO     cocotb                             Seeding Python random module with supplied seed 20261029
+# 
+#      0.00ns INFO     cocotb                             Initialized cocotb v2.0.1 from C:\Users\LENOVO\Documents\ChatGPT\Tensor Memory Accelerator\ibex-uvm\build\python-env\Lib\site-packages\cocotb
+# 
+#      0.00ns INFO     cocotb                             Running tests
+# 
+#      0.00ns INFO     cocotb.regression                  running test_register_file.register_file_contract (1/1)
+# 
+#   1780.00ns INFO     cocotb.ibex_regfile_wrapper        RF_COMPONENT_PASS seed=20261029 registers=16 random_cycles=128
+# 
+#   1780.00ns INFO     cocotb.regression                  test_register_file.register_file_contract passed
+# 
+#   1780.00ns INFO     cocotb.regression                  ***************************************************************************************************
+# 
+#                                                         ** TEST                                       STATUS  SIM TIME (ns)  REAL TIME (s)  RATIO (ns/s) **
+# 
+#                                                         ***************************************************************************************************
+# 
+#                                                         ** test_register_file.register_file_contract   PASS        1780.00           0.49       3597.89  **
+# 
+#                                                         ***************************************************************************************************
+# 
+#                                                         ** TESTS=1 PASS=1 FAIL=0 SKIP=0                            1780.00           0.50       3569.05  **
+# 
+#                                                         ***************************************************************************************************
+# 
+# ** Note: $finish
+#    Time: 1780 ns  Iteration: 0  Instance: /ibex_regfile_wrapper
+# End time: 17:10:08 on Oct 29,2026, Elapsed time: 0:00:07
+# Errors: 0, Warnings: 2

@@ -1,0 +1,8 @@
+  CREATE_STREAM @0 {NAME:scenario T:Transactions SCOPE:uvm_test_top.env.virtual_sequencer STREAM:1285}
+  CREATE_STREAM @0 {NAME:virtual_instruction_policy T:Transactions SCOPE:uvm_test_top.env.instr_agent.sequencer STREAM:1308}
+  CREATE_STREAM @0 {NAME:virtual_data_policy T:Transactions SCOPE:uvm_test_top.env.data_agent.sequencer STREAM:1311}
+  CREATE_STREAM @825000 {NAME:control_action T:Transactions SCOPE:uvm_test_top.env.control_agent.sequencer STREAM:1518}
+  CREATE_STREAM @0 {NAME:scenario T:Transactions SCOPE:uvm_test_top.env.virtual_sequencer STREAM:1285}
+  CREATE_STREAM @0 {NAME:virtual_instruction_policy T:Transactions SCOPE:uvm_test_top.env.instr_agent.sequencer STREAM:1308}
+  CREATE_STREAM @0 {NAME:virtual_data_policy T:Transactions SCOPE:uvm_test_top.env.data_agent.sequencer STREAM:1311}
+  CREATE_STREAM @825000 {NAME:control_action T:Transactions SCOPE:uvm_test_top.env.control_agent.sequencer STREAM:1522}

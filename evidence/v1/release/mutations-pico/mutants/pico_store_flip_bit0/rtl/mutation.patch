@@ -1,0 +1,11 @@
+--- vendor/picorv32/picorv32.v
++++ isolated/picorv32.v
+@@ -402,7 +402,7 @@
+ 		(* full_case *)
+ 		case (mem_wordsize)
+ 			0: begin
+-				mem_la_wdata = reg_op2;
++				mem_la_wdata = reg_op2 ^ 32'h00000001;
+ 				mem_la_wstrb = 4'b1111;
+ 				mem_rdata_word = mem_rdata;
+ 			end

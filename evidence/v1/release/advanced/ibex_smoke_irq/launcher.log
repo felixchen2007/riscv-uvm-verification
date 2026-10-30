@@ -1,0 +1,3 @@
+XSIM_UVM_PROFILE_PASS stalled {"retired": 15, "loads": 0, "stores": 1, "branches_taken": 1, "branches_not_taken": 1, "jumps": 0, "signature": 1, "instr_stalls": 143, "data_stalls": 3, "instr_waits": 54, "data_waits": 3, "seed": 20261029, "max_delay": 3, "cpu_id": 0, "program_id": 3}
+XSIM_EXPECTED_FAILURE_DETECTED: RVFI_RD
+XSIM_UVM_REGRESSION_PASS: C:\Users\LENOVO\Documents\ChatGPT\Tensor Memory Accelerator\ibex-uvm\build\releases\v1-verified\advanced\ibex_smoke_irq\simulation\results.json

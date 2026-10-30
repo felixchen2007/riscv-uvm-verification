@@ -1,0 +1,16 @@
+build/
+__pycache__/
+*.py[cod]
+*.wlf
+*.vcd
+*.ucdb
+transcript
+modelsim.ini
+work/
+*.lic
+.env
+/*.pb
+/*.jou
+/*.log
+.pytest_cache/
+.venv/

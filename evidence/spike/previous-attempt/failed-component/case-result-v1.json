@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "case_id": "ibex_smoke_python_regfile_seed20261029",
+  "layer": "python",
+  "scope": "component",
+  "processor_config": "ibex_smoke",
+  "seed": 20261029,
+  "status": "failed",
+  "executed": false,
+  "failure_category": "license",
+  "artifacts": {
+    "raw_results": "C:\\Users\\LENOVO\\Documents\\ChatGPT\\Tensor Memory Accelerator\\ibex-uvm\\build\\regressions\\spike-milestone\\cases\\ibex_smoke_python_regfile_seed20261029\\results.json",
+    "console": "C:\\Users\\LENOVO\\Documents\\ChatGPT\\Tensor Memory Accelerator\\ibex-uvm\\build\\regressions\\spike-milestone\\cases\\ibex_smoke_python_regfile_seed20261029\\launcher.log"
+  },
+  "replay_command": [
+    "C:\\Users\\LENOVO\\Documents\\ChatGPT\\Tensor Memory Accelerator\\ibex-uvm\\build\\python-env\\Scripts\\python.exe",
+    "C:\\Users\\LENOVO\\Documents\\ChatGPT\\Tensor Memory Accelerator\\ibex-uvm\\scripts\\run_cocotb_tests.py",
+    "--seed",
+    "20261029",
+    "--output",
+    "C:\\Users\\LENOVO\\Documents\\ChatGPT\\Tensor Memory Accelerator\\ibex-uvm\\build\\regressions\\spike-milestone\\cases\\ibex_smoke_python_regfile_seed20261029\\replay"
+  ],
+  "coverage_observations": [],
+  "spike_comparison_executed": false,
+  "error": "cocotb component simulation failed (exit 12):\nReading pref.tcl\n\n# 2024.3\n\n# vsim -c -onfinish exit -voptargs=\"+acc\" -pli \"{C:/Users/LENOVO/Documents/ChatGPT/Tensor Memory Accelerator/ibex-uvm/build/python-env/Lib/site-packages/cocotb/libs/cocotbvpi_modelsim.dll}\" work.ibex_regfile_wrapper -do \"do run.do\" -gRV32E=1 \n# Start time: 12:40:27 on Oct 29,2026\n# ** Note: (vsim-3812) Design is being optimized...\n# ** Warning: (vsim-3865) Due to PLI being present, global +acc is being enabled automatically. This will cause your simulation to run very slowly. Please use vsim -no_autoacc to disable this feature. This feature is now deprecated and will be removed from future releases.\n# ** Warning: (vopt-10908) Some optimizations are turned off because the +acc switch is in effect.\n# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=2.\n# //  Questa Intel Starter FPGA Edition-64\n# //  Version 2024.3 win64 Sep 10 2024\n# //\n# // Unpublished work. Copyright 2024 Siemens\n# //\n# // This material contains trade secrets or otherwise confidential information\n# // owned by Siemens Industry Software Inc. or its affiliates (collectively,\n# // \"SISW\"), or its licensors. Access to and use of this information is strictly\n# // limited as set forth in the Customer's applicable agreements with SISW.\n# //\n# // This material may not be copied, distributed, or otherwise disclosed outside\n# // of the Customer's facilities without the express written permission of SISW,\n# // and may not be used in any way not expressly authorized by SISW.\n# //\n# ** Error: License checkout has been disallowed because\n# only one session is allowed to run on an uncounted nodelocked\n# license and an instance of QuestaSim is already running with a\n# nodelocked license on this machine.\n# Error loading design\nError loading design\n# End time: 12:40:44 on Oct 29,2026, Elapsed time: 0:00:17\n# Errors: 1, Warnings: 2\n"
+}
