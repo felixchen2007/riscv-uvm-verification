@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "name": "live-random-extended",
+  "processors": ["ibex_smoke", "picorv32_rv32i"],
+  "programs": ["random"],
+  "seeds": [20261101, 20261102, 20261103, 20261104],
+  "uvm_mode": "full",
+  "include_spike": true,
+  "include_live_spike": true,
+  "jobs": 2
+}
