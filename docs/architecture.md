@@ -1,20 +1,19 @@
-# Configurable RISC-V verification framework: two layers
+# RISC-V verification architecture
 
-The framework has **two primary verification layers**. cocotb, Python, pytest
-and Spike belong together in Layer 2; automation is not a third verification
-environment. Both layers use the same processor configurations, program
-artifacts, architectural trace contract and result envelopes where practical.
+The project has three responsibilities. Implementation status is explicit:
 
-| Layer | Responsibility | Current implementation | Expansion |
-| --- | --- | --- | --- |
-| 1 — SystemVerilog UVM | Primary CPU/SoC verification, reusable agents, sequences, TLM, independent scoreboard, SVA, SV coverage and closure | Ibex/PicoRV32 in XSim; shared predictor/coverage, directed and bounded random programs, constrained-random timing; native virtual sequencer, demonstrated factory override, reset and bounded Ibex IRQ scenarios | Random control flow and broader ISA, additional CPU adapters, SoC RAL |
-| 2 — Python verification and automation | Complementary component tests, models, programs, pytest, multi-seed scheduling, trace checking, Spike, mutation orchestration and reports | Targeted cocotb register-file tests through Questa VPI; pytest utilities; isolated parallel regression; shared offline Spike adapter; both CPU mutation campaigns and native bin-level report merging | Larger regressions and broader reference event support |
+| Layer | Responsibility | Current status |
+| --- | --- | --- |
+| 1 — SystemVerilog UVM | Drive and monitor both CPUs; check protocols, architectural state, scenarios, assertions and functional coverage | Implemented; a private SV predictor currently checks architectural state |
+| 2 — Spike reference checking | Supply independent architectural expectations through the pinned C++ reference | Offline comparison plus optional live DPI-C/WSL stepping for normal smoke/corners/random programs |
+| 3 — Python automation | Builds, seeds/configurations, regressions, trace audits, mutations, coverage export and reports; unittest checks these utilities | Standard-library automation and unit checks |
 
-UVM owns comprehensive CPU acceptance. cocotb targets ALUs, decoders, register
-files and protocol boundaries; it must not grow into a redundant full CPU
-environment. Python schedules both flows, and the shared offline Spike adapter
-supplies independent architectural reference behavior for the smoke program.
-The two simulators run independently and need not run in the same process.
+Python launches UVM and the reference tools. With `--spike-live`, a UVM
+subscriber calls a C++ comparator through DPI-C; a persistent WSL process
+executes Spike on demand. The private SV predictor remains active. Reset/IRQ
+events are outside this live contract. See [spike-dpi.md](spike-dpi.md) for the
+process boundary, controls, reproduction commands and exact limits.
+SoC/RAL and new component-test environments are outside this scope.
 
 ## Shared contracts and processor adapters
 
@@ -53,7 +52,7 @@ It does not infer absent trap flags in historical CSVs. JSON Schemas live in
 
 The common comparator checks every retirement and rejects missing, extra or
 reordered records. It checks timing invariance within each CPU and consistency
-between Ibex and PicoRV32. Its synthetic pytest fixtures are not Spike execution evidence.
+between Ibex and PicoRV32. Its synthetic synthetic fixtures are not Spike execution evidence.
 An actual Spike adapter must identify its build, ISA, initial state and program
 window before any ISS-comparison pass can be claimed.
 
@@ -62,14 +61,13 @@ window before any ISS-comparison pass can be claimed.
 ```text
 vendor/                 immutable synthesizable upstream RTL and source locks
 tb/uvm/                 Layer 1: existing UVM environment and DUT harness
-tb/cocotb/              Layer 2: targeted component harness and tests
-verification/           Layer 2: shared config, traces, results and utility code
+verification/           Layer 3: shared config, traces, results and utility code
 verification/reference/ independent targeted models and pinned Spike adapter
 scripts/                executable simulation and regression entry points
 config/processors/      processor contracts; capability status is explicit
 config/regressions/     reproducible processor / seed / mode matrices
 schemas/                shared trace and result formats
-tests/                  pytest utility and model tests
+tests/                  unittest automation and checker tests
 evidence/               versioned, scoped execution evidence
 build/                  isolated outputs, dependencies and simulator databases
 ```
@@ -80,12 +78,11 @@ The shared `riscv_env_base` and `riscv_smoke_test` live in `riscv_test.svh`.
 delay-sequence and RVFI monitor/interface names remain compatible. Ibex retains
 its split-port agents; Pico uses a native unified valid/ready driver and passive
 monitor. Both publish the same TLM transaction types. See
-[the reuse matrix](reuse-plan.md) and [roadmap](roadmap.md).
+[the reuse matrix](reuse-plan.md).
 
 ## Regression and coverage ownership
 
-Layer 2 launches `scripts/run_uvm_tests.py` for CPU cases and
-`scripts/run_cocotb_tests.py` for complementary component cases. Each case gets
+Layer 3 launches `scripts/run_uvm_tests.py` for native CPU cases. Each case gets
 its own simulator libraries, program, logs, traces and coverage database.
 `scripts/run_regression.py` validates requested seeds/configurations, runs a
 bounded worker pool, preserves failed artifacts and emits JSON/Markdown reports
@@ -94,9 +91,8 @@ and unexpected corruption diagnostics cannot be counted as passing cases.
 
 SV covergroups remain the CPU functional-coverage authority. Python collects
 per-run coverage observations and points to databases; it does not average
-percentages into a fictitious merged coverage figure. Cocotb's Python-driven
-randomization is reported separately from SV constrained randomization.
-RAL belongs in Layer 1 when real SoC peripherals and bus agents exist.
+percentages into a fictitious merged coverage figure. Native databases are merged
+by the coverage exporter. SoC and RAL are outside the accepted scope.
 
 ## Current Ibex UVM implementation
 
@@ -218,8 +214,7 @@ result appearing current.
 
 Retirement trace output feeds the shared offline Spike adapter described in
 [spike.md](spike.md). It executes the same input image and initial state in the
-pinned upstream library and rejects incomplete traces. Live DPI integration
-remains future work. Later reset/interrupt/debug agents can reuse analysis
+pinned upstream library and rejects incomplete traces. The optional live DPI-C subscriber is described in [spike-dpi.md](spike-dpi.md). Later reset/interrupt/debug agents can reuse analysis
 and configuration patterns, but their event timing must become part of the
 reference-model contract before claiming trap or interrupt coverage.
 

@@ -3,6 +3,9 @@ class riscv_env_base extends uvm_env;
   `uvm_component_utils(riscv_env_base)
   ibex_rvfi_monitor rvfi_monitor;
   riscv_scoreboard scoreboard;
+`ifdef RV_SPIKE_DPI
+  riscv_spike_checker spike_checker;
+`endif
   riscv_control_agent control_agent;
   riscv_virtual_sequencer virtual_sequencer;
   virtual riscv_control_if control_vif;
@@ -19,6 +22,9 @@ class riscv_env_base extends uvm_env;
     build_memory_agents();
     rvfi_monitor=ibex_rvfi_monitor::type_id::create("rvfi_monitor",this);
     scoreboard=riscv_scoreboard::type_id::create("scoreboard",this);
+`ifdef RV_SPIKE_DPI
+    spike_checker=riscv_spike_checker::type_id::create("spike_checker",this);
+`endif
     control_agent=riscv_control_agent::type_id::create("control_agent",this);
     virtual_sequencer=riscv_virtual_sequencer::type_id::create("virtual_sequencer",this);
     if(!uvm_config_db#(virtual riscv_control_if)::get(this,"","control_vif",control_vif))
@@ -26,6 +32,9 @@ class riscv_env_base extends uvm_env;
   endfunction
   function void connect_phase(uvm_phase phase);
     rvfi_monitor.ap.connect(scoreboard.retire_export);
+`ifdef RV_SPIKE_DPI
+    rvfi_monitor.ap.connect(spike_checker.analysis_export);
+`endif
     connect_memory_agents();
     control_agent.monitor.ap.connect(scoreboard.control_export);
     virtual_sequencer.control=control_agent.sequencer;

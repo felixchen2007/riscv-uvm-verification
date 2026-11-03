@@ -11,7 +11,7 @@ preserved. No second CPU environment or Python instruction-result model is added
 | `smoke` | 14 | `0xbc` | 1 / 2 | 1 / 1 | Original image, including its existing coverage holes |
 | `corners` | 47 | `0x13c` | 3 / 4 | 3 / 3 | Directed ALU boundaries, dependencies, memory offsets, all four BEQ/BNE outcomes and a bounded backward loop |
 | `random` | 111 | `0x23c` | 11 / 12 | 3 / 3 | Directed prologue plus 64 actual SV-constrained-random instructions; [generation policy](random-programs.md) |
-| `irq` | 15 minimum; bounded variable parking | `0xa4` | 0 / 1 | At least 1 / 1 | Ibex-only machine-external interrupt, handler CSR reads and MRET; requires `--scenario irq --full`; [event contract](v1.md) |
+| `irq` | 15 minimum; bounded variable parking | `0xa4` | 0 / 1 | At least 1 / 1 | Ibex-only machine-external interrupt, handler CSR reads and MRET; requires `--scenario irq --full`; [event contract](verification-plan.md) |
 
 All profiles start at `0x80`, use one RV32 hart in machine mode and finish with a
 checked store of `1` to `0x1004`. Smoke and corners use fixed instruction
@@ -86,13 +86,12 @@ From the project folder in PowerShell:
 ```powershell
 .\scripts\run.ps1 --processor ibex_smoke --program corners --full
 .\scripts\run.ps1 --processor picorv32_rv32i --program corners --full
-.\build\python-env\Scripts\python.exe scripts/run_regression.py --config config/regressions/corners.json
+python -S scripts/run_regression.py --config config/regressions/corners.json
 ```
 
 The corners matrix requests smoke and corners, both processors and two seeds, with full UVM,
-actual Spike comparisons and the two complementary component cases. Native UVM
-still owns CPU acceptance. Questa component cases share one licensed session;
-the bounded worker pool permits concurrent XSim cases. Use fresh output folders.
+and actual Spike comparisons. The bounded worker pool permits concurrent XSim
+cases. Use fresh output folders.
 The standalone reference replay tool accepts `--program-profile corners` alongside
 its `--program <image-path>` argument. Extended CPU program acceptance currently
 uses XSim; Questa retains its separately supported original smoke mode.

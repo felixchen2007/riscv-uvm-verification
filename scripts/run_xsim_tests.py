@@ -64,7 +64,9 @@ def require_ok(proc, context):
         raise RuntimeError(f"{context} failed (exit {proc.returncode}):\n{proc.stdout[-8000:]}")
 
 
-def run_suite(seed=20261029, full=False, vivado_bin=None, prepare_only=False, output=None, processor="ibex_smoke", program="smoke", mutation_manifest=None, scenario="normal"):
+def run_suite(seed=20261029, full=False, vivado_bin=None, prepare_only=False, output=None, processor="ibex_smoke", program="smoke", mutation_manifest=None, scenario="normal", live_spike=False):
+    if live_spike and (not full or scenario != "normal" or mutation_manifest or program == "irq"):
+        raise ValueError("Live Spike currently requires full-mode normal smoke/corners/random on pristine RTL")
     cpu = apply_program(load_processor(processor), program)
     contract = cpu["program_contract"]
     if contract.get("requires_full") and not full:
@@ -92,6 +94,7 @@ def run_suite(seed=20261029, full=False, vivado_bin=None, prepare_only=False, ou
               "sv_constrained_randomization_executed": False, "sv_covergroups_executed": False,
               "sv_instruction_randomization_executed": False,
               "spike_comparison_executed": False, "rtl_mutation_campaign_executed": False,
+              "live_spike_requested": live_spike, "live_spike_controls": {},
               "profiles": {}, "corruption_control": None,
               "processor_config": processor,
               "program_profile": program, "program_contract": contract,
@@ -110,6 +113,16 @@ def run_suite(seed=20261029, full=False, vivado_bin=None, prepare_only=False, ou
         result["vendor_commit_verified"] = verify_vendor_lock(cpu["implementation"])["commit"]
         hashes = snapshot_hashes()
         result["source_sha256"] = hashes
+        if live_spike:
+            from build_spike_live import verify_live_build, OUTPUT as live_output
+            from verification.reference.spike import wsl_path
+            result["live_spike_build"] = verify_live_build()
+            spike_cfg = json.loads((ROOT / "config/spike.json").read_text())
+            launch = ["wsl", "-d", spike_cfg["distribution"], "--exec", wsl_path(live_output / "spike_live"),
+                      cpu["spike_isa"], wsl_path(output / "program.hex"), str(cpu["entry_pc"]),
+                      str(cpu["expected_retirements"]), str(cpu["terminal_pc"]),
+                      str(cpu["signature_address"]), str(cpu["signature_value"])]
+            (output / "spike-live-command.txt").write_text("\n".join(launch) + "\n", encoding="ascii")
         mutation = verify_mutant(mutation_manifest) if mutation_manifest else None
         if mutation and mutation["implementation"] != cpu["implementation"]:
             raise ValueError("Mutation does not match selected processor")
@@ -125,9 +138,11 @@ def run_suite(seed=20261029, full=False, vivado_bin=None, prepare_only=False, ou
                     ROOT / "vendor/ibex/vendor/lowrisc_ip/ip/prim/rtl",
                     ROOT / "vendor/ibex/vendor/lowrisc_ip/dv/sv/dv_utils"]
         defines = (["RISCV_FORMAL"] if is_pico else ["RVFI", "DV_FCOV_DISABLE"]) + (["IBEX_UVM_FULL"] if full else [])
+        if live_spike:
+            defines.append("RV_SPIKE_DPI")
         compile_args = ["-sv", "-L", "uvm"]
         for include in includes:
-            compile_args += ["-i", str(include)]
+            compile_args += ["-i", include.as_posix() if live_spike else str(include)]
         for define in defines:
             compile_args += ["-d", define]
         if is_pico:
@@ -135,7 +150,9 @@ def run_suite(seed=20261029, full=False, vivado_bin=None, prepare_only=False, ou
         else:
             sources = ["tb/uvm/ibex_xsim_if_stage.sv" if p.endswith("/ibex_if_stage.sv") else p
                        for p in RTL_SOURCES] + TB_SOURCES
-        compile_paths = [str(ROOT / p) for p in sources]
+        # DPI caller names become C++ string literals in XSim-generated code.
+        # Forward slashes avoid unescaped Windows \U sequences in that code.
+        compile_paths = [(ROOT / p).as_posix() if live_spike else str(ROOT / p) for p in sources]
         if mutation:
             if sources.count(mutation["relative_source"]) != 1:
                 raise ValueError("Mutation must replace exactly one compiled RTL source")
@@ -145,6 +162,8 @@ def run_suite(seed=20261029, full=False, vivado_bin=None, prepare_only=False, ou
         snapshot = cpu["implementation"] + ("_uvm_full" if full else "_uvm_seeded")
         top = "tb_picorv32_uvm" if is_pico else "tb_ibex_uvm"
         elab_args = ["-L", "uvm", "work." + top, "-s", snapshot, "--timescale", "1ns/1ps"]
+        if live_spike:
+            elab_args += ["-sv_root", str(output / "xsim.dir/spike_dpi/xsc"), "-sv_lib", "dpi"]
         result["compile_defines"] = defines
         result["compile_sources"] = sources
         result["xsim_compatibility"] = "No RTL compatibility wrapper needed" if is_pico else "if_stage only: suppress unused DPI exports; standard RTL SVA macros preloaded and active"
@@ -158,11 +177,18 @@ def run_suite(seed=20261029, full=False, vivado_bin=None, prepare_only=False, ou
         version = call(bin_dir, "xvlog", ["--version"], output, "version.log")
         require_ok(version, "XSim version check")
         result["tool_version"] = version.stdout.strip()
+        if live_spike:
+            require_ok(call(bin_dir, "xsc", ["--cppversion", "14", "--work", "spike_dpi",
+                       str(ROOT / "verification/reference/spike_dpi.cpp")], output, "dpi_build.log"), "DPI C++ build")
         require_ok(call(bin_dir, "xvlog", compile_args, output, "compile_console.log"), "XSim compilation")
         result["compiled"] = True
         require_ok(call(bin_dir, "xelab", elab_args, output, "elaborate_console.log"), "XSim elaboration")
         result["elaborated"] = True
         selected_profiles = [("stalled", 3)] if mutation else list(PROFILES.items()) + [("rvfi_corruption_control", 3)]
+        spike_controls = {"spike_rd_control": (1, "rd_data"), "spike_pc_control": (2, "pc"),
+                          "spike_store_control": (3, "memory_data")}
+        if live_spike:
+            selected_profiles += [(name, 3) for name in spike_controls]
         if scenario!="normal": selected_profiles=[("stalled",3),("rvfi_corruption_control",3)]
         for profile, delay in selected_profiles:
             plusargs = ["UVM_TESTNAME=" + (cpu["uvm_test"] if scenario=="normal" else "riscv_advanced_test"), "UVM_VERBOSITY=UVM_LOW",
@@ -171,6 +197,10 @@ def run_suite(seed=20261029, full=False, vivado_bin=None, prepare_only=False, ou
             negative = profile == "rvfi_corruption_control"
             if negative:
                 plusargs.append("IBEX_CORRUPT_RVFI")
+            if live_spike:
+                plusargs.append("SPIKE_LIVE_CONFIG=spike-live-command.txt")
+                if profile in spike_controls:
+                    plusargs.append("SPIKE_LIVE_CORRUPT=" + str(spike_controls[profile][0]))
             args = ["-tclbatch", "run.tcl", "-onerror", "quit", "-sv_seed", str(seed),
                     "-log", profile + "_simulation.log"]
             if full:
@@ -188,6 +218,22 @@ def run_suite(seed=20261029, full=False, vivado_bin=None, prepare_only=False, ou
             for name in ("rvfi_trace.csv", "program.hex", "program-generation.json", "control_trace.csv"):
                 if (output / name).is_file():
                     shutil.copyfile(output / name, output / (profile + "_" + name))
+            if live_spike and (output / "spike-live.log").is_file():
+                shutil.copyfile(output / "spike-live.log", output / (profile + "_spike-live.log"))
+                if (output / "spike-live-reference.log").is_file():
+                    shutil.copyfile(output / "spike-live-reference.log", output / (profile + "_spike-live-reference.log"))
+            if live_spike and profile in spike_controls:
+                caught = (proc.returncode == 0 and not simulator_errors(proc.stdout) and fields is None
+                          and "[SPIKE_LIVE_MISMATCH]" in proc.stdout and "[SPIKE_LIVE_INJECTED]" in proc.stdout
+                          and "field=" + spike_controls[profile][1] in proc.stdout
+                          and "[SPIKE_LIVE_PASS]" not in proc.stdout
+                          and counts["UVM_ERROR"] == 1 and counts["UVM_FATAL"] == 0)
+                result["live_spike_controls"][profile] = {"status": "detected" if caught else "failed",
+                    "expected_field": spike_controls[profile][1], "uvm_counts": counts}
+                if not caught:
+                    raise RuntimeError("Live Spike mismatch control failed:\n" + proc.stdout[-8000:])
+                print("SPIKE_LIVE_CONTROL_DETECTED " + profile, flush=True)
+                continue
             if mutation:
                 result["mutation_observation"] = {"simulated": True, "returncode": proc.returncode,
                     "uvm_counts": counts, "pass_fields": fields, "simulator_errors": simulator_errors(proc.stdout),
@@ -201,15 +247,26 @@ def run_suite(seed=20261029, full=False, vivado_bin=None, prepare_only=False, ou
             if negative:
                 caught = (proc.returncode == 0 and not simulator_errors(proc.stdout) and fields is None
                           and "[RVFI_RD]" in proc.stdout and "[CORRUPTION_INJECTED]" in proc.stdout
-                          and counts["UVM_ERROR"] == 1 and counts["UVM_FATAL"] == 0)
+                          and (not live_spike or "[SPIKE_LIVE_MISMATCH]" in proc.stdout)
+                          and counts["UVM_ERROR"] == (2 if live_spike else 1) and counts["UVM_FATAL"] == 0)
                 result["corruption_control"] = {"status": "detected" if caught else "failed",
                                                 "expected_error_id": "RVFI_RD", "uvm_counts": counts,
                                                 "injection": "one sampled RVFI rd_data bit; original DUT unchanged"}
+                if live_spike:
+                    result["corruption_control"]["expected_error_ids"] = ["RVFI_RD", "SPIKE_LIVE_MISMATCH"]
                 if not caught:
                     raise RuntimeError("Corruption control failed intended diagnostic contract:\n" + proc.stdout[-8000:])
                 print("XSIM_EXPECTED_FAILURE_DETECTED: RVFI_RD", flush=True)
                 continue
             require_ok(proc, profile)
+            if live_spike:
+                marker = re.findall(r"\[SPIKE_LIVE_PASS\] compared=(\d+)", proc.stdout)
+                live_log = (output / (profile + "_spike-live.log")).read_text()
+                expected = contract["expected_retirements"]
+                if (marker != [str(expected)] or live_log.count("\nMATCH ") != expected or
+                        live_log.count("> STEP ") != expected or "< PASS " + str(expected) not in live_log or
+                        "ERROR " in live_log):
+                    raise RuntimeError("Missing complete live Spike execution/step/comparison evidence")
             advanced=None; epoch_result=None
             if scenario!="normal":
                 marker=re.search(r"\[RV_ADVANCED\]\s+([^\r\n]+)",proc.stdout)
@@ -257,6 +314,8 @@ def run_suite(seed=20261029, full=False, vivado_bin=None, prepare_only=False, ou
                 raise RuntimeError("Random-body instruction-class coverage is incomplete")
             result["profiles"][profile] = {"status": "pass", "scenarios": fields, "uvm_counts": counts,
                                            "assertion_failures": 0, "simulator_exit_code": proc.returncode, "branch_hits": hits}
+            if live_spike:
+                result["profiles"][profile]["live_spike_compared"] = contract["expected_retirements"]
             if advanced is not None: result["profiles"][profile]["advanced"]=advanced
             if epoch_result: result["profiles"][profile]["reset_epochs"]=epoch_result
             if scenario=="irq":
@@ -279,7 +338,10 @@ def run_suite(seed=20261029, full=False, vivado_bin=None, prepare_only=False, ou
             print("XSIM_UVM_PROFILE_PASS " + profile + " " + json.dumps(fields), flush=True)
         if snapshot_hashes() != hashes:
             raise RuntimeError("Sources changed during verification; rerun on stable sources")
+        if live_spike and verify_live_build() != result["live_spike_build"]:
+            raise RuntimeError("Live Spike binary/build identity changed during simulation")
         result.update(status="pass", verification_pass=True,
+                      spike_comparison_executed=live_spike,
                       sv_instruction_randomization_executed=program == "random",
                       sv_constrained_randomization_executed=full, sv_covergroups_executed=full)
         print(f"XSIM_UVM_REGRESSION_PASS: {result_path}", flush=True)
@@ -300,6 +362,7 @@ def run_suite(seed=20261029, full=False, vivado_bin=None, prepare_only=False, ou
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--full", action="store_true", help="Execute constrained-random memory timing and covergroups")
+    parser.add_argument("--spike-live", action="store_true", help="Require retirement-triggered DPI-C/Spike checking")
     parser.add_argument("--seed", type=int, default=20261029)
     parser.add_argument("--vivado-bin")
     parser.add_argument("--processor", choices=("ibex_smoke", "picorv32_rv32i"), default="ibex_smoke")
@@ -310,7 +373,7 @@ def main():
     args = parser.parse_args()
     if not 0 <= args.seed <= 0xffffffff:
         parser.error("seed must fit unsigned 32 bits")
-    run_suite(args.seed, args.full, args.vivado_bin, args.prepare_only, args.output, args.processor, args.program, scenario=args.scenario)
+    run_suite(args.seed, args.full, args.vivado_bin, args.prepare_only, args.output, args.processor, args.program, scenario=args.scenario, live_spike=args.spike_live)
     return 0
 
 

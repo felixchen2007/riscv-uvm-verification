@@ -1,16 +1,20 @@
 # Configurable RISC-V verification framework
 
-Use exactly two primary layers: (1) SystemVerilog UVM for primary CPU/SoC
-acceptance, and (2) cocotb/Python/pytest/Spike for complementary targeted RTL
-tests and shared automation/reference checking. Do not create a third
-automation layer or duplicate the full CPU environment in Python.
+The project has three responsibilities.
+1. SystemVerilog UVM owns CPU acceptance and protocol/scenario/coverage checking.
+2. Spike supplies independent architectural checking. The optional live DPI-C
+   subscriber uses a native Windows C++ transport and persistent WSL Spike
+   service for normal smoke/corners/random programs. Reset/IRQ events remain
+   outside the live contract; retain scoped native and offline evidence.
+3. Python owns automation: builds, regressions, seeds, mutations and reports.
+   Built-in unittest checks that automation and its checking utilities. Do not add cocotb
+   component tests or a second Python CPU environment.
 Ibex and PicoRV32 have physical adapters and share the UVM architectural
 checker. Future planned profiles must not be reported as verified without
 actual DUT execution. Cross-processor consistency is not Spike execution.
 
 Keep this independent project separate from the surrounding Tensor Memory
 Accelerator repository. Use native UVM 1.2 under `tb/uvm` for RTL acceptance.
-Targeted cocotb component tests under `tb/cocotb` complement this CPU acceptance.
 The user prefers Vivado XSim for host simulation and retains the DE10-Lite as
 an optional FPGA target. Any DE10-Lite implementation uses Quartus.
 
@@ -34,8 +38,8 @@ The observation corruption control is not an RTL mutation campaign. Spike,
 ISA coverage closure and optional FPGA results need separate execution evidence.
 
 Use `scripts/run_regression.py` for isolated multi-seed scheduling. Its worker
-cases must invoke the native UVM suite; cocotb remains a separate component
-scope. Use pytest for shared utilities and targeted reference models. Keep
+cases must invoke the native UVM suite. Use unittest for automation and shared
+checking utilities. Preserve qualification evidence and its original scope. Keep
 common processor/program/retirement/result contracts versioned, reject missing
 or partial traces, and never average coverage percentages across seeds.
 The common comparator and synthetic fixtures do not prove Spike execution.

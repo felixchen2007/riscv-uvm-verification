@@ -76,14 +76,12 @@ RISC-V compliance claim. PicoRV32 mutation coverage is not established here.
 ## Run
 
 ```powershell
-.\build\python-env\Scripts\python.exe scripts/run_mutation_tests.py --output build/mutations/a-fresh-run
-.\build\python-env\Scripts\python.exe -m pytest -q --basetemp build/python-tests/mutation-check
+python -S scripts/run_mutation_tests.py --output build/mutations/a-fresh-run
+python -S scripts/run_python_checks.py --output build/python-tests/mutation-check
 ```
 
 Use a fresh output under this project's `build/` folder. `summary.json` and
 `report.md` contain the baseline, per-mutant classifications, actual commands,
 source identities and reference observations. Each `mutants/<id>/` folder holds
 the source/patch manifest, native simulation artifacts and diagnostic prefix.
-See [mutation-results.md](mutation-results.md) for actual executed outcomes.
-The mutation-isolation unit fixtures also need their pytest temporary directory
-inside `build/`, as in the tested command above, to exercise the same path guard.
+The mutation runner writes the observed outcomes and diagnostics to its campaign manifest.

@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "name": "live-directed",
+  "processors": [
+    "ibex_smoke",
+    "picorv32_rv32i"
+  ],
+  "programs": [
+    "smoke",
+    "corners"
+  ],
+  "seeds": [
+    20261029
+  ],
+  "uvm_mode": "full",
+  "jobs": 2,
+  "include_spike": true,
+  "include_live_spike": true
+}

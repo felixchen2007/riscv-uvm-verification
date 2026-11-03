@@ -29,8 +29,9 @@ The project uses the simulator's installed UVM 1.2 library. UVM and simulator
 binaries are not redistributed here. `build/ibex-upstream` is only a temporary
 upstream checkout used to create the snapshot and is excluded from source control.
 
-The complementary Python environment installs cocotb and pytest from PyPI into
-the ignored build folder, using the versions in `requirements-verification.txt`.
-Those packages and their binaries are not vendored; their license metadata
-remains in the installed distributions. The cocotb component harness compiles
-the same locked upstream RTL used by the UVM project.
+The active Python automation uses only the Python standard library. No cocotb
+or pytest package is required.
+
+The live DPI-C adapter links the same pinned Spike libraries in a Linux service,
+with a project-owned native Windows transport in XSim. Upstream source remains
+unmodified; live service source/binary identities are recorded separately.

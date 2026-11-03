@@ -81,11 +81,11 @@ closure claims are made.
 ```powershell
 .\scripts\run.ps1 --program random --full --seed 20261029
 .\scripts\run.ps1 --processor picorv32_rv32i --program random --full --seed 20261030
-.\build\python-env\Scripts\python.exe scripts/run_regression.py --config config/regressions/random.json
+python -S scripts/run_regression.py --config config/regressions/random.json
 ```
 
 The matrix preserves smoke and corners and adds random, across both processors
-and two seeds: twelve CPU cases plus two complementary component cases. A CPU
+and two seeds, for twelve CPU cases. A CPU
 case includes two positive timing profiles and its UVM corruption control.
 Spike runs once per processor/seed/program image and compares both positive
 profiles. Program generation artifacts, source hashes, corpus identities,
@@ -93,5 +93,5 @@ coverage observations and replay commands accompany the case manifests.
 
 Standalone reference replay uses `run_spike_tests.py --program-profile random
 --program <saved-image> --rvfi <saved-trace> --output <fresh-folder>`; it does not
-claim new UVM execution or new randomization. See [random-program-results.md](random-program-results.md)
+claim new UVM execution or new randomization. See [the qualification report](../evidence/qualification/report.md)
 for measured execution evidence and limitations.

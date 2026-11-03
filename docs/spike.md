@@ -24,10 +24,10 @@ exports Linux line endings explicitly and uses an owned Linux cache under
 From the project folder in PowerShell:
 
 ```powershell
-.\build\python-env\Scripts\python.exe scripts/build_spike.py --jobs 8
-.\build\python-env\Scripts\python.exe scripts/run_regression.py --jobs 2 --include-cocotb --spike
+python -S scripts/build_spike.py --jobs 8
+python -S scripts/run_regression.py --jobs 2 --spike
 # Equivalent checked-in acceptance matrix:
-.\build\python-env\Scripts\python.exe scripts/run_regression.py --config config/regressions/spike-smoke.json
+python -S scripts/run_regression.py --config config/regressions/spike-smoke.json
 ```
 
 Use a fresh `--output` folder for each regression. `build/spike/` contains the
@@ -78,8 +78,7 @@ Neither control is an RTL mutation campaign.
 The extended [program profiles](programs.md) use this same unchanged bridge and
 library build. Pass `--program-profile corners` to standalone reference replay
 when selecting a corner image; its strict count and terminal-PC checks use the
-corresponding program contract. [Directed results](directed-corners-results.md)
-record the expanded matrix separately from the initial Spike milestone.
+corresponding program contract.
 `--program-profile random` selects the bounded random corpus contract. The same
 bridge executes the saved actual instruction image without participating in
 generation or reading a DUT result; see [random programs](random-programs.md).

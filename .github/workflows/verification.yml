@@ -8,15 +8,14 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: python -m pip install -r requirements-verification.txt
-      - run: python -m pytest -q tests --basetemp build/python-tests/ci
-  native-v1:
-    # Install/configure Vivado, Questa Starter and pinned Spike/WSL on this runner.
+      - run: python -S scripts/run_python_checks.py --output build/python-tests/ci
+  native:
+    # Install/configure Vivado and Python and Ubuntu WSL build prerequisites on this runner.
     runs-on: [self-hosted, Windows, riscv-uvm]
     steps:
       - uses: actions/checkout@v4
       - shell: powershell
-        run: ./scripts/v1.ps1 -Output build/releases/ci-${{ github.run_id }}-${{ github.run_attempt }}
+        run: ./scripts/verify.ps1 -Output build/releases/ci-${{ github.run_id }}-${{ github.run_attempt }}
       - uses: actions/upload-artifact@v4
         if: always()
         with:

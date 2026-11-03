@@ -1,3 +1,1 @@
-# Install in build/python-env; existing UVM smoke runners remain stdlib-only.
-cocotb==2.0.1
-pytest==8.4.2
+# Python automation uses the standard library only; no pip dependencies.

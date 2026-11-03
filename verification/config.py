@@ -87,10 +87,14 @@ def load_regression(path):
         raise ValueError("uvm_mode must be seeded or full")
     if type(data.get("jobs")) is not int or not 1 <= data["jobs"] <= 8:
         raise ValueError("jobs must be in 1..8")
-    if type(data.get("include_cocotb")) is not bool:
-        raise ValueError("include_cocotb must be a Boolean")
+    if "include_cocotb" in data:
+        raise ValueError("include_cocotb was removed; use an automation-only regression configuration")
     if type(data.setdefault("include_spike", False)) is not bool:
         raise ValueError("include_spike must be a Boolean")
+    if type(data.setdefault("include_live_spike", False)) is not bool:
+        raise ValueError("include_live_spike must be a Boolean")
+    if data["include_live_spike"] and data["uvm_mode"] != "full":
+        raise ValueError("Live Spike requires full UVM mode")
     programs = data.setdefault("programs", ["smoke"])
     if not isinstance(programs, list) or not programs or len(set(programs)) != len(programs):
         raise ValueError("Regression requires unique program identifiers")

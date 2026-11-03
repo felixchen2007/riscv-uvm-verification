@@ -1,10 +1,10 @@
 # Configurable RISC-V framework verification plan
 
-This plan uses the two-layer architecture in [architecture.md](architecture.md).
-Layer 1 is the primary SystemVerilog UVM CPU/SoC environment. Layer 2 combines
-cocotb, Python automation, pytest and the shared offline Spike integration.
-The [roadmap](roadmap.md) separates implemented milestones from planned work;
-the [reuse matrix](reuse-plan.md) identifies common and processor-specific code.
+This plan uses the three responsibilities in [architecture.md](architecture.md):
+UVM CPU verification, Spike architectural reference checking, and Python
+automation with standard-library unittest checks. Spike checking supports offline comparison and an optional live DPI-C path
+for normal smoke/corners/random programs; see [spike-dpi.md](spike-dpi.md).
+The [reuse matrix](reuse-plan.md) describes the adapter boundaries.
 The Ibex acceptance contract below remains required and is preserved.
 
 The same bounded ISA predictor and scenario contract now also apply to the
@@ -116,11 +116,11 @@ results document. This plan does not claim a run has passed.
 | ISA-02 | Remaining integer, subword, compressed and M extension cases | Directed corners plus generated programs | ISA/configuration-specific coverage and architectural matches | Later expansion |
 | TRAP-01 | Exceptions, interrupts and debug | Reusable interrupt/reset agent and trap-aware predictor | Cause/EPC/privilege checks, event timing record | Later expansion |
 | CSR-01 | Machine CSRs and counters | CSR sequences and explicit non-deterministic-field policy | Legal access, masks, side effects, trap checks | Later expansion |
-| SPIKE-01 | Independent ISS comparison | Same program/initial state in pinned Spike, normalized retirement traces | Matched PC/instruction/register/memory effects, tool/build identity, intended comparison corruption diagnostic | Implemented offline smoke adapter; see `spike-results.md` for executed evidence |
+| SPIKE-01 | Independent ISS comparison | Same program/initial state in pinned Spike, normalized retirement traces | Matched PC/instruction/register/memory effects, tool/build identity, intended comparison corruption diagnostic | Implemented offline smoke adapter; see the qualification report for executed evidence |
 | REG-01 | Reproducible regressions | Test/seed/configuration matrix | One result per requested case, failures retained, aggregate fails closed | Initial runner then expand |
-| PY-01 | Independent targeted component checking | cocotb on actual FF register file, software register semantics, RV32E parameter variants | Executed tests and XML results; do not label as CPU UVM acceptance | Two-layer milestone |
-| DATA-01 | Shared retirement/result contracts | Normalize actual RVFI, compare timing profiles, reject corrupt/truncated synthetic records with pytest | Program hashes, contiguous records, strict comparator and schema versions | Two-layer milestone |
-| REG-02 | Multi-seed and parallel isolation | Two seeds, separate work libraries, bounded workers, both layers | Case manifests, replay commands, no lost cases or source drift | Two-layer milestone |
+| PY-01 | Automation integrity | unittest checks configuration, trace parsing, comparison, failure classification and reports | Missing or corrupt results fail closed | Active |
+| DATA-01 | Shared retirement/result contracts | Normalize actual RVFI, compare timing profiles, reject corrupt/truncated synthetic records with unittest | Program hashes, contiguous records, strict comparator and schema versions | Two-layer milestone |
+| REG-02 | Multi-seed and parallel isolation | Two seeds, separate work libraries, bounded workers, native UVM cases | Case manifests, replay commands, no lost cases or source drift | Two-layer milestone |
 | CPU-02 | PicoRV32 physical and retirement adapters | Pinned native core, unified memory UVM agent, shared RVFI checker and program | Correct native order origin, clean smoke/control results and cross-processor trace matches | Dual-processor milestone |
 | MUT-01 | Verification quality against injected bugs | One controlled mutation at a time | Baseline passes; intended checker kills each non-equivalent mutant | Corruption control first; RTL campaign later |
 
@@ -134,7 +134,7 @@ mutants as detected functional defects.
 
 ## Spike comparison milestone
 
-Spike is one shared Layer 2 reference resource for UVM and cocotb. Do not
+Spike is the shared Layer 2 architectural reference for both CPU adapters. Do not
 implement separate ISS wrappers with divergent ISA or trace policies. Prefer
 RVFI for each processor where available and translate implementation-specific
 interfaces through its adapter. The common comparator is implemented; invoking
@@ -157,10 +157,9 @@ not run, never as a comparison pass.
 
 ## Regression and closure policy
 
-The bounded v1 acceptance flow is `scripts/v1.ps1`, documented in
-[v1.md](v1.md). It requires the baseline and four-seed random matrices, five
-advanced native scenarios, both CPU mutation campaigns and native coverage
-merges. Its release manifest fails closed if any stage or source-identity check
+The qualification command is `scripts/verify.ps1`, documented in [setup.md](setup.md).
+It runs directed and four-seed random matrices with live and offline Spike,
+and merges native coverage. Advanced scenarios and mutations have their own runners. Its release manifest fails closed if any stage or source-identity check
 fails. The checked-in CI configuration requires a suitable self-hosted native
 runner; a local release is not evidence of CI execution.
 
@@ -188,7 +187,7 @@ must hit 100% of the existing opcode/branch group and the separate bounded
 corner group, with exact branch counts checked against successive observed
 PCs. This closes those named directed goals only. The original smoke remains
 separate; no per-run percentages are averaged into a merged-coverage claim.
-See [programs.md](programs.md) and [the measured results](directed-corners-results.md).
+See [programs.md](programs.md) and [the qualification report](../evidence/qualification/report.md).
 
 - Every positive test needs clean UVM error/fatal counts, intended completion,
   all mandatory scenario counters, clean protocol checks and stable source

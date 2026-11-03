@@ -7,6 +7,7 @@ package ibex_uvm_pkg;
   `include "picorv32_mem_agent.svh"
   `include "riscv_control_types.svh"
   `include "ibex_scoreboard.svh"
+  `include "riscv_spike_checker.svh"
   `include "riscv_scenarios.svh"
   `include "ibex_test.svh"
 endpackage

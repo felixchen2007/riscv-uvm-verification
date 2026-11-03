@@ -3,7 +3,7 @@
 The goal is reuse across processor implementations; the current harness is
 single-hart. Ibex and PicoRV32 now have implemented physical adapters. They
 share one bounded architectural checker, program generator, timing policy and
-coverage model. Exact executed scopes are in `dual-processor-results.md`.
+coverage model. Exact executed scopes are in the [qualification report](../evidence/qualification/report.md).
 
 | Component | Reuse boundary | Ibex today | PicoRV32 today / remaining work |
 | --- | --- | --- | --- |
@@ -18,9 +18,8 @@ coverage model. Exact executed scopes are in `dual-processor-results.md`.
 | UVM TLM and factory | Analysis ports, configured environments, sequencer policies | Split-port environment and executed maximum-delay factory override | Same registered sequence override through the unified-port environment |
 | Virtual sequences | Shared virtual sequencer and scenario sequence | Coordinates instruction/data policy sequences and control agent | Coordinates native-memory policy and control agent; bus-error scenarios remain future work |
 | UVM RAL | Peripheral register model, bus predictor and frontdoor adapter | No peripheral block/RAL yet | Reuse only with the same real peripheral map; adapt the bus frontdoor |
-| cocotb tests/models | Targeted behavioral contracts and edge vectors | Actual FF register-file tests; independent register model | Add component harnesses for available implementation boundaries; do not duplicate CPU UVM |
-| Spike | One pinned execution adapter and canonical comparator | Shared offline bridge, `rv32ic` reference configuration, RV32I program scope | Same bridge, `rv32i` reference configuration, same input/initial state and per-retirement checks; see `spike-results.md` |
-| Regression/reporting | Configs, seeds, scheduling, failure classes, artifacts, replay | Multi-seed UVM + targeted Ibex cocotb | Multi-seed UVM; cross-processor comparisons fail the aggregate on divergence |
+| Spike | One pinned execution adapter and canonical comparator | Shared offline bridge, `rv32ic` reference configuration, RV32I program scope | Same bridge, `rv32i` reference configuration, same input/initial state and per-retirement checks; see [Spike guide](spike.md) |
+| Regression/reporting | Configs, seeds, scheduling, failure classes, artifacts, replay | Multi-seed UVM and Python automation | Multi-seed UVM; cross-processor comparisons fail the aggregate on divergence |
 | Mutation infrastructure | Baseline, isolated mutant copies, kill taxonomy and reports | Four actual ADD/BEQ/SLL/store RTL mutations | Four corresponding implementation-specific RTL mutations; compile-invalid cases cannot count as kills |
 
 PicoRV32 is pinned at `ef203c2b0a3fb793280f5114941416c425c5b461` with an ISC
@@ -31,6 +30,6 @@ Ibex, so the physical bus agent is separate and IRQs remain disabled in this
 milestone. Shared smoke/corners/random programs exercise a bounded RV32I
 intersection; PicoRV32 compressed/M, CSRs, exceptions and interrupts remain
 outside the tested scope. The Ibex-only IRQ profile has its own bounded CSR
-and event contract; see [the v1 guide](v1.md).
+and event contract; see [the verification plan](verification-plan.md).
 
 Reference: [PicoRV32 upstream documentation](https://github.com/YosysHQ/picorv32).

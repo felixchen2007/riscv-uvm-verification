@@ -44,7 +44,7 @@ def snapshot_hashes():
     paths.add(ROOT / "requirements-verification.txt")
     for folder in ("vendor", "tb", "scripts", "config", "verification", "schemas", "tests", ".github"):
         for path in (ROOT / folder).rglob("*"):
-            if path.is_file() and path.suffix in (".v", ".sv", ".svh", ".cc", ".h", ".py", ".ps1", ".json", ".txt", ".yml", ".yaml") and "__pycache__" not in path.parts:
+            if path.is_file() and path.suffix in (".v", ".sv", ".svh", ".cc", ".cpp", ".h", ".py", ".ps1", ".json", ".txt", ".yml", ".yaml") and "__pycache__" not in path.parts:
                 paths.add(path)
     return {str(path.relative_to(ROOT)).replace("\\", "/"): hashlib.sha256(path.read_bytes()).hexdigest()
             for path in sorted(paths)}
@@ -195,10 +195,13 @@ def main():
     parser.add_argument("--seed", type=int, default=20261029)
     parser.add_argument("--profile", action="append", choices=PROFILES)
     parser.add_argument("--full", action="store_true", help="Execute SV randomize and covergroups; requires suitable license")
+    parser.add_argument("--spike-live", action="store_true", help="Require the XSim live DPI-C Spike reference")
     parser.add_argument("--compile-only", action="store_true", help="Compile without claiming a verification pass")
     parser.add_argument("--output", type=Path)
     parser.add_argument("--rtl-mutation", type=Path, help="Owned isolated RTL manifest; campaign observation mode")
     args = parser.parse_args()
+    if args.spike_live and args.sim != "xsim":
+        parser.error("Live Spike DPI-C is currently supported only by the XSim adapter")
     if args.scenario != "normal" and (args.sim != "xsim" or not args.full or args.rtl_mutation):
         parser.error("Advanced scenarios require XSim --full and pristine RTL")
     if (args.scenario == "irq") != (args.program == "irq") or (args.scenario == "irq" and args.processor != "ibex_smoke"):
@@ -214,7 +217,7 @@ def main():
             parser.error("--profile and --compile-only apply to --sim questa; XSim runs both smoke profiles")
         from run_xsim_tests import run_suite as run_xsim_suite
         run_xsim_suite(args.seed, args.full, args.vivado_bin, output=args.output, processor=args.processor, program=args.program,
-                       mutation_manifest=args.rtl_mutation, scenario=args.scenario)
+                       mutation_manifest=args.rtl_mutation, scenario=args.scenario, live_spike=args.spike_live)
     else:
         if args.program != "smoke":
             parser.error("The extended program acceptance flow uses XSim; Questa retains its original smoke")
