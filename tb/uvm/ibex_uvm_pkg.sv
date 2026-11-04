@@ -10,4 +10,5 @@ package ibex_uvm_pkg;
   `include "riscv_spike_checker.svh"
   `include "riscv_scenarios.svh"
   `include "ibex_test.svh"
+  `include "riscv_rv32i_test.svh"
 endpackage

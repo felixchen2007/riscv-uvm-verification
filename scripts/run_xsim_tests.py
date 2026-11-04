@@ -64,7 +64,22 @@ def require_ok(proc, context):
         raise RuntimeError(f"{context} failed (exit {proc.returncode}):\n{proc.stdout[-8000:]}")
 
 
-def run_suite(seed=20261029, full=False, vivado_bin=None, prepare_only=False, output=None, processor="ibex_smoke", program="smoke", mutation_manifest=None, scenario="normal", live_spike=False):
+def simulate(bin_dir, snapshot, output, profile, seed, plusargs, full=False):
+    args = ["-tclbatch", "run.tcl", "-onerror", "quit", "-sv_seed", str(seed),
+            "-log", profile + "_simulation.log"]
+    if full:
+        args += ["-cov_db_dir", "coverage", "-cov_db_name", profile]
+    for value in plusargs:
+        args += ["-testplusarg", value]
+    # The Windows batch launcher reparses '=' in unquoted plusargs.
+    arg_file = profile + ".args"
+    (output / arg_file).write_text("".join(f'"{arg}"\n' for arg in args), encoding="utf-8")
+    return call(bin_dir, "xsim", [snapshot, "-f", arg_file], output, profile + "_console.log")
+
+
+def run_suite(seed=20261029, full=False, vivado_bin=None, prepare_only=False, output=None, processor="ibex_smoke", program="smoke", mutation_manifest=None, scenario="normal", live_spike=False, rv32i=False):
+    if rv32i and (full or prepare_only or live_spike or mutation_manifest or scenario != "normal" or program != "smoke"):
+        raise ValueError("Use the dedicated RV32I runner for directed instruction checks")
     if live_spike and (not full or scenario != "normal" or mutation_manifest or program == "irq"):
         raise ValueError("Live Spike currently requires full-mode normal smoke/corners/random on pristine RTL")
     cpu = apply_program(load_processor(processor), program)
@@ -184,6 +199,15 @@ def run_suite(seed=20261029, full=False, vivado_bin=None, prepare_only=False, ou
         result["compiled"] = True
         require_ok(call(bin_dir, "xelab", elab_args, output, "elaborate_console.log"), "XSim elaboration")
         result["elaborated"] = True
+        if rv32i:
+            from run_rv32i_tests import exercise
+            result.pop("program_contract")
+            result.update(program_profile="rv32i", mode="directed-isa-with-seeded-memory-timing")
+            exercise(bin_dir, snapshot, output, seed, result)
+            if snapshot_hashes() != hashes:
+                raise RuntimeError("Sources changed during RV32I verification")
+            result.update(status="pass", verification_pass=True)
+            return result
         selected_profiles = [("stalled", 3)] if mutation else list(PROFILES.items()) + [("rvfi_corruption_control", 3)]
         spike_controls = {"spike_rd_control": (1, "rd_data"), "spike_pc_control": (2, "pc"),
                           "spike_store_control": (3, "memory_data")}
@@ -201,18 +225,7 @@ def run_suite(seed=20261029, full=False, vivado_bin=None, prepare_only=False, ou
                 plusargs.append("SPIKE_LIVE_CONFIG=spike-live-command.txt")
                 if profile in spike_controls:
                     plusargs.append("SPIKE_LIVE_CORRUPT=" + str(spike_controls[profile][0]))
-            args = ["-tclbatch", "run.tcl", "-onerror", "quit", "-sv_seed", str(seed),
-                    "-log", profile + "_simulation.log"]
-            if full:
-                args += ["-cov_db_dir", "coverage", "-cov_db_name", profile]
-            for value in plusargs:
-                args += ["-testplusarg", value]
-            # Vivado's Windows batch launcher reparses '=' in unquoted
-            # plusargs. XSim's native argument file preserves each full token.
-            arg_file = profile + ".args"
-            (output / arg_file).write_text("\n".join('"' + str(a).replace('\\', '/') + '"' for a in args) + "\n",
-                                           encoding="utf-8")
-            proc = call(bin_dir, "xsim", [snapshot, "-f", arg_file], output, profile + "_console.log")
+            proc = simulate(bin_dir, snapshot, output, profile, seed, plusargs, full)
             counts = uvm_counts(proc.stdout)
             fields = pass_fields(proc.stdout)
             for name in ("rvfi_trace.csv", "program.hex", "program-generation.json", "control_trace.csv"):

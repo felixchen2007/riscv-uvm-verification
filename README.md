@@ -1,13 +1,20 @@
 # RISC-V CPU Verification
 
 A SystemVerilog UVM 1.2 environment verifies the pinned lowRISC Ibex and
-PicoRV32 cores in Vivado XSim. A C++ DPI-C bridge steps Spike during simulation
-and compares each retirement. Python's standard library coordinates the builds,
-seeded regressions, trace comparisons, and coverage reports.
+PicoRV32 cores in Vivado XSim. In Spike-backed runs, a C++ DPI-C bridge steps
+Spike during simulation and compares each retirement. Python's standard library
+coordinates builds, seeded regressions, trace comparisons, and coverage reports.
 
 [Results](#results) · [Architecture](#architecture) · [Test strategy](#test-strategy) · [Setup](#setup) · [Run verification](#run-verification) · [Repository map](#repository-map) · [Scope](#scope)
 
 ## Results
+
+The directed UVM suite checked **40/40 base RV32I instructions on both Ibex
+and PicoRV32**. Each core passed a sequence covering 38 distinct instructions
+plus separate `ECALL` and `EBREAK` scenarios at both memory timings.
+[Per-instruction results](evidence/rv32i-directed/report.md)
+
+### Spike-backed campaigns
 
 | Measure | Qualification | Extended random campaign |
 | --- | ---: | ---: |
@@ -60,6 +67,7 @@ The offline adapter independently replays saved traces. [Architecture details](d
 
 - **Smoke** checks basic execution, memory traffic, and the terminal signature.
 - **Directed corners** exercise arithmetic boundaries, dependencies, loads and stores, and taken and untaken branches.
+- **Directed RV32I suite** checks writebacks, memory transfers, both outcomes of every conditional branch, jumps, and synchronous traps. The expected results are specified in the SystemVerilog testbench.
 - **Constrained-random programs** generate 64 instruction body items after a directed setup. Each complete program retires 111 instructions. Each seed runs on both CPUs with and without added memory stalls, for 444 live comparisons per seed.
 - **Observation controls** deliberately corrupt a register result, PC, or store value at the live checker. The runner requires the intended mismatch diagnostic.
 - **Native coverage** uses XSim functional covergroups for instruction families, branches, directed corner conditions, random ALU operations, and scratch addresses. XCRG merges the actual databases across seeds.
@@ -103,6 +111,16 @@ python -S scripts/run_regression.py --config config/regressions/live-random-exte
 python -S scripts/export_coverage.py --regression build/regressions/live-random-extended --output build/coverage/live-random-extended
 ```
 
+### Run the directed RV32I suite
+
+This suite uses XSim and UVM 1.2 with a directed SystemVerilog scoreboard.
+It writes the 40-instruction checklist, traces, and transcripts to a fresh
+output directory.
+
+```powershell
+python -S scripts/run_rv32i_tests.py --output build/rv32i/my-run
+```
+
 [Back to top](#risc-v-cpu-verification)
 
 ## Repository map
@@ -113,12 +131,14 @@ python -S scripts/export_coverage.py --regression build/regressions/live-random-
 | [`verification/reference/`](verification/reference/) | Spike adapters and DPI-C transport |
 | [`scripts/`](scripts/) | Tool launchers, regression and mutation runners, and coverage export |
 | [`config/regressions/`](config/regressions/) | Program, processor, and seed matrices |
-| [`evidence/`](evidence/) | Qualification and extended campaign reports |
+| [`evidence/`](evidence/) | Directed RV32I, qualification, and extended campaign reports |
 
 ## Scope
 
 The live reference checks normal single-hart programs in the tested RV32I
-subset. Reset and interrupt scenarios have separate native UVM checks. The
+subset. The 40-instruction checklist comes from directed UVM checks.
+`FENCE` is exercised in a serialized memory model. Reset and interrupt
+scenarios have separate native UVM checks. The
 60-bin result measures the declared functional coverage model. The project
 targets CPU simulation. See [third-party sources and licenses](THIRD_PARTY.md)
 for the pinned upstream revisions.

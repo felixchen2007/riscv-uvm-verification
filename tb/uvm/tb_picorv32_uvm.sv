@@ -41,7 +41,15 @@ module tb_picorv32_uvm;
     .rvfi_csr_mcycle_rmask(),.rvfi_csr_mcycle_wmask(),.rvfi_csr_mcycle_rdata(),.rvfi_csr_mcycle_wdata(),
     .rvfi_csr_minstret_rmask(),.rvfi_csr_minstret_wmask(),.rvfi_csr_minstret_rdata(),.rvfi_csr_minstret_wdata()
   );
-  a_no_trap: assert property (@(posedge clk) disable iff(!rst_n) trap===1'b0)
+  bit expected_trap_test;
+  initial begin
+    string test_name;
+    int trap_case;
+    expected_trap_test=$value$plusargs("UVM_TESTNAME=%s",test_name) && test_name=="riscv_rv32i_test" &&
+                       $value$plusargs("RV32I_TRAP=%d",trap_case) && trap_case inside {1,2};
+  end
+  // The directed scoreboard checks the exact trapping PC, instruction and halt.
+  a_no_trap: assert property (@(posedge clk) disable iff(!rst_n || expected_trap_test) trap===1'b0)
     else $error("PICO_TRAP: unexpected CPU trap");
   initial begin
     uvm_config_db#(virtual riscv_control_if)::set(null,"uvm_test_top.env.control_agent.*","vif",control);

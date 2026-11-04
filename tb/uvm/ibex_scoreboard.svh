@@ -205,7 +205,7 @@ class riscv_scoreboard extends uvm_scoreboard;
     if(!write_access && rsp.data!==value)
       `uvm_error("MEM_LOAD_DATA",$sformatf("Expected load data %08x got %08x",value,rsp.data))
   endfunction
-  function void write_retire(ibex_retirement t);
+  virtual function void write_retire(ibex_retirement t);
     bit [31:0] insn,next_pc,result,address,imm,value;
     bit [6:0] opcode;
     int rd,rs1,rs2,funct3;

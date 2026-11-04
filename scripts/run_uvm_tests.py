@@ -59,7 +59,7 @@ def uvm_counts(transcript):
 
 
 def pass_fields(transcript):
-    for match in re.finditer(r"\[(?:IBEX|RV)_UVM_PASS\]\s+([^\r\n]+)", transcript):
+    for match in re.finditer(r"\[(?:IBEX|RV|RV32I)_UVM_PASS\]\s+([^\r\n]+)", transcript):
         fields = {}
         for key, value in re.findall(r"(\w+)=([^\s]+)", match.group(1)):
             try:

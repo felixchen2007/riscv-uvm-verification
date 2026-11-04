@@ -29,7 +29,7 @@ class ibex_program extends uvm_object;
     bit [20:0] v=21'(imm);
     return {v[20],v[10:1],v[11],v[19:12],5'(rd),7'h6f};
   endfunction
-  function void build_image(int unsigned seed,int program_id=0);
+  virtual function void build_image(int unsigned seed,int program_id=0);
     image.delete();
     operand=(seed % 31)+1;
     program_seed=seed; instruction_randomize_calls=0; schedule_randomize_calls=0;
@@ -213,7 +213,8 @@ class ibex_program extends uvm_object;
     if(profile_id!=2) begin
       if(profile_id==0) profile_name="smoke";
       else if(profile_id==1) profile_name="corners";
-      else profile_name="irq";
+      else if(profile_id==3) profile_name="irq";
+      else profile_name="rv32i";
       fd=$fopen("program-generation.json","w");
       if(!fd) `uvm_fatal("GENERATION_FILE","Cannot write directed generation metadata")
       $fdisplay(fd,"{\"schema_version\":1,\"program_profile\":\"%s\",\"seed\":%0d,\"instruction_calls\":0,\"schedule_calls\":0,\"items\":[]}",profile_name,program_seed);

@@ -91,6 +91,7 @@ class riscv_smoke_test extends uvm_test;
   int unsigned seed=20261029;
   int max_delay=0,cpu_id=0,program_id=0,scenario_id=0;
   function new(string name,uvm_component parent); super.new(name,parent); endfunction
+  virtual function void configure_program(); endfunction
   function void build_phase(uvm_phase phase);
     int matched;
     super.build_phase(phase);
@@ -101,6 +102,7 @@ class riscv_smoke_test extends uvm_test;
     void'(uvm_config_db#(int)::get(this,"","cpu_id",cpu_id));
     if(cpu_id!=0 && cpu_id!=1) `uvm_fatal("CPU_CONFIG","Unknown physical CPU adapter")
     image=ibex_program::type_id::create("program_image");
+    configure_program();
     image.build_image(seed,program_id); image.write_image();
     uvm_config_db#(ibex_program)::set(this,"env.*","program",image);
     uvm_config_db#(int unsigned)::set(this,"env.*","seed",seed);
