@@ -24,25 +24,28 @@ def run_case(processor, seed, layer, mode, output, include_spike=False, program=
         raise ValueError("Only native UVM CPU cases are supported")
     cfg = apply_program(load_processor(processor), program)
     case_id = f"{processor}_{layer}_{mode}_seed{seed}"
-    if layer == "uvm" and program != "smoke":
+    if program != "smoke":
         case_id += "_" + program
     folder = output / "cases" / case_id
     folder.mkdir(parents=True)
-    script = "run_uvm_tests.py"
-    command = [sys.executable, str(ROOT / "scripts" / script), "--seed", str(seed), "--output", str(folder)]
-    if layer == "uvm":
-        command += ["--sim", "xsim", "--processor", processor, "--program", program]
-        if mode == "full":
-            command.append("--full")
-        if live_spike:
-            command.append("--spike-live")
+    command = [
+        sys.executable, str(ROOT / "scripts/run_uvm_tests.py"),
+        "--seed", str(seed), "--output", str(folder),
+        "--sim", "xsim", "--processor", processor, "--program", program,
+    ]
+    if mode == "full":
+        command.append("--full")
+    if live_spike:
+        command.append("--spike-live")
+    replay_command = command.copy()
+    output_argument = replay_command.index("--output") + 1
+    replay_command[output_argument] = str(folder / "replay")
     result = {"schema_version": 1, "case_id": case_id, "layer": layer,
               "scope": "cpu", "processor_config": processor,
               "program_profile": program,
               "seed": seed, "status": "failed", "executed": False, "failure_category": None,
               "artifacts": {"raw_results": str(folder / "results.json"), "console": str(folder / "launcher.log")},
-              "replay_command": [*command[:command.index("--output") + 1], str(folder / "replay"),
-                                 *command[command.index("--output") + 2:]],
+              "replay_command": replay_command,
               "coverage_observations": [], "spike_comparison_executed": False}
     result["sv_instruction_randomization_executed"] = False
     try:
@@ -54,79 +57,92 @@ def run_case(processor, seed, layer, mode, output, include_spike=False, program=
             raise RuntimeError(raw.get("error", raw.get("failure", proc.stdout[-6000:])))
         if raw.get("seed") != seed:
             raise RuntimeError("Run manifest does not match the requested seed")
-        if layer == "uvm" and raw.get("processor_config") != processor:
+        if raw.get("processor_config") != processor:
             raise RuntimeError("Run manifest does not match requested CPU implementation")
-        if layer == "uvm" and raw.get("program_profile") != program:
+        if raw.get("program_profile") != program:
             raise RuntimeError("Run manifest does not match requested program")
         if live_spike:
             controls = raw.get("live_spike_controls", {})
-            if (raw.get("live_spike_requested") is not True or raw.get("spike_comparison_executed") is not True or
-                    set(controls) != {"spike_rd_control", "spike_pc_control", "spike_store_control"} or
-                    any(c.get("status") != "detected" for c in controls.values())):
+            live_requested = raw.get("live_spike_requested") is True
+            comparison_executed = raw.get("spike_comparison_executed") is True
+            expected_controls = {"spike_rd_control", "spike_pc_control", "spike_store_control"}
+            if not live_requested or not comparison_executed or set(controls) != expected_controls:
                 raise RuntimeError("Requested live Spike checking or controls did not execute")
-            if (set(raw.get("profiles", {})) != {"no_added_delay", "stalled"} or
-                    any(p.get("live_spike_compared") != cfg["expected_retirements"] for p in raw["profiles"].values())):
+            for control in controls.values():
+                if control.get("status") != "detected":
+                    raise RuntimeError("Requested live Spike checking or controls did not execute")
+
+            profiles = raw.get("profiles", {})
+            if set(profiles) != {"no_added_delay", "stalled"}:
                 raise RuntimeError("Incomplete live Spike comparison counts")
-            result["live_spike"] = {"profiles": {name: p["live_spike_compared"] for name, p in raw["profiles"].items()},
-                                    "controls": controls, "build": raw["live_spike_build"]}
+            comparison_counts = {}
+            for name, profile in profiles.items():
+                count = profile.get("live_spike_compared")
+                if count != cfg["expected_retirements"]:
+                    raise RuntimeError("Incomplete live Spike comparison counts")
+                comparison_counts[name] = count
+            result["live_spike"] = {
+                "profiles": comparison_counts,
+                "controls": controls,
+                "build": raw["live_spike_build"],
+            }
         result["source_sha256"] = raw["source_sha256"]
-        if layer == "uvm":
-            if raw.get("sv_instruction_randomization_executed") is not (program == "random"):
-                raise RuntimeError("Requested instruction generation mode was not executed")
-            result["sv_instruction_randomization_executed"] = raw["sv_instruction_randomization_executed"]
-            if raw.get("sv_constrained_randomization_executed") is not (mode == "full"):
-                raise RuntimeError("Requested UVM execution mode was not executed")
-            if raw.get("corruption_control", {}).get("status") != "detected":
-                raise RuntimeError("Missing intended scoreboard corruption diagnostic")
-            traces = {}
-            program_hashes = []
-            result["profiles"] = raw["profiles"]
-            result["corruption_control"] = raw["corruption_control"]
-            result["branch_observations"] = {}
-            for profile in ("no_added_delay", "stalled"):
-                trace = normalize_rvfi_csv(folder / (profile + "_rvfi_trace.csv"),
-                                           folder / (profile + "_program.hex"), cfg)
-                trace_path = folder / (profile + "_retirement-v1.json")
-                write_trace(trace_path, trace)
-                result["artifacts"][profile + "_trace"] = str(trace_path)
-                traces[profile] = trace
-                observed_branches = branch_outcomes(trace, cfg["program_contract"]["branch_hits"])
-                if observed_branches != raw["profiles"][profile]["branch_hits"]:
-                    raise ValueError("SV branch counters differ from successive observed retirement PCs")
-                result["branch_observations"][profile] = observed_branches
-                program_hashes.append(trace["program_sha256"])
-                features = raw["profiles"][profile].get("full_features")
-                if features:
-                    result["coverage_observations"].append({"case_id": case_id, "profile": profile,
-                       "seed": seed, "covergroup": "riscv_scoreboard.retire_cg",
-                       "percent": features["smoke_covergroup_percent"],
-                       "database": str(folder / "coverage/xsim.covdb" / profile)})
-                    result["coverage_observations"].append({"case_id": case_id, "profile": profile,
-                       "seed": seed, "covergroup": "riscv_scoreboard.corner_cg",
-                       "percent": features["corner_covergroup_percent"],
-                       "database": str(folder / "coverage/xsim.covdb" / profile)})
-                    if program == "random":
-                        for group, field in (("random_kind_cg", "random_body_kind_percent"), ("random_alu_cg", "random_body_alu_percent"), ("random_memory_cg", "random_body_memory_percent")):
-                            result["coverage_observations"].append({"case_id": case_id, "profile": profile,
-                                "seed": seed, "covergroup": "riscv_scoreboard." + group, "percent": features[field],
-                                "database": str(folder / "coverage/xsim.covdb" / profile)})
-            result["timing_invariance"] = compare_traces(*traces.values())
-            if include_spike:
-                result["spike"] = compare_case_with_spike(folder, cfg, traces)
-                result["spike_comparison_executed"] = True
-                result["artifacts"]["spike_comparison"] = str(folder / "spike/comparison-result.json")
-                result["reference_replay_command"] = [sys.executable, str(ROOT / "scripts/run_spike_tests.py"),
-                    "--processor", processor, "--program", str(folder / "no_added_delay_program.hex"),
-                    "--program-profile", program,
-                    "--rvfi", str(folder / "no_added_delay_rvfi_trace.csv"), "--output", str(folder / "spike-replay")]
-            result["program_sha256"] = program_hashes[0]
-            (folder / "program-manifest.json").write_text(json.dumps({"schema_version": 1,
-                "format": "verilog-readmemh-word-addresses", "isa": cfg["program_isa"],
-                "entry_pc": cfg["entry_pc"], "seed": seed, "sha256": program_hashes[0],
-                "program_profile": program, "contract": cfg["program_contract"],
-                "sv_instruction_randomization_executed": program == "random",
-                "generator": "SystemVerilog constrained-random body with directed prologue" if program == "random" else
-                    "SystemVerilog ibex_program directed skeleton with seed-derived operand"}, indent=2) + "\n")
+        if raw.get("sv_instruction_randomization_executed") is not (program == "random"):
+            raise RuntimeError("Requested instruction generation mode was not executed")
+        result["sv_instruction_randomization_executed"] = raw["sv_instruction_randomization_executed"]
+        if raw.get("sv_constrained_randomization_executed") is not (mode == "full"):
+            raise RuntimeError("Requested UVM execution mode was not executed")
+        if raw.get("corruption_control", {}).get("status") != "detected":
+            raise RuntimeError("Missing intended scoreboard corruption diagnostic")
+        traces = {}
+        program_hashes = []
+        result["profiles"] = raw["profiles"]
+        result["corruption_control"] = raw["corruption_control"]
+        result["branch_observations"] = {}
+        for profile in ("no_added_delay", "stalled"):
+            trace = normalize_rvfi_csv(folder / (profile + "_rvfi_trace.csv"),
+                                       folder / (profile + "_program.hex"), cfg)
+            trace_path = folder / (profile + "_retirement-v1.json")
+            write_trace(trace_path, trace)
+            result["artifacts"][profile + "_trace"] = str(trace_path)
+            traces[profile] = trace
+            observed_branches = branch_outcomes(trace, cfg["program_contract"]["branch_hits"])
+            if observed_branches != raw["profiles"][profile]["branch_hits"]:
+                raise ValueError("SV branch counters differ from successive observed retirement PCs")
+            result["branch_observations"][profile] = observed_branches
+            program_hashes.append(trace["program_sha256"])
+            features = raw["profiles"][profile].get("full_features")
+            if features:
+                result["coverage_observations"].append({"case_id": case_id, "profile": profile,
+                   "seed": seed, "covergroup": "riscv_scoreboard.retire_cg",
+                   "percent": features["smoke_covergroup_percent"],
+                   "database": str(folder / "coverage/xsim.covdb" / profile)})
+                result["coverage_observations"].append({"case_id": case_id, "profile": profile,
+                   "seed": seed, "covergroup": "riscv_scoreboard.corner_cg",
+                   "percent": features["corner_covergroup_percent"],
+                   "database": str(folder / "coverage/xsim.covdb" / profile)})
+                if program == "random":
+                    for group, field in (("random_kind_cg", "random_body_kind_percent"), ("random_alu_cg", "random_body_alu_percent"), ("random_memory_cg", "random_body_memory_percent")):
+                        result["coverage_observations"].append({"case_id": case_id, "profile": profile,
+                            "seed": seed, "covergroup": "riscv_scoreboard." + group, "percent": features[field],
+                            "database": str(folder / "coverage/xsim.covdb" / profile)})
+        result["timing_invariance"] = compare_traces(*traces.values())
+        if include_spike:
+            result["spike"] = compare_case_with_spike(folder, cfg, traces)
+            result["spike_comparison_executed"] = True
+            result["artifacts"]["spike_comparison"] = str(folder / "spike/comparison-result.json")
+            result["reference_replay_command"] = [sys.executable, str(ROOT / "scripts/run_spike_tests.py"),
+                "--processor", processor, "--program", str(folder / "no_added_delay_program.hex"),
+                "--program-profile", program,
+                "--rvfi", str(folder / "no_added_delay_rvfi_trace.csv"), "--output", str(folder / "spike-replay")]
+        result["program_sha256"] = program_hashes[0]
+        (folder / "program-manifest.json").write_text(json.dumps({"schema_version": 1,
+            "format": "verilog-readmemh-word-addresses", "isa": cfg["program_isa"],
+            "entry_pc": cfg["entry_pc"], "seed": seed, "sha256": program_hashes[0],
+            "program_profile": program, "contract": cfg["program_contract"],
+            "sv_instruction_randomization_executed": program == "random",
+            "generator": "SystemVerilog constrained-random body with directed prologue" if program == "random" else
+                "SystemVerilog ibex_program directed skeleton with seed-derived operand"}, indent=2) + "\n")
         result.update(status="pass", executed=True)
     except subprocess.TimeoutExpired as exc:
         console = exc.stdout or b""
@@ -159,12 +175,21 @@ def run_regression(config, output, jobs=None, include_spike=None):
         raise ValueError("Regression output already exists; choose a fresh directory")
     output.mkdir(parents=True)
     hashes = snapshot_hashes()
-    tasks = [(p, s, "uvm", program) for p in matrix["processors"]
-             for program in matrix["programs"] for s in matrix["seeds"]]
+    tasks = []
+    for processor in matrix["processors"]:
+        for program in matrix["programs"]:
+            for seed in matrix["seeds"]:
+                tasks.append((processor, program, seed))
     cases = []
     with ThreadPoolExecutor(max_workers=matrix["jobs"]) as pool:
-        futures = [pool.submit(run_case, p, s, layer, matrix["uvm_mode"], output,
-                               matrix["include_spike"], program, matrix["include_live_spike"]) for p, s, layer, program in tasks]
+        futures = []
+        for processor, program, seed in tasks:
+            future = pool.submit(
+                run_case, processor, seed, "uvm", matrix["uvm_mode"], output,
+                include_spike=matrix["include_spike"], program=program,
+                live_spike=matrix["include_live_spike"],
+            )
+            futures.append(future)
         for future in as_completed(futures):
             case = future.result()
             cases.append(case)

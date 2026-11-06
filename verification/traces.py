@@ -72,22 +72,44 @@ def normalize_rvfi_csv(csv_path, program_path, config, *, allow_prefix=False):
             raise ValueError("Raw RVFI trace lacks fields; do not infer missing architectural state")
         for raw in reader:
             try:
-                insn, rd = int(raw["insn"], 16), int(raw["rd"])
-                native = int(raw["order"])
-                flags = [int(raw[k]) for k in ("trap", "halt", "intr")]
-                if any(v not in (0, 1) for v in flags):
-                    raise ValueError("Unknown/non-Boolean retirement flags")
+                instruction = int(raw["insn"], 16)
+                destination = int(raw["rd"])
+                native_order = int(raw["order"])
+                trap = int(raw["trap"])
+                halt = int(raw["halt"])
+                interrupt = int(raw["intr"])
+                for flag in (trap, halt, interrupt):
+                    if flag not in (0, 1):
+                        raise ValueError("Unknown/non-Boolean retirement flags")
+
+                # RVFI memory values are meaningful only on loads and stores.
+                opcode = instruction & 0x7f
                 memory = None
-                if insn & 0x7f in (3, 0x23):
-                    load = (insn & 0x7f) == 3
-                    memory = {"kind": "load" if load else "store", "address": int(raw["mem_addr"], 16),
-                              "mask": int(raw["mem_rmask" if load else "mem_wmask"], 16),
-                              "data": int(raw["mem_rdata" if load else "mem_wdata"], 16)}
-                records.append({"order": native - config["native_order_base"], "native_order": native,
-                                "hart": 0, "pc": int(raw["pc"], 16), "insn": insn,
-                                "rd_address": rd, "rd_data": int(raw["rd_data"], 16) if rd else 0,
-                                "trap": bool(flags[0]), "halt": bool(flags[1]), "interrupt": bool(flags[2]),
-                                "memory": memory})
+                if opcode in (0x03, 0x23):
+                    if opcode == 0x03:
+                        kind, mask_field, data_field = "load", "mem_rmask", "mem_rdata"
+                    else:
+                        kind, mask_field, data_field = "store", "mem_wmask", "mem_wdata"
+                    memory = {
+                        "kind": kind,
+                        "address": int(raw["mem_addr"], 16),
+                        "mask": int(raw[mask_field], 16),
+                        "data": int(raw[data_field], 16),
+                    }
+                record = {
+                    "order": native_order - config["native_order_base"],
+                    "native_order": native_order,
+                    "hart": 0,
+                    "pc": int(raw["pc"], 16),
+                    "insn": instruction,
+                    "rd_address": destination,
+                    "rd_data": int(raw["rd_data"], 16) if destination else 0,
+                    "trap": bool(trap),
+                    "halt": bool(halt),
+                    "interrupt": bool(interrupt),
+                    "memory": memory,
+                }
+                records.append(record)
             except (ValueError, TypeError) as exc:
                 raise ValueError(f"Invalid/unknown raw RVFI field at record {len(records)}: {exc}") from exc
     if allow_prefix:
@@ -155,10 +177,15 @@ def branch_outcomes(trace, expected=None):
         funct3 = (insn >> 12) & 7
         if funct3 not in (0, 1) or index + 1 == len(rows):
             raise ValueError("Unsupported/incomplete branch observation")
-        imm = ((insn >> 31) << 12) | (((insn >> 7) & 1) << 11) | (((insn >> 25) & 63) << 5) | (((insn >> 8) & 15) << 1)
-        if imm & 4096:
-            imm -= 8192
-        target, fallthrough = (pc + imm) & 0xffffffff, (pc + 4) & 0xffffffff
+        # The branch encoding splits a signed 13-bit byte offset across four fields.
+        offset = (insn >> 31) << 12
+        offset |= ((insn >> 7) & 1) << 11
+        offset |= ((insn >> 25) & 63) << 5
+        offset |= ((insn >> 8) & 15) << 1
+        if offset & 4096:
+            offset -= 8192
+        target = (pc + offset) & 0xffffffff
+        fallthrough = (pc + 4) & 0xffffffff
         following = rows[index + 1]["pc"]
         if target == fallthrough or following not in (target, fallthrough):
             raise ValueError("Ambiguous/invalid branch successor PC")

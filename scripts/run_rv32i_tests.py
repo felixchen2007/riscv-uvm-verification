@@ -22,33 +22,42 @@ ALL_INSTRUCTIONS = sorted(ORDINARY | set(TRAPS))
 
 
 def exercise(bin_dir, snapshot, output, seed, result):
+    simulator_files = ["rvfi_trace.csv", "program.hex"]
     for scenario, trap_id in (("ordinary", 0), ("ecall", 1), ("ebreak", 2), ("writeback_control", 0)):
-        negative = scenario == "writeback_control"
-        for timing, delay in ([("stalled", 3)] if negative else PROFILES.items()):
+        inject_writeback_error = scenario == "writeback_control"
+        timings = PROFILES
+        if inject_writeback_error:
+            timings = {"stalled": PROFILES["stalled"]}
+        for timing, delay in timings.items():
             name = f"{scenario}_{timing}"
             plusargs = ["UVM_TESTNAME=riscv_rv32i_test", "UVM_VERBOSITY=UVM_LOW",
                         "UVM_MAX_QUIT_COUNT=1,YES", f"IBEX_SEED={seed}", f"IBEX_MAX_DELAY={delay}",
                         f"RV32I_TRAP={trap_id}"]
-            if negative:
+            if inject_writeback_error:
                 plusargs.append("IBEX_CORRUPT_RVFI")
-            for filename in ("rvfi_trace.csv", "program.hex"):
+            for filename in simulator_files:
                 (output / filename).unlink(missing_ok=True)
             proc = simulate(bin_dir, snapshot, output, name, seed, plusargs)
             counts = uvm_counts(proc.stdout)
             fields = pass_fields(proc.stdout)
             artifacts = {}
-            for filename in ("rvfi_trace.csv", "program.hex", name + "_console.log"):
+            artifact_files = simulator_files + [name + "_console.log"]
+            for filename in artifact_files:
                 source = output / filename
                 if not source.is_file():
                     raise RuntimeError(f"{name} did not produce {filename}")
-                saved = output / (name + "_" + filename) if not filename.startswith(name) else source
-                if saved != source:
+                saved = source
+                if filename in simulator_files:
+                    saved = output / (name + "_" + filename)
                     shutil.copyfile(source, saved)
                 artifacts[saved.name] = hashlib.sha256(saved.read_bytes()).hexdigest()
-            if negative:
-                caught = (proc.returncode == 0 and not simulator_errors(proc.stdout) and fields is None
-                          and "[CORRUPTION_INJECTED]" in proc.stdout and "[RVFI_RD]" in proc.stdout
-                          and counts["UVM_ERROR"] == 1 and counts["UVM_FATAL"] == 0)
+            if inject_writeback_error:
+                simulator_finished = proc.returncode == 0 and not simulator_errors(proc.stdout)
+                injection_ran = "[CORRUPTION_INJECTED]" in proc.stdout
+                writeback_error_reported = "[RVFI_RD]" in proc.stdout
+                exactly_one_error = counts["UVM_ERROR"] == 1 and counts["UVM_FATAL"] == 0
+                caught = (simulator_finished and injection_ran and writeback_error_reported
+                          and exactly_one_error and fields is None)
                 result["corruption_control"] = {"status": "detected" if caught else "failed",
                                                 "expected_diagnostic": "RVFI_RD", "uvm_counts": counts,
                                                 "artifacts_sha256": artifacts}
@@ -59,9 +68,11 @@ def exercise(bin_dir, snapshot, output, seed, result):
             if counts["UVM_ERROR"] != 0 or counts["UVM_FATAL"] != 0 or not fields:
                 raise RuntimeError(f"{name} lacks a clean executed UVM pass:\n{proc.stdout[-5000:]}")
             checked = Counter(re.findall(r"\[RV32I_CHECKED\]\s+(\w+) pc=[0-9a-f]+ insn=[0-9a-f]+", proc.stdout))
-            expected = ORDINARY if trap_id == 0 else {"ADDI", TRAPS[trap_id - 1]}
-            if trap_id and result["processor_config"] == "ibex_smoke":
-                expected |= {"MCAUSE", "MEPC"}
+            expected = ORDINARY
+            if trap_id != 0:
+                expected = {"ADDI", TRAPS[trap_id - 1]}
+                if result["processor_config"] == "ibex_smoke":
+                    expected.update(("MCAUSE", "MEPC"))
             if checked.keys() != expected or sum(checked.values()) != fields["retired"]:
                 raise RuntimeError(f"{name} has incomplete instruction evidence: {checked}")
             if not trap_id and any(checked[op] != 2 for op in ("BEQ", "BNE", "BLT", "BGE", "BLTU", "BGEU")):
@@ -94,12 +105,18 @@ def main():
                                        output=args.output / processor, processor=processor, rv32i=True)
     checklist = {}
     for instruction in ALL_INSTRUCTIONS:
-        scenario = instruction.lower() if instruction in TRAPS else "ordinary"
-        checklist[instruction] = {
-            processor: sum(results[processor]["profiles"][f"{scenario}_{timing}"]["checks"][instruction]
-                           for timing in PROFILES)
-            for processor in PROCESSORS
-        }
+        scenario = "ordinary"
+        if instruction in TRAPS:
+            scenario = instruction.lower()
+        counts_by_processor = {}
+        for processor in PROCESSORS:
+            profiles = results[processor]["profiles"]
+            instruction_count = 0
+            for timing in PROFILES:
+                profile = profiles[f"{scenario}_{timing}"]
+                instruction_count += profile["checks"][instruction]
+            counts_by_processor[processor] = instruction_count
+        checklist[instruction] = counts_by_processor
     report = {"status": "pass", "instruction_counts": checklist, "processors": results}
     (args.output / "report.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     print(f"RV32I_CHECKLIST_PASS {len(checklist)}/40 per core", flush=True)

@@ -20,7 +20,17 @@ class rv32i_program extends ibex_program;
   function void step(string mnemonic, bit [31:0] insn, bit [4:0] rd=0, bit [31:0] result=0,
                      bit [3:0] mask=0, bit store=0, bit [31:0] data=0);
     rv32i_step expected;
-    expected='{mnemonic,cursor,result,32'h1000,data,rd,mask,store,0,0,0};
+    expected.mnemonic = mnemonic;
+    expected.pc = cursor;
+    expected.result = result;
+    expected.rd = rd;
+    expected.bus_address = 32'h1000;
+    expected.bus_data = data;
+    expected.bus_mask = mask;
+    expected.store = store;
+    expected.trap = 0;
+    expected.halt = 0;
+    expected.handler_entry = 0;
     steps.push_back(expected);
     emit(insn);
   endfunction
@@ -119,20 +129,34 @@ class rv32i_directed_scoreboard extends riscv_scoreboard;
     ibex_mem_txn req,rsp;
     bit [31:0] data_mask;
     bit [3:0] request_mask;
+    bit wrong_request, wrong_response, wrong_data;
     if(requests.size()==0 || responses.size()==0)
       `uvm_fatal("RV32I_BUS","Missing accepted data transaction")
     req=requests.pop_front();
     rsp=responses.pop_front();
-    request_mask=directed.pico && !expected.store ? 4'hf : expected.bus_mask;
-    for(int lane=0;lane<4;lane++)
-      data_mask[8*lane+:8]=expected.bus_mask[lane]?8'hff:8'h00;
-    if(req.address!==expected.bus_address || req.write!==expected.store || req.be!==request_mask ||
-       rsp.address!==req.address || rsp.write!==req.write || rsp.err!==0 ||
-       (expected.store && (req.data & data_mask)!==expected.bus_data) ||
-       (!expected.store && rsp.data!==expected.bus_data))
+    request_mask = expected.bus_mask;
+    if (directed.pico && !expected.store) request_mask = 4'hf;
+
+    // Compare only the bytes the store is supposed to write.
+    data_mask = 0;
+    for (int lane = 0; lane < 4; lane++) begin
+      if (expected.bus_mask[lane]) data_mask[8*lane+:8] = 8'hff;
+    end
+    wrong_request = req.address !== expected.bus_address ||
+                    req.write !== expected.store || req.be !== request_mask;
+    wrong_response = rsp.address !== req.address || rsp.write !== req.write || rsp.err !== 0;
+    if (expected.store)
+      wrong_data = (req.data & data_mask) !== expected.bus_data;
+    else
+      wrong_data = rsp.data !== expected.bus_data;
+
+    if (wrong_request || wrong_response || wrong_data)
       `uvm_fatal("RV32I_BUS",$sformatf("%s addr=%08x write=%b mask=%x write_data=%08x read_data=%08x",
         expected.mnemonic,req.address,req.write,req.be,req.data,rsp.data))
-    if(expected.store) stores++; else loads++;
+    if (expected.store)
+      stores++;
+    else
+      loads++;
   endfunction
 
   virtual function void write_retire(ibex_retirement t);
