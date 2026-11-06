@@ -1,3 +1,6 @@
+# Compiles Spike and the offline C++ adapter inside WSL.
+# Reuses a matching build cache and writes a manifest identifying the resulting binaries.
+
 """Linux-side build driver. Writes only its owned build cache and output."""
 import argparse
 from datetime import datetime, timezone

@@ -1,3 +1,6 @@
+# Exports and merges XSim coverage databases with XCRG.
+# Reports which functional coverage bins each CPU hit.
+
 """Export per-run coverage and merge actual XSim databases using XCRG."""
 import argparse
 from datetime import datetime, timezone

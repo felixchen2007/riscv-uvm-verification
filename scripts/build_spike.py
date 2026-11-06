@@ -1,3 +1,6 @@
+# Prepares the pinned Spike source on Windows.
+# Starts the Linux build in WSL and records the command used.
+
 """Build the pinned upstream Spike and thin state-observation adapter in WSL."""
 import argparse
 import json

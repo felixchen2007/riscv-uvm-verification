@@ -1,3 +1,6 @@
+// Defines the signals for an Ibex memory port.
+// Assertions check that requests hold until grant and response values are known.
+
 `timescale 1ns/1ps
 // Ibex's request/grant interface has no response backpressure. The responder
 // below returns every accepted request exactly once, at least one cycle later.

@@ -1,3 +1,6 @@
+// Sends each observed retirement to the live DPI-C checker.
+// Confirms that Spike completed the expected instruction sequence.
+
 // Optional live reference subscriber. The existing SV predictor remains active.
 `ifdef RV_SPIKE_DPI
 import "DPI-C" function int rv_spike_open(input string config_path);

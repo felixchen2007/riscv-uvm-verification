@@ -1,3 +1,6 @@
+# Validates individual case results and groups failures by cause.
+# Reports whether every requested case in a regression passed.
+
 """Shared outcome classification and honest coverage summaries."""
 import re
 

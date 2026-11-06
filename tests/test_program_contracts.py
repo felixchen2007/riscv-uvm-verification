@@ -1,3 +1,6 @@
+# Tests how the tools validate program profiles and identify a saved program.
+# Uses sample traces to check taken branches and fallthrough paths.
+
 """Synthetic program/branch contract tests, separate from real UVM/ISS evidence."""
 import unittest
 from unittest.mock import patch

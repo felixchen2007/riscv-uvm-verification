@@ -1,3 +1,6 @@
+# Runs the directed RV32I tests on Ibex and PicoRV32.
+# Collects the UVM results into a checklist for all 40 base instructions.
+
 """Run the directed RV32I instruction checklist on Ibex and PicoRV32."""
 import argparse
 from collections import Counter

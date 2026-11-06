@@ -1,3 +1,6 @@
+// Wires the Ibex core to clock, reset, memory, and retirement signals.
+// Registers those interfaces for the UVM components to use.
+
 `timescale 1ns/1ps
 // Memory-system harness around the unmodified Ibex core + upstream FF RF.
 module tb_ibex_uvm;

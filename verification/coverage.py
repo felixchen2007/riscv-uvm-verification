@@ -1,3 +1,6 @@
+# Reads the functional coverage bins from an XCRG report.
+# Checks that the report includes the expected coverage groups and bins.
+
 """Read simulator bin counts; percentages are never averaged across tests."""
 import csv
 import io

@@ -1,3 +1,6 @@
+# Tests the runner's requirements for live Spike evidence.
+# Uses synthetic results to check that an offline match cannot satisfy a live request.
+
 """Automation gates for live checking; these synthetic cases do not run Spike."""
 import json
 from pathlib import Path

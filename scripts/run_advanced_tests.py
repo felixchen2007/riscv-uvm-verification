@@ -1,3 +1,6 @@
+# Runs the reset, interrupt, and UVM factory override tests.
+# Collects the traces used to check that each scenario completed.
+
 """Qualify native virtual sequences, reset epochs, IRQ handling and factory overrides."""
 import argparse
 from concurrent.futures import ThreadPoolExecutor, as_completed

@@ -1,3 +1,6 @@
+# Checks the program image and metadata emitted by the SystemVerilog generator.
+# Verifies that the generated instructions are legal and the seed reproduces them.
+
 """Audit generated input legality, never predict instruction results or DUT state."""
 from collections import Counter
 import hashlib

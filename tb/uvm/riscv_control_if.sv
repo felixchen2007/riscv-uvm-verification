@@ -1,3 +1,6 @@
+// Carries reset and interrupt commands to the processor harness.
+// Exposes the memory-port state so the reset test can see when a transfer was interrupted.
+
 `timescale 1ns/1ps
 interface riscv_control_if(input logic clk);
   logic reset_request=0, irq_external=0;

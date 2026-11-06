@@ -1,3 +1,6 @@
+// Connects the SystemVerilog testbench in XSim to the Spike service in WSL.
+// Requests one reference step per retirement and compares the returned effects with the DUT.
+
 // Native Windows DPI transport. C-runtime buffers avoid loading a conflicting
 // MinGW C++ standard library into XSim. Only STEP/FINISH reach Spike.
 #define NOMINMAX

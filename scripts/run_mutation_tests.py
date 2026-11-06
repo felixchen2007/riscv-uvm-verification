@@ -1,3 +1,6 @@
+# Introduces one deliberate RTL fault at a time in an isolated copy.
+# Checks whether the testbench reports the expected failure.
+
 """Run a clean native UVM/Spike baseline, then isolated RTL mutation observations."""
 import argparse
 from concurrent.futures import ThreadPoolExecutor, as_completed

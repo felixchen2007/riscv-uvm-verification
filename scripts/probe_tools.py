@@ -1,3 +1,6 @@
+# Finds the verification tools installed on the host.
+# Checks which UVM and SystemVerilog features Questa can run.
+
 """Probe Questa's UVM/SV capabilities and inventory local host tools."""
 import argparse
 from datetime import datetime, timezone

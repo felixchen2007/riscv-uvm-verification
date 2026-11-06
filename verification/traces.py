@@ -1,3 +1,6 @@
+# Converts both cores' RVFI captures to the same retirement format.
+# Compares register and memory effects after confirming the program identity.
+
 """Common RV32 retirement contract; adapters must preserve architectural meaning."""
 import csv
 import hashlib

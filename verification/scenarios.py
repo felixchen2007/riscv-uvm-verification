@@ -1,3 +1,6 @@
+# Reads the reset and interrupt traces from native UVM runs.
+# Separates aborted work from the completed restart and checks the interrupt path.
+
 """Passive event/epoch checks, separate from the native independent predictor."""
 import csv
 from pathlib import Path

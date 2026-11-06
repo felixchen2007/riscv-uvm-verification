@@ -1,3 +1,6 @@
+# Starts the release verification workflow from PowerShell.
+# Passes the optional output directory to the Python runner.
+
 param([string]$Output)
 
 $ErrorActionPreference = 'Stop'

@@ -1,3 +1,6 @@
+# Finds the Questa binaries and UVM files used by the launchers.
+# Runs commands with time limits and saves their output to logs.
+
 """Shared, dependency-free Questa discovery and bounded process execution."""
 from pathlib import Path
 import os

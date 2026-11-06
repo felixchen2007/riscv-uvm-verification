@@ -1,3 +1,6 @@
+# Runs the offline Spike adapter on a saved UVM program.
+# Turns the reference output into a trace that can be compared with the DUT trace.
+
 """Pinned Spike execution and offline architectural comparison within layer 2."""
 import copy
 from datetime import datetime, timezone

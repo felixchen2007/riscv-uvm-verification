@@ -1,3 +1,6 @@
+# Tests the Python checks for coverage reports, reset traces, and interrupt traces.
+# Uses small fixtures to show what each check accepts or rejects.
+
 """Parser/negative controls are utility checks, separate from native RTL acceptance."""
 import unittest
 from unittest.mock import patch

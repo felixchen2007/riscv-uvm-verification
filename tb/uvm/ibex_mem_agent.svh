@@ -1,3 +1,6 @@
+// Responds to instruction and data requests on the Ibex memory ports.
+// A passive monitor reports accepted requests and responses to the scoreboard.
+
 // This file is included inside ibex_uvm_pkg after ibex_program is declared.
 // Only the passive monitor publishes observations; the responder's private RAM
 // is not exposed to the architectural scoreboard.

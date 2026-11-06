@@ -1,3 +1,6 @@
+// Collects retirement and memory observations from passive monitors.
+// Predicts the expected result using its own register and memory state.
+
 `uvm_analysis_imp_decl(_retire)
 `uvm_analysis_imp_decl(_data_req)
 `uvm_analysis_imp_decl(_data_rsp)

@@ -1,3 +1,6 @@
+# Creates an isolated RTL copy with a chosen fault applied.
+# Checks that the observed failure matches what the mutation was meant to trigger.
+
 """Isolated, pinned RTL transformations and conservative outcome qualification."""
 import difflib
 import hashlib

@@ -1,3 +1,6 @@
+# Compiles the selected CPU and UVM testbench in Vivado XSim.
+# Runs the timing profiles and checks the transcripts and traces for a valid pass.
+
 """Run Ibex's native UVM smoke and checker control in Vivado XSim."""
 import argparse
 from datetime import datetime, timezone

@@ -1,3 +1,6 @@
+// Runs Spike as a service that advances one instruction per request.
+// Returns Spike's register and memory effects to the DPI-C bridge.
+
 // Interactive adapter around unmodified pinned Spike, never fed DUT results.
 #include "config.h"
 #include "processor.h"

@@ -1,3 +1,6 @@
+# Builds the C++ Spike service used during simulation.
+# Records which source and binary belong to the verified Spike build.
+
 """Build the interactive Spike service from the already verified pinned cache."""
 import json
 from pathlib import Path, PurePosixPath

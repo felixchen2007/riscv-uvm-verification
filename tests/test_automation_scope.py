@@ -1,3 +1,6 @@
+# Checks that the runner rejects retired component test requests.
+# Confirms an unsupported case stops before creating an output folder.
+
 """Retired component requests must fail before any simulator job is launched."""
 import unittest
 from unittest.mock import patch

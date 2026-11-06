@@ -1,3 +1,6 @@
+# Runs the build, regression, and coverage steps for release qualification.
+# Checks that each stage reports a pass for the same source files.
+
 """Build and qualify the bounded live Spike CPU verification workflow."""
 import argparse
 from datetime import datetime, timezone

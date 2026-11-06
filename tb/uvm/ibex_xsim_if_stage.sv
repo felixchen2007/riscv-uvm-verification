@@ -1,3 +1,6 @@
+// Wraps the upstream Ibex fetch stage for XSim.
+// Hides unused DPI exports that XSim cannot compile while retaining RTL assertions.
+
 // XSim 2025.2 produces invalid C++ names for the unused DPI exports inside
 // ibex_if_stage.gen_prefetch_buffer (e.g. int gen_prefetch_buffer.function()).
 // Select STANDARD assertion macros before suppressing those SYNTHESIS-guarded

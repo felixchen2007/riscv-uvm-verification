@@ -1,3 +1,6 @@
+# Tests the Python side of offline Spike verification with sample artifacts.
+# Checks how the adapter validates builds, program images, and retirement records.
+
 """Synthetic adapter qualification only. Real ISS evidence is in regressions."""
 import unittest
 from unittest.mock import patch

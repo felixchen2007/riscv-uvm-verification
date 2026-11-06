@@ -1,3 +1,6 @@
+// Loads the test program into a small RAM backed by Spike.
+// Runs the program to its signature store and emits the instruction effects.
+
 // Thin adapter to the pinned, unmodified Spike processor implementation.
 // Instruction semantics execute inside Spike. No DUT trace is an input here.
 #include "config.h"

@@ -1,3 +1,6 @@
+// Builds directed programs and expected results for all 40 base RV32I instructions.
+// Checks each core's behavior for ordinary instructions and the two trap instructions.
+
 // Each directed step supplies its expected result independently of the encoding.
 typedef struct {
   string mnemonic;

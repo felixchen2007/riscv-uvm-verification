@@ -1,3 +1,6 @@
+// Defines PicoRV32's valid and ready memory signals.
+// Assertions check that a waiting request stays stable until it completes.
+
 `timescale 1ns/1ps
 interface picorv32_mem_if(input logic clk,input logic rst_n);
   logic valid,instr,ready;

@@ -1,3 +1,6 @@
+// Wires the PicoRV32 core and its shared memory port into the testbench.
+// Exposes its retirement and trap signals to the UVM checks.
+
 `timescale 1ns/1ps
 module tb_picorv32_uvm;
   import uvm_pkg::*;

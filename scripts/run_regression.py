@@ -1,3 +1,6 @@
+# Turns a test matrix into UVM runs by CPU, program, and seed.
+# Collects the results and checks that repeated inputs match.
+
 """Automate native UVM CPU verification in isolated, reproducible case folders."""
 import argparse
 from concurrent.futures import ThreadPoolExecutor, as_completed

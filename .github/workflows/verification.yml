@@ -1,3 +1,6 @@
+# Runs the Python checks on a hosted Windows runner.
+# Runs Vivado and Spike qualification on the configured self-hosted runner.
+
 name: Verification
 on: [workflow_dispatch]
 jobs:

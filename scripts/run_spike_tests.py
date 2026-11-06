@@ -1,3 +1,6 @@
+# Replays a saved UVM program in Spike.
+# Compares Spike's results with a DUT retirement trace when one is supplied.
+
 """Run pinned Spike against an existing shared smoke image, optionally compare RVFI.
 
 This never relabels existing RTL evidence as a newly executed UVM run. Use the

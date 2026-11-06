@@ -1,3 +1,6 @@
+// Groups the UVM testbench classes into one package.
+// Includes each class after the types it depends on.
+
 `timescale 1ns/1ps
 package ibex_uvm_pkg;
   import uvm_pkg::*;

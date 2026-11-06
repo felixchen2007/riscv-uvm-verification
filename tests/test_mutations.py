@@ -1,3 +1,6 @@
+# Tests the tools that prepare RTL mutations and classify their outcomes.
+# Uses sample results to check which failures count as detecting the mutation.
+
 """Synthetic qualification of mutation isolation/classification; no RTL kills claimed."""
 import unittest
 from unittest.mock import patch

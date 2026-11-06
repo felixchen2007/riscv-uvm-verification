@@ -1,3 +1,6 @@
+# Starts the native UVM runner from the repository root.
+# Forwards your arguments and returns the runner's exit code.
+
 param([Parameter(ValueFromRemainingArguments = $true)][string[]]$RunnerArgs)
 $ErrorActionPreference = 'Stop'
 $taskRoot = Split-Path -Parent $PSScriptRoot

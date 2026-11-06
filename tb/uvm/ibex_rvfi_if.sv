@@ -1,3 +1,6 @@
+// Defines the retirement signals shared by both processor harnesses.
+// The passive monitor reads them to observe what each instruction did.
+
 // Passive architectural observation boundary. No stimulus drives these signals.
 interface ibex_rvfi_if(input logic clk, input logic rst_n);
   logic valid, trap, halt, intr;

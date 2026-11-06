@@ -1,3 +1,6 @@
+// Builds the instruction image used by both cores and Spike.
+// Includes the directed programs and the constrained-random instruction body.
+
 // Encoders build stimulus only. The checker independently decodes the ISA.
 `include "riscv_instruction_item.svh"
 class ibex_program extends uvm_object;

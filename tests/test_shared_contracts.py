@@ -1,3 +1,6 @@
+# Tests the trace and result formats shared by the verification runners.
+# Uses synthetic data to check when comparisons and regressions should pass.
+
 """Synthetic format/utility tests; these are not RTL or Spike execution evidence."""
 import unittest
 from unittest.mock import patch

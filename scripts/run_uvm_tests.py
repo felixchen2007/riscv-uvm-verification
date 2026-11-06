@@ -1,3 +1,6 @@
+# Selects the simulator for a native UVM run.
+# Also supplies common source lists, vendor checks, and transcript parsers.
+
 """Compile pinned Ibex and run native UVM smoke profiles plus corruption control."""
 import argparse
 from datetime import datetime, timezone

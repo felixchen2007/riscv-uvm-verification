@@ -1,3 +1,6 @@
+// Defines the allowed operands and registers for random instructions.
+// A separate schedule shuffles the instruction families within each block.
+
 // Preload stimulus only. The architectural scoreboard never uses these fields.
 class riscv_instruction_item extends uvm_sequence_item;
   `uvm_object_utils(riscv_instruction_item)

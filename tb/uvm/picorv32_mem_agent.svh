@@ -1,3 +1,6 @@
+// Responds to fetches and data accesses on PicoRV32's shared memory port.
+// Converts accepted transfers to the transaction format used by the scoreboard.
+
 // Pico-specific physical protocol; shared sequence items, image and TLM records.
 class picorv32_mem_driver extends uvm_driver #(ibex_delay_item);
   `uvm_component_utils(picorv32_mem_driver)

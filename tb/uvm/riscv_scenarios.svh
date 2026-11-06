@@ -1,3 +1,6 @@
+// Coordinates memory timing, reset, and interrupts in advanced UVM tests.
+// The control monitor records events for the scoreboard and trace checks.
+
 class riscv_control_driver extends uvm_driver #(riscv_control_item);
   `uvm_component_utils(riscv_control_driver)
   virtual riscv_control_if vif;

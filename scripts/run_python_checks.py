@@ -1,3 +1,6 @@
+# Runs the Python tests for the verification tools.
+# Saves the test transcript and result for the qualification report.
+
 """Run standard-library automation checks and write a fail-closed result manifest."""
 import argparse
 from datetime import datetime, timezone

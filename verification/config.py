@@ -1,3 +1,6 @@
+# Loads processor, program, and regression settings from JSON.
+# Rejects unsupported combinations before the runner starts a simulation.
+
 """Processor contracts are data; planned adapters cannot execute accidentally."""
 import json
 from pathlib import Path

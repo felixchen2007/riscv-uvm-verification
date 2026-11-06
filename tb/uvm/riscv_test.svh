@@ -1,3 +1,6 @@
+// Builds the shared UVM environment for Ibex and PicoRV32.
+// Connects the selected memory agents and retirement monitor to the scoreboards.
+
 // Shared environment: processor-specific agents publish common observations.
 class riscv_env_base extends uvm_env;
   `uvm_component_utils(riscv_env_base)
